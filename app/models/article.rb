@@ -1,6 +1,6 @@
 class Article < ActiveRecord::Base
 
-  has_many :articles
+  has_many :comments
 
   validates :title, :text, presence: true
 
