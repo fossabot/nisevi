@@ -33,3 +33,9 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
+
+# Ignore IDE folder
+.idea
+
+# Ignore byebug history
+.byebug_history
