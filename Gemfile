@@ -9,13 +9,16 @@ gem 'pg', '~> 0.18.4'
 gem 'sass-rails', '~> 5.0'
 # A lightweight Sass tool set
 gem 'bourbon'
+# A lightweight, semantic grid framework built with Bourbon
+gem 'neat'
+# Define a basic set of Sass variables
+gem 'bitters'
+# Prepackaged patterns and components built with Bourbon, Neat and Bitters.
+gem 'refills'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
+# Call JavaScript code and manipulate JavaScript objects from Ruby.
+gem 'therubyracer', '~> 0.12.2'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
