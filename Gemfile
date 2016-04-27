@@ -34,6 +34,9 @@ gem 'activeresource', github: 'shopify/activeresource', tag: '4.2-threadsafe'
 # Background processing for Ruby.
 gem 'sidekiq', '~> 4.1'
 
+# Devise is a flexible authentication solution for Rails based on Warden.
+gem 'devise'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -46,6 +49,8 @@ gem 'sidekiq', '~> 4.1'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  # Shim to load environment variables from .env into ENV in development.
+  gem 'dotenv-rails'
 end
 
 group :development do
