@@ -36,6 +36,7 @@ gem 'sidekiq', '~> 4.1'
 
 # Devise is a flexible authentication solution for Rails based on Warden.
 gem 'devise'
+gem 'omniauth-twitter'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
