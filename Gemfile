@@ -38,8 +38,6 @@ gem 'sidekiq', '~> 4.1'
 ### Authentication gems ###
 # Devise is a flexible authentication solution for Rails based on Warden.
 gem 'devise'
-# Twitter strategy for OmniAuth.
-gem 'omniauth-twitter'
 # Strategy to authenticate with Google via OAuth2 in OmniAuth.
 gem "omniauth-google-oauth2"
 # Official OmniAuth strategy for GitHub.
