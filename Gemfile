@@ -39,13 +39,13 @@ gem 'sidekiq', '~> 4.1'
 # Devise is a flexible authentication solution for Rails based on Warden.
 gem 'devise'
 # Strategy to authenticate with Google via OAuth2 in OmniAuth.
-gem "omniauth-google-oauth2"
+# gem "omniauth-google-oauth2"
 # Official OmniAuth strategy for GitHub.
 gem 'omniauth-github'
 # Facebook OAuth2 Strategy for OmniAuth
-gem 'omniauth-facebook'
+# gem 'omniauth-facebook'
 # A LinkedIn OAuth2 strategy for OmniAuth.
-gem 'omniauth-linkedin-oauth2'
+# gem 'omniauth-linkedin-oauth2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -72,4 +72,3 @@ group :development do
   # in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
