@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5'
 # Pg -> Ruby interface to the {PostgreSQL RDBMS}[http://www.postgresql.org/]
 gem 'pg', '~> 0.18.4'
+# AWS SDK for Ruby
+gem 'aws-sdk', '~> 2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # A lightweight Sass tool set
