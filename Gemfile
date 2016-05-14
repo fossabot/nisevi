@@ -30,6 +30,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+# Templating engine for HTML.
+gem 'haml', '~> 4.0', '>= 4.0.7'
 
 # Use threadsafe version of ActiveResource.
 gem 'activeresource', github: 'shopify/activeresource', tag: '4.2-threadsafe'
@@ -40,14 +42,23 @@ gem 'sidekiq', '~> 4.1'
 ### Authentication gems ###
 # Devise is a flexible authentication solution for Rails based on Warden.
 gem 'devise'
+
 # Strategy to authenticate with Google via OAuth2 in OmniAuth.
 # gem "omniauth-google-oauth2"
+
 # Official OmniAuth strategy for GitHub.
 gem 'omniauth-github'
+
 # Facebook OAuth2 Strategy for OmniAuth
 # gem 'omniauth-facebook'
+
 # A LinkedIn OAuth2 strategy for OmniAuth.
 # gem 'omniauth-linkedin-oauth2'
+
+# Pundit provides a set of helpers which guide you in leveraging regular Ruby
+# classes and object oriented design patterns to build a simple, robust and
+# scaleable authorization system.
+gem 'pundit'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -66,6 +77,10 @@ group :development, :test do
   gem 'dotenv-rails'
   # Testing framework
   gem 'rspec-rails', '~> 3.0'
+  # Fixtures replacement with a straightforward definition syntax
+  gem 'factory_girl_rails'
+  # This gem is a port of Perl's Data::Faker library that generates fake data.
+  gem 'faker', '~> 1.6', '>= 1.6.3'
 end
 
 group :development do
