@@ -64,6 +64,8 @@ group :development, :test do
   gem 'byebug'
   # Shim to load environment variables from .env into ENV in development.
   gem 'dotenv-rails'
+  # Testing framework
+  gem 'rspec-rails', '~> 3.0'
 end
 
 group :development do
