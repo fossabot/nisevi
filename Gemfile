@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails', '4.2.6'
 # Pg -> Ruby interface to the {PostgreSQL RDBMS}[http://www.postgresql.org/]
 gem 'pg', '~> 0.18.4'
 # AWS SDK for Ruby
