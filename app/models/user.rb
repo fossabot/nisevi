@@ -29,25 +29,24 @@ class User < ActiveRecord::Base
     user
   end
 
-  private
-    def self.find_or_create_from_omniauth(auth)
-      # We try to find the user by using the email
-      user = User.find_by(email: auth.info.email)
-      # Create the user if it's a new registration
-      user = create_from_omniauth(auth) if user.nil?
-      user.skip_confirmation!
-      user.save!
-      user
-    end
+  def self.find_or_create_from_omniauth(auth)
+    # We try to find the user by using the email
+    user = User.find_by(email: auth.info.email)
+    # Create the user if it's a new registration
+    user = create_from_omniauth(auth) if user.nil?
+    user.skip_confirmation!
+    user.save!
+    user
+  end
 
-    def self.create_from_omniauth(auth)
-        User.new(
-          username: auth.info.nickname || "",
-          image: auth.info.image,
-          email: auth.info.email,
-          password: Devise.friendly_token,
-          first_name: auth.info.first_name,
-          last_name: auth.info.last_name
-        )
-    end
+  def self.create_from_omniauth(auth)
+      User.new(
+        username: auth.info.nickname || "",
+        image: auth.info.image,
+        email: auth.info.email,
+        password: Devise.friendly_token,
+        first_name: auth.info.first_name,
+        last_name: auth.info.last_name
+      )
+  end
 end
