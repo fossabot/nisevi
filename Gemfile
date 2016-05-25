@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # Templating engine for HTML.
 gem 'haml', '~> 4.0', '>= 4.0.7'
+#  Interface between Ruby and ImageMagick image processing library.
+gem 'rmagick'
 
 # Use threadsafe version of ActiveResource.
 gem 'activeresource', github: 'shopify/activeresource', tag: '4.2-threadsafe'
