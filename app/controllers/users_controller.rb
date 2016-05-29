@@ -8,12 +8,9 @@ class UsersController < ApplicationController
 
   def update_password
     @user = User.find(current_user.id)
-    #TODO refactor this giant 'if'
     if check_omniauth_provider?
       if @user.update(user_params)
-        # Sign in the user by passing validation
-        # in case their password changed
-        sign_in @user, :bypass => true
+        sign_in @user, :bypass => true # in case their password changed
         redirect_to root_path
       else
         #TODO test this render
@@ -21,8 +18,6 @@ class UsersController < ApplicationController
       end
     else
       if @user.update_with_password(user_params)
-        # Sign in the user by passing validation
-        # in case their password changed
         sign_in @user, :bypass => true
         redirect_to root_path
       else
