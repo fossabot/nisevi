@@ -1,6 +1,9 @@
 class ArticlesController < ApplicationController
+  after_action :verify_authorized, except: [:index, :show]
+  after_action :verify_policy_scoped, only: :index
+
   def index
-    @articles = Article.all
+    @articles = policy_scope(Article)
   end
 
   def show
@@ -26,7 +29,6 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-
     if @article.update(article_params)
       redirect_to @article
     else
