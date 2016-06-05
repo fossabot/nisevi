@@ -55,7 +55,7 @@ gem 'omniauth-github'
 # gem 'omniauth-facebook'
 
 # A LinkedIn OAuth2 strategy for OmniAuth.
-# gem 'omniauth-linkedin-oauth2'
+gem 'omniauth-linkedin-oauth2'
 
 # Pundit provides a set of helpers which guide you in leveraging regular Ruby
 # classes and object oriented design patterns to build a simple, robust and

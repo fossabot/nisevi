@@ -145,6 +145,9 @@ GEM
     omniauth-github (1.1.2)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.1)
+    omniauth-linkedin-oauth2 (0.1.5)
+      omniauth (~> 1.0)
+      omniauth-oauth2
     omniauth-oauth2 (1.4.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
@@ -267,6 +270,7 @@ DEPENDENCIES
   jquery-rails
   neat
   omniauth-github
+  omniauth-linkedin-oauth2
   pg (~> 0.18.4)
   pundit
   rails (= 4.2.6)
