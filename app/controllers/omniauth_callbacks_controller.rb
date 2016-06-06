@@ -19,7 +19,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   # Another providers supported are :google, :linkedin and :facebook
-  [:github].each do |provider|
+  [:linkedin, :github].each do |provider|
     provides_callback_for provider
   end
 end

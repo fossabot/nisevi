@@ -42,6 +42,9 @@ gem 'activeresource', github: 'shopify/activeresource', tag: '4.2-threadsafe'
 gem 'sidekiq', '~> 4.1'
 
 ### Authentication gems ###
+# Generic OAuth2 strategy for OmniAuth.
+gem 'omniauth-oauth2', '~> 1.3.1'
+
 # Devise is a flexible authentication solution for Rails based on Warden.
 gem 'devise'
 
