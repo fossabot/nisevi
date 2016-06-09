@@ -48,14 +48,8 @@ gem 'omniauth-oauth2', '~> 1.3.1'
 # Devise is a flexible authentication solution for Rails based on Warden.
 gem 'devise'
 
-# Strategy to authenticate with Google via OAuth2 in OmniAuth.
-# gem "omniauth-google-oauth2"
-
 # Official OmniAuth strategy for GitHub.
 gem 'omniauth-github'
-
-# Facebook OAuth2 Strategy for OmniAuth
-# gem 'omniauth-facebook'
 
 # A LinkedIn OAuth2 strategy for OmniAuth.
 gem 'omniauth-linkedin-oauth2'
