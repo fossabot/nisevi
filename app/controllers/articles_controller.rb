@@ -1,7 +1,4 @@
 class ArticlesController < ApplicationController
-  after_action :verify_authorized, except: [:index, :show]
-  after_action :verify_policy_scoped, only: :index
-
   def index
     @articles = policy_scope(Article)
   end
@@ -12,14 +9,17 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    authorize @article
   end
 
   def edit
     @article = Article.find(params[:id])
+    authorize @article
   end
 
   def create
     @article = Article.new(article_params.merge(user: current_user))
+    authorize @article
     if @article.save
       redirect_to @article
     else
@@ -29,6 +29,7 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
+    authorize @article
     if @article.update(article_params)
       redirect_to @article
     else
@@ -38,8 +39,8 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article = Article.find(params[:id])
+    authorize @article
     @article.destroy
-
     redirect_to articles_path
   end
 
