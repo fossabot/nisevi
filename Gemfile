@@ -36,6 +36,8 @@ gem 'haml', '~> 4.0', '>= 4.0.7'
 gem 'rmagick'
 # 'react-rails' makes it easy to use React and JSX application.
 gem 'react-rails'
+# Sprockets preprocessor for CJSX (Coffeescript with React JSX markup)
+gem 'sprockets-coffee-react'
 
 # Use threadsafe version of ActiveResource.
 gem 'activeresource', github: 'shopify/activeresource', tag: '4.2-threadsafe'
