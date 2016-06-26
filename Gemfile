@@ -34,6 +34,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml', '~> 4.0', '>= 4.0.7'
 #  Interface between Ruby and ImageMagick image processing library.
 gem 'rmagick'
+# 'react-rails' makes it easy to use React and JSX application.
+gem 'react-rails'
 
 # Use threadsafe version of ActiveResource.
 gem 'activeresource', github: 'shopify/activeresource', tag: '4.2-threadsafe'
