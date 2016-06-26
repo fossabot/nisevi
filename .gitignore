@@ -43,3 +43,4 @@ bower.json
 
 # swap vim files
 *.swp
+*.swo
