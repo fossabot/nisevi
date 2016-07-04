@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -23,9 +22,8 @@ ActiveRecord::Schema.define(version: 20160530204543) do
     t.datetime "updated_at",                 null: false
     t.integer  "user_id"
     t.boolean  "published",  default: false
+    t.index ["user_id"], name: "index_articles_on_user_id", using: :btree
   end
-
-  add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.string   "commenter"
@@ -34,10 +32,9 @@ ActiveRecord::Schema.define(version: 20160530204543) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+    t.index ["article_id"], name: "index_comments_on_article_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
-
-  add_index "comments", ["article_id"], name: "index_comments_on_article_id", using: :btree
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "identities", force: :cascade do |t|
     t.string   "provider"
@@ -46,13 +43,12 @@ ActiveRecord::Schema.define(version: 20160530204543) do
     t.string   "secret"
     t.boolean  "expires"
     t.date     "expires_at"
-    t.jsonb    "raw_info",   default: {}, null: false
+    t.jsonb    "raw_info",   default: "{}", null: false
     t.integer  "user_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["user_id"], name: "index_identities_on_user_id", using: :btree
   end
-
-  add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
   create_table "images", force: :cascade do |t|
     t.text     "url"
@@ -60,9 +56,8 @@ ActiveRecord::Schema.define(version: 20160530204543) do
     t.integer  "article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_images_on_article_id", using: :btree
   end
-
-  add_index "images", ["article_id"], name: "index_images_on_article_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -87,11 +82,10 @@ ActiveRecord::Schema.define(version: 20160530204543) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.boolean  "admin",                  default: false
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "articles", "users"
   add_foreign_key "comments", "articles"
