@@ -33,6 +33,9 @@ gem 'haml', '~> 4.0', '>= 4.0.7'
 ## Image processing ##
 gem 'rmagick'
 
+## Pagination ##
+gem 'kaminari', '~> 0.17.0'
+
 ## Sideqik ##
 gem 'sidekiq', '~> 4.1'
 
