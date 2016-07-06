@@ -7,12 +7,32 @@ var Articles = React.createClass({
     return { articles: [] };
   },
 
+  deleteArticle: function(article) {
+    var index = this.state.articles.indexOf(article);
+    var articles = React.addons.update(this.state.articles,
+                                      { $splice: [[index, 1]] });
+    this.replaceState({ articles: articles});
+  },
+
+  updateArticle: function(article, data) {
+    var index = this.state.articles.indexOf(article);
+    var articles = React.addons.update(this.state.articles,
+                                      { $splice: [[index, 1, data]] });
+    this.replaceState({ articles: articles });
+	},
+
+  addArticle: function(article) {
+    var articles = React.addons.update(this.state.articles, { $push: [article] })
+    this.setState({ articles: articles });
+	},
+
   render: function() {
     return(
       <div className='articles'>
         <h2 className='articles_title'>
           Articles
         </h2>
+				<ArticleForm handleNewArticle={this.addArticle} />
         <table className='articles_table'>
           <thead>
             <tr>

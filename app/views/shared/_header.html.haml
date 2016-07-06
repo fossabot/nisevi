@@ -1,8 +1,8 @@
-%header.navigation{role:"banner"}
-  .navigation-wrapper
-    %a.navigation-menu-button#js-mobile-menu{href:"javascript:void(0)"}MENU
+%header.centered-navigation#top-header{role:"banner"}
+  .centered-navigation-wrapper
+    %a#js-centered-navigation-mobile-menu.centered-navigation-mobile-menu{:href => "javascript:void(0)"}MENU
     %nav{role:"navigation"}
-      %ul#js-navigation-menu{:class=>"navigation-menu show"}
+      %ul#js-centered-navigation-menu.centered-navigation-menu.show
         %li.nav-link
           = link_to "Home", root_path
         %li.nav-link

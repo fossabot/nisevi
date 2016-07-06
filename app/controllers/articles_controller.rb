@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = policy_scope(Article)
+    @articles = Kaminari.paginate_array(policy_scope(Article)).page(params[:page])
   end
 
   def show
@@ -21,9 +21,9 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params.merge(user: current_user))
     authorize @article
     if @article.save
-      redirect_to @article
+      render json: @article
     else
-      render 'new'
+			render json: @article.errors, status: :unprocessable_entity
     end
   end
 
