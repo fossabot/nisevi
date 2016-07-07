@@ -27,7 +27,10 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5.0.0'
 gem 'react-rails'
 
-# HAML ##
+## Font-Awesome ##
+gem "font-awesome-rails"
+
+## HAML ##
 gem 'haml', '~> 4.0', '>= 4.0.7'
 
 ## Image processing ##
