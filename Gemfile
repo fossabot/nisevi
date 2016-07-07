@@ -28,7 +28,7 @@ gem 'turbolinks', '~> 5.0.0'
 gem 'react-rails'
 
 ## Font-Awesome ##
-gem "font-awesome-rails"
+gem "font-awesome-sass"
 
 ## HAML ##
 gem 'haml', '~> 4.0', '>= 4.0.7'
