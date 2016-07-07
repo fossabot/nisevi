@@ -6,7 +6,7 @@
         %li.nav-link
           = link_to "Home", root_path
         %li.nav-link
-          = link_to 'My Blog', articles_path
+          = link_to 'Blog', articles_path
         - if user_signed_in?
           %li.nav-link
             \#{link_to "Sign out", destroy_user_session_path, :method => :delete}

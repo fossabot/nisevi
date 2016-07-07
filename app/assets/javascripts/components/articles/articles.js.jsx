@@ -29,9 +29,6 @@ var Articles = React.createClass({
   render: function() {
     return(
       <div className='articles'>
-        <h2 className='articles_title'>
-          Articles
-        </h2>
 				<ArticleForm handleNewArticle={this.addArticle} />
         <table className='articles_table'>
           <thead>
