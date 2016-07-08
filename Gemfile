@@ -15,10 +15,7 @@ gem 'coffee-rails'
 
 ## SCSS ##
 gem 'sass-rails', '~> 5.0'
-gem 'bourbon'
-gem 'neat'
-gem 'bitters'
-gem 'refills'
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 
 ## JavaScript ##
 gem 'uglifier', '>= 1.3.0'
