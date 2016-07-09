@@ -92,6 +92,7 @@ $(document).ready(function() {
     waypointsRefresh();
   });
 
+
   /*============================================
   Portfolio
   ==============================================*/
@@ -174,4 +175,36 @@ $(document).ready(function() {
       $.waypoints('refresh');
     },1000);
   }
+
+  //Back to Top
+  //Check to see if the window is top if not then display button
+  $(window).scroll(function(){
+    if ($(this).scrollTop() > 800) {
+      $('.scrollToTop').fadeIn();
+    } else {
+      $('.scrollToTop').fadeOut();
+    }
+  });
+  
+  //Click event to scroll to top
+  $('.scrollToTop').click(function(){
+    $('html, body').animate({scrollTop : 0},800);
+    return false;
+  });
 });
+
+/* ==============================================
+ WOW plugin triggers animate.css on scroll
+ =============================================== */
+var wow = new WOW(
+  {
+    boxClass: 'wow', // animated element css class (default is wow)
+    animateClass: 'animated', // animation css class (default is animated)
+    offset: 100, // distance to the element when triggering the animation (default is 0)
+    mobile: false        // trigger animations on mobile devices (true is default)
+  }
+);
+wow.init();
+
+//MAGNIFIC POPUP
+$('.show-image').magnificPopup({type: 'image'});

@@ -25,4 +25,6 @@
 //= require modernizr.min
 //= require waypoints.min
 //= require owl.carousel.min
+//= require jquery.magnific-popup.min
+//= require wow.min
 //= require_tree .
