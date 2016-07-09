@@ -24,4 +24,5 @@
 //= require jquery.scrollto
 //= require modernizr.min
 //= require waypoints.min
+//= require owl.carousel.min
 //= require_tree .

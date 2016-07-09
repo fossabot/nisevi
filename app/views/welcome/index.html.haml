@@ -2,7 +2,7 @@
 #main-nav.navbar.navbar-fixed-top
 .container
   .navbar-header
-    %button.navbar-toggle{type: "button", "data-toggle": "collapse", "data-target": "#site-nav"}
+    %button.navbar-toggle{ "type": "button", "data-toggle": "collapse", "data-target": "#site-nav" }
       %span.icon-bar
       %span.icon-bar
       %span.icon-bar
@@ -11,20 +11,18 @@
 
   #site-nav.navbar-collapse.collapse
     %ul.nav.navbar-nav
-      %li
-        %a.scrollto{ href: "#services"} What I Do
-      %li
-        %a.scrollto{ href: "#about"} About Me
       %li#logo
-        %a.scrollto{ href: "#home"}
-          %h1
-            N
-            %span
-              V
+        %a.scrollto{ href: "#home"} HOME
       %li
-        %a.scrollto{ href: "#home"} My Works
+        %a.scrollto{ href: "#services"} WHAT I DO
       %li
-        %a.scrollto{ href: "#portfolio"} Blog
+        %a.scrollto{ href: "#about"} ABOUT ME
+      %li
+        %a.scrollto{ href: "#home"} MY WORKS
+      %li
+        %a.scrollto{ href: "#work"} BLOG
+      %li
+        %a.scrollto{ href: "#portfolio"} CONTACT ME
 
 
 <!-- ========= HEADER ========= -->
@@ -92,3 +90,77 @@
     %p.text-center
       %a.btn.btn-meflat.scrollto.white.icon-left{ href: "http://www.upwork.com/fl/nisevi"}
         %i.fa.fa-desktop Hire Me
+
+<!-- ========= PORTFOLIO ========= -->
+%section#work.gray-bg.padding-top-bottom
+  .container
+    %header.section-header.text-center
+      %h1.scrollimation.scale-in My Works
+      %p
+        I've worked with many serious brands in the Design and Code industry.
+        %br/
+        See a collection of works I am proud of!
+
+    .divided-50
+    .row
+      #work-slide.owl-carousel
+        %div
+          .col-md-6.margin-btm-30
+            .work-detail
+              %h1 Work Title
+              %p
+                We believe on our work.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+              %p
+                We believe on our work.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+              %p
+                We believe on our work.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+              %p
+                %strong Cleant:
+                Design_mylife
+              %p
+                %strong Skills:
+                HTMl5 / CSS3 / Bootstrap3
+              %p
+                %a.btn.btn-dark{ href: "#" } Visit Project
+          .col-md-6
+            = image_tag("work-2.png", class: "img img-responsive", alt: "")
+        %div
+          .col-md-6.margin-btm-30
+            .work-detail
+              %h1 Work Title
+              %p
+                We believe on our work.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+              %p
+                We believe on our work.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+              %p
+                We believe on our work.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+              %p
+                %strong Cleant:
+                Design_mylife
+              %p
+                %strong Skills:
+                HTMl5 / CSS3 / Bootstrap3
+              %p
+                %a.btn.btn-dark{ href: "#" } Visit Project
+          .col-md-6
+            = image_tag("work-2.png", class: "img img-responsive", alt: "")
+        %div
+          .col-md-6.margin-btm-30
+            .work-detail
+              %h1 Work Title
+              %p
+                We believe on our work.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+              %p
+                We believe on our work.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+              %p
+                We believe on our work.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+              %p
+                %strong Cleant:
+                Design_mylife
+              %p
+                %strong Skills:
+                HTMl5 / CSS3 / Bootstrap3
+              %p
+                %a.btn.btn-dark{ href: "#" } Visit Project
+          .col-md-6
+            = image_tag("work-2.png", class: "img img-responsive", alt: "")
