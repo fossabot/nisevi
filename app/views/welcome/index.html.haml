@@ -1,0 +1,94 @@
+<!-- ========= MAIN NAV ========= -->
+#main-nav.navbar.navbar-fixed-top
+.container
+  .navbar-header
+    %button.navbar-toggle{type: "button", "data-toggle": "collapse", "data-target": "#site-nav"}
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    <!-- ======= LOGO (for small screens)========-->
+    %a.navbar-brand.visible-xs.scrollto{href: "#home"} NSV
+
+  #site-nav.navbar-collapse.collapse
+    %ul.nav.navbar-nav
+      %li
+        %a.scrollto{ href: "#services"} What I Do
+      %li
+        %a.scrollto{ href: "#about"} About Me
+      %li#logo
+        %a.scrollto{ href: "#home"}
+          %h1
+            N
+            %span
+              V
+      %li
+        %a.scrollto{ href: "#home"} My Works
+      %li
+        %a.scrollto{ href: "#portfolio"} Blog
+
+
+<!-- ========= HEADER ========= -->
+%header#home.jumbotron.bg-image{ style: "background-image:url(assets/header.jpg);" }
+  .container
+    .row
+      .col-sm-12.text-col.text-center
+        %h1 Hi, I am Nicolas Vidal
+        %p software engineer
+
+<!-- ========= SERVICES ========= -->
+%section#services.white-bg.padding-top-bottom
+  .container
+
+    %header.section-header.text-center
+      %h1.scrollimation.scale-in What I Do
+      %p
+        I am passionate about combining function, interaction and form
+        %br/
+        to design for fitting user experiences that make people happy.
+
+    .row.services
+      .col-md-3.col-sm-6.item.scrollimation.fade-up
+        .icon
+          %img.img-responsive.img-center{ src: "assets/service1.png", alt: "" }
+        %h2 Web &amp; App Design
+        %p Donec quam velit, aliquam at tempor quis, blandit quis nisi. Proin orci enim, dictum vel leo eu, blandit vulputate turpis.
+
+      .col-md-3.col-sm-6.item.scrollimation.fade-up.d1
+        .icon
+          %img.img-responsive.img-center{ src: "assets/service2.png", alt: "" }
+        %h2 Web Development
+        %p Donec quam velit, aliquam at tempor quis, blandit quis nisi. Proin orci enim, dictum vel leo eu, blandit vulputate turpis.
+
+      .col-md-3.col-sm-6.item.scrollimation.fade-up.d2
+        .icon
+          %img.img-responsive.img-center{ src: "assets/service3.png", alt: "" }
+        %h2 SEO Content
+        %p Donec quam velit, aliquam at tempor quis, blandit quis nisi. Proin orci enim, dictum vel leo eu, blandit vulputate turpis.
+
+      .col-md-3.col-sm-6.item.scrollimation.fade-up.d3
+        .icon
+          %img.img-responsive.img-center{ src: "assets/service4.png", alt: "" }
+        %h2 Mail Campaigns
+        %p Donec quam velit, aliquam at tempor quis, blandit quis nisi. Proin orci enim, dictum vel leo eu, blandit vulputate turpis.
+
+<!-- ========= ABOUT ========= -->
+%section#about.dark-bg.light-typo.padding-top-bottom
+  .container
+    %header.section-header.text-center
+      %h1.scrollimation.scale-in About Me
+
+    .row
+      .col-sm-8.col-sm-offset-2
+        %img.img-responsive.img-center.img-circle.scrollimation.fade-left{ src: "assets/about.jpg", alt:""}
+        %p.text-center.scrollimation.fade-in
+          I am Jonathan Doe, a twenty five year old designer from NY.
+          I have graduated with a Bachelor degree of Graphic &amp;
+          Web Design, from the University of Peiraias.
+          I have a passion for creating challenging, intuitive and beautiful products.
+          My design process is very hands-on and visual.
+          %br/
+          %br/
+          Creating is not just a job for me, it's a passion.
+    %p.text-center
+      %a.btn.btn-meflat.scrollto.white.icon-left{ href: "http://www.upwork.com/fl/nisevi"}
+        %i.fa.fa-desktop Hire Me

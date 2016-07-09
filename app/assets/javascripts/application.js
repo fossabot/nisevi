@@ -11,9 +11,17 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
 //= require react
 //= require react_ujs
 //= require components
+//= require jquery.easing.1.3.min
+//= require jquery.fittext
+//= require jquery.flexslider-min
+//= require jquery.masonry
+//= require jquery.scrollto
+//= require modernizr.min
+//= require waypoints.min
 //= require_tree .
