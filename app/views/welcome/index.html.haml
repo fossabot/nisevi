@@ -1,36 +1,33 @@
 <!-- ========= MAIN NAV ========= -->
 #main-nav.navbar.navbar-fixed-top
-.container
-  .navbar-header
-    %button.navbar-toggle{ "type": "button", "data-toggle": "collapse", "data-target": "#site-nav" }
-      %span.icon-bar
-      %span.icon-bar
-      %span.icon-bar
-    <!-- ======= LOGO (for small screens)========-->
-    %a.navbar-brand.visible-xs.scrollto{href: "#home"} NSV
+  .container
+    .navbar-header
+      %button.navbar-toggle{ "type": "button", "data-toggle": "collapse", "data-target": "#site-nav" }
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      <!-- ======= LOGO (for small screens)========-->
+      %a.navbar-brand.visible-xs.scrollto{href: "#home"} NSV
 
-  #site-nav.navbar-collapse.collapse
-    %ul.nav.navbar-nav
-      %li#logo
-        %a.scrollto{ href: "#home"} HOME
-      %li
-        %a.scrollto{ href: "#services"} WHAT I DO
-      %li
-        %a.scrollto{ href: "#about"} ABOUT ME
-      %li
-        %a.scrollto{ href: "#home"} MY WORKS
-      %li
-        %a.scrollto{ href: "#work"} BLOG
-      %li
-        %a.scrollto{ href: "#portfolio"} CONTACT ME
-
+    #site-nav.navbar-collapse.collapse
+      %ul.nav.navbar-nav
+        %li#logo
+          %a.scrollto{ href: "#home"} HOME
+        %li
+          %a.scrollto{ href: "#services"} WHAT I DO
+        %li
+          %a.scrollto{ href: "#about"} ABOUT ME
+        %li
+          %a.scrollto{ href: "#work"} MY WORKS
+        %li
+          %a.scrollto{ href: "#blog"} BLOG
 
 <!-- ========= HEADER ========= -->
-%header#home.jumbotron.bg-image{ style: "background-image:url(assets/header.jpg);" }
+%header#home.jumbotron.bg-image
   .container
     .row
       .col-sm-12.text-col.text-center
-        %h1 Hi, I am Nicolas Vidal
+        %h1 Hi, I am Nicolas S Vidal
         %p software engineer
 
 <!-- ========= SERVICES ========= -->
@@ -177,8 +174,8 @@
       .item-img-wrap
         = image_tag("work-2.png", class: "img-responsive", alt: "working")
         .item-img-overlay
-          %span 27 August 2014
-          = image_tag("work-2.png", class: "show-image")
+          %a.show-image{href: "assets/work-2.png"}
+            %span
       .blog-desc
         %h3
           %a{ href: "#" } Blog post title
@@ -191,7 +188,8 @@
       .item-img-wrap
         = image_tag("work-2.png", class: "img-responsive", alt: "working")
         .item-img-overlay
-          = image_tag("work-2.png", class: "show-image")
+          %a.show-image{href: "assets/work-2.png"}
+            %span
       .blog-desc
         %h3
           %a{ href: "#" } Blog post title
@@ -204,7 +202,8 @@
       .item-img-wrap
         = image_tag("work-2.png", class: "img-responsive", alt: "working")
         .item-img-overlay
-          = image_tag("work-2.png", class: "show-image")
+          %a.show-image{href: "assets/work-2.png"}
+            %span
       .blog-desc
         %h3
           %a{ href: "#" } Blog post title

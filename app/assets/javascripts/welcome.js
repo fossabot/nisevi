@@ -1,8 +1,6 @@
 $(document).ready(function() {
 
-  /*============================================
-  Navigation Functions
-  ==============================================*/
+  /*==================Navigation Functions==================*/
   if ($(window).scrollTop()===0){
     $('#main-nav').removeClass('scrolled');
   }
@@ -19,9 +17,7 @@ $(document).ready(function() {
     }
   });
 
-  /*============================================
-  Header Functions
-  ==============================================*/
+  /*==================Header Functions==================*/
   $('.imac-screen').flexslider({
     prevText: '<i class="fa fa-angle-left"></i>',
     nextText: '<i class="fa fa-angle-right"></i>',
@@ -46,57 +42,8 @@ $(document).ready(function() {
     $('#home .text-col h1, #home .text-col p').addClass('in');
   }
 
-  /*============================================
-  Project thumbs - Masonry
-  ==============================================*/
-  $(window).load(function(){
-
-    $('#projects-container').css({visibility:'visible'});
-
-    $('#projects-container').masonry({
-      itemSelector: '.project-item:not(.filtered)',
-      columnWidth:320,
-      isFitWidth: true,
-      isResizable: true,
-      isAnimated: !Modernizr.csstransitions,
-      gutterWidth: 25
-    });
-
-    scrollSpyRefresh();
-    waypointsRefresh();
-  });
-
-  /*============================================
-  Filter Projects
-  ==============================================*/
-  $('#filter-works a').click(function(e){
-    e.preventDefault();
-
-    $('#filter-works li').removeClass('active');
-    $(this).parent('li').addClass('active');
-
-    var category = $(this).attr('data-filter');
-
-    $('.project-item').each(function(){
-      if($(this).is(category)){
-        $(this).removeClass('filtered');
-      }
-      else{
-        $(this).addClass('filtered');
-      }
-
-      $('#projects-container').masonry('reload');
-    });
-
-    scrollSpyRefresh();
-    waypointsRefresh();
-  });
-
-
-  /*============================================
-  Portfolio
-  ==============================================*/
-  $("#testi-carousel,#work-slide").owlCarousel({
+  /*==================Portfolio==================*/
+  $("#work-slide").owlCarousel({
       // Most important owl features
       items: 1,
       itemsCustom: false,
@@ -110,9 +57,7 @@ $(document).ready(function() {
       autoPlay: true
   });
 
-  /*============================================
-  ScrollTo Links
-  ==============================================*/
+  /*==================ScrollTo Links==================*/
   $('a.scrollto').click(function(e){
     $('html,body').scrollTo(this.hash, this.hash, {gap:{y:-50},animation:  {easing: 'easeInOutCubic', duration: 1600}});
     e.preventDefault();
@@ -122,21 +67,8 @@ $(document).ready(function() {
     }
   });
 
-  /*============================================
-  Tooltips
-  ==============================================*/
-  $("[data-toggle='tooltip']").tooltip();
 
-  /*============================================
-  Placeholder Detection
-  ==============================================*/
-  if (!Modernizr.input.placeholder) {
-    $('#contact-form').addClass('no-placeholder');
-  }
-
-  /*============================================
-  Scrolling Animations
-  ==============================================*/
+  /*==================Scrolling Animations==================*/
   $('.scrollimation').waypoint(function(){
     $(this).addClass('in');
   },{offset:function(){
@@ -150,26 +82,20 @@ $(document).ready(function() {
     }
   });
 
-  /*============================================
-  Resize Functions
-  ==============================================*/
+  /*==================Resize Functions==================*/
   $(window).resize(function(){
     scrollSpyRefresh();
     waypointsRefresh();
   });
 
-  /*============================================
-  Refresh scrollSpy function
-  ==============================================*/
+  /*==================Refresh scrollSpy function==================*/
   function scrollSpyRefresh(){
     setTimeout(function(){
       $('body').scrollspy('refresh');
     },1000);
   }
 
-  /*============================================
-  Refresh waypoints function
-  ==============================================*/
+  /*==================Refresh waypoints function==================*/
   function waypointsRefresh(){
     setTimeout(function(){
       $.waypoints('refresh');
@@ -191,20 +117,18 @@ $(document).ready(function() {
     $('html, body').animate({scrollTop : 0},800);
     return false;
   });
+
+  //MAGNIFIC POPUP
+  $('.show-image').magnificPopup({type: 'image'});
 });
 
-/* ==============================================
- WOW plugin triggers animate.css on scroll
- =============================================== */
+/*==================WOW plugin triggers animate.css on scroll==================*/
 var wow = new WOW(
   {
     boxClass: 'wow', // animated element css class (default is wow)
     animateClass: 'animated', // animation css class (default is animated)
     offset: 100, // distance to the element when triggering the animation (default is 0)
-    mobile: false        // trigger animations on mobile devices (true is default)
+    mobile: false // trigger animations on mobile devices (true is default)
   }
 );
 wow.init();
-
-//MAGNIFIC POPUP
-$('.show-image').magnificPopup({type: 'image'});
