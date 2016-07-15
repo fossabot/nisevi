@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160715154637) do
+ActiveRecord::Schema.define(version: 20160715161058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,10 +63,14 @@ ActiveRecord::Schema.define(version: 20160715154637) do
     t.text     "url"
     t.text     "path"
     t.integer  "article_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.boolean  "header"
+    t.integer  "portfolio_id"
+    t.integer  "service_id"
     t.index ["article_id"], name: "index_images_on_article_id", using: :btree
+    t.index ["portfolio_id"], name: "index_images_on_portfolio_id", using: :btree
+    t.index ["service_id"], name: "index_images_on_service_id", using: :btree
   end
 
   create_table "languages", force: :cascade do |t|
@@ -91,7 +95,6 @@ ActiveRecord::Schema.define(version: 20160715154637) do
 
   create_table "portfolios", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "image_id"
     t.string   "client"
     t.string   "description"
     t.string   "title"
@@ -99,8 +102,16 @@ ActiveRecord::Schema.define(version: 20160715154637) do
     t.date     "date_project"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["image_id"], name: "index_portfolios_on_image_id", using: :btree
     t.index ["user_id"], name: "index_portfolios_on_user_id", using: :btree
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_services_on_user_id", using: :btree
   end
 
   create_table "skills", force: :cascade do |t|
@@ -154,8 +165,10 @@ ActiveRecord::Schema.define(version: 20160715154637) do
   add_foreign_key "comments", "users"
   add_foreign_key "identities", "users"
   add_foreign_key "images", "articles"
+  add_foreign_key "images", "portfolios"
+  add_foreign_key "images", "services"
   add_foreign_key "languages", "users"
   add_foreign_key "phone_numbers", "users"
-  add_foreign_key "portfolios", "images"
   add_foreign_key "portfolios", "users"
+  add_foreign_key "services", "users"
 end
