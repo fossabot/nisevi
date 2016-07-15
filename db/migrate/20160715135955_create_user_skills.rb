@@ -5,7 +5,7 @@ class CreateUserSkills < ActiveRecord::Migration[5.0]
       t.belongs_to :skill, index: true
       t.string :description
       t.string :url_skill
-      t.deate  :date_user_skill
+      t.date  :date_user_skill
 
       t.timestamps
     end
