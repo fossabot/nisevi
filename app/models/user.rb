@@ -2,6 +2,11 @@ class User < ApplicationRecord
   has_many :articles
   has_many :comments
   has_many :identities
+  has_many :phone_numbers
+  has_many :languages
+  has_many :portfolios
+  has_many :user_skils
+  has_many :skills, through: :user_skills
 
   # Include devise modules. Others available are ':lockable' and ':timeoutable'
   devise :database_authenticatable, :registerable, :omniauthable,

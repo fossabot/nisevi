@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160713165852) do
+ActiveRecord::Schema.define(version: 20160715135955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,10 +18,11 @@ ActiveRecord::Schema.define(version: 20160713165852) do
   create_table "articles", force: :cascade do |t|
     t.string   "title"
     t.text     "text"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "user_id"
-    t.boolean  "published",  default: false
+    t.boolean  "published",    default: false
+    t.date     "date_article"
     t.index ["user_id"], name: "index_articles_on_user_id", using: :btree
   end
 
@@ -67,6 +68,58 @@ ActiveRecord::Schema.define(version: 20160713165852) do
     t.index ["article_id"], name: "index_images_on_article_id", using: :btree
   end
 
+  create_table "languages", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "description"
+    t.string   "url_languaje"
+    t.date     "date_language"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["user_id"], name: "index_languages_on_user_id", using: :btree
+  end
+
+  create_table "phone_numbers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "phone_number"
+    t.string   "description"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["user_id"], name: "index_phone_numbers_on_user_id", using: :btree
+  end
+
+  create_table "portfolios", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "image_id"
+    t.string   "client"
+    t.string   "description"
+    t.string   "title"
+    t.string   "url_project"
+    t.date     "date_project"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["image_id"], name: "index_portfolios_on_image_id", using: :btree
+    t.index ["user_id"], name: "index_portfolios_on_user_id", using: :btree
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_skills", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "skill_id"
+    t.string   "description"
+    t.string   "url_skill"
+    t.date     "date_user_skill"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["skill_id"], name: "index_user_skills_on_skill_id", using: :btree
+    t.index ["user_id"], name: "index_user_skills_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -100,4 +153,8 @@ ActiveRecord::Schema.define(version: 20160713165852) do
   add_foreign_key "comments", "users"
   add_foreign_key "identities", "users"
   add_foreign_key "images", "articles"
+  add_foreign_key "languages", "users"
+  add_foreign_key "phone_numbers", "users"
+  add_foreign_key "portfolios", "images"
+  add_foreign_key "portfolios", "users"
 end
