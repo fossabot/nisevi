@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160716090142) do
+ActiveRecord::Schema.define(version: 20160716110925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,14 @@ ActiveRecord::Schema.define(version: 20160716090142) do
     t.index ["user_id"], name: "index_phone_numbers_on_user_id", using: :btree
   end
 
+  create_table "portfolio_skills", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "portfolio_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["portfolio_id"], name: "index_portfolio_skills_on_portfolio_id", using: :btree
+  end
+
   create_table "portfolios", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "client"
@@ -190,6 +198,7 @@ ActiveRecord::Schema.define(version: 20160716090142) do
   add_foreign_key "images", "services"
   add_foreign_key "languages", "users"
   add_foreign_key "phone_numbers", "users"
+  add_foreign_key "portfolio_skills", "portfolios"
   add_foreign_key "portfolios", "users"
   add_foreign_key "services", "users"
 end
