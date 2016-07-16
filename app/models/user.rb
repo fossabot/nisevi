@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :portfolios
   has_many :user_skils
   has_many :skills, through: :user_skills
+  has_many :user_links
+  has_many :links, through: :user_links
 
   # Include devise modules. Others available are ':lockable' and ':timeoutable'
   devise :database_authenticatable, :registerable, :omniauthable,
