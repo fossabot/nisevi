@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160715193444) do
+ActiveRecord::Schema.define(version: 20160716090142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,12 @@ ActiveRecord::Schema.define(version: 20160715193444) do
     t.index ["user_id"], name: "index_languages_on_user_id", using: :btree
   end
 
+  create_table "links", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "phone_numbers", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "phone_number"
@@ -122,6 +128,16 @@ ActiveRecord::Schema.define(version: 20160715193444) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_links", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "link_id"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["link_id"], name: "index_user_links_on_link_id", using: :btree
+    t.index ["user_id"], name: "index_user_links_on_user_id", using: :btree
   end
 
   create_table "user_skills", force: :cascade do |t|
