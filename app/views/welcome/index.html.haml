@@ -11,7 +11,7 @@
 
     #site-nav.navbar-collapse.collapse
       %ul.nav.navbar-nav
-        %li#logo
+        %li
           %a.scrollto{ href: "#home"} HOME
         %li
           %a.scrollto{ href: "#services"} WHAT I DO
@@ -21,198 +21,128 @@
           %a.scrollto{ href: "#work"} MY WORKS
         %li
           %a.scrollto{ href: "#blog"} BLOG
+        %li
+          %a.scrollto{ href: "#contact_me"} CONTACT ME
 
 <!-- ========= HEADER ========= -->
 %header#home.jumbotron.bg-image
   .container
     .row
       .col-sm-12.text-col.text-center
-        %h1 Hi, I am Nicolas S Vidal
+        %h1 Hi, I am "#{@admin_user.first_name} #{@admin_user.last_name}"
         %p software engineer
 
 <!-- ========= SERVICES ========= -->
 %section#services.white-bg.padding-top-bottom
   .container
-
     %header.section-header.text-center
       %h1.scrollimation.scale-in What I Do
       %p
-        I am passionate about combining function, interaction and form
+        I am passionate about providing simple solutions combining
+        function, interaction and form
         %br/
         to design for fitting user experiences that make people happy.
-
     .row.services
-      .col-md-3.col-sm-6.item.scrollimation.fade-up
-        .icon
-          %img.img-responsive.img-center{ src: "assets/service1.png", alt: "" }
-        %h2 Web &amp; App Design
-        %p Donec quam velit, aliquam at tempor quis, blandit quis nisi. Proin orci enim, dictum vel leo eu, blandit vulputate turpis.
-
-      .col-md-3.col-sm-6.item.scrollimation.fade-up.d1
-        .icon
-          %img.img-responsive.img-center{ src: "assets/service2.png", alt: "" }
-        %h2 Web Development
-        %p Donec quam velit, aliquam at tempor quis, blandit quis nisi. Proin orci enim, dictum vel leo eu, blandit vulputate turpis.
-
-      .col-md-3.col-sm-6.item.scrollimation.fade-up.d2
-        .icon
-          %img.img-responsive.img-center{ src: "assets/service3.png", alt: "" }
-        %h2 SEO Content
-        %p Donec quam velit, aliquam at tempor quis, blandit quis nisi. Proin orci enim, dictum vel leo eu, blandit vulputate turpis.
-
-      .col-md-3.col-sm-6.item.scrollimation.fade-up.d3
-        .icon
-          %img.img-responsive.img-center{ src: "assets/service4.png", alt: "" }
-        %h2 Mail Campaigns
-        %p Donec quam velit, aliquam at tempor quis, blandit quis nisi. Proin orci enim, dictum vel leo eu, blandit vulputate turpis.
+      - @services.each do |service|
+        .col-md-3.col-sm-6.item
+          .icon
+            %img.img-responsive.img-center{ src: "#{service.images.find_by_header(true).url}", alt: "" }
+          %h2= service.title
+          %p= service.description
 
 <!-- ========= ABOUT ========= -->
 %section#about.dark-bg.light-typo.padding-top-bottom
   .container
     %header.section-header.text-center
-      %h1.scrollimation.scale-in About Me
-
+      %h1 About Me
     .row
       .col-sm-8.col-sm-offset-2
-        %img.img-responsive.img-center.img-circle.scrollimation.fade-left{ src: "assets/about.jpg", alt:""}
-        %p.text-center.scrollimation.fade-in
-          I am Jonathan Doe, a twenty five year old designer from NY.
-          I have graduated with a Bachelor degree of Graphic &amp;
-          Web Design, from the University of Peiraias.
-          I have a passion for creating challenging, intuitive and beautiful products.
-          My design process is very hands-on and visual.
-          %br/
-          %br/
-          Creating is not just a job for me, it's a passion.
+        %img.img-responsive.img-center.img-circle{ src: "#{@admin_user.image}", alt:""}
+        %p.text-center= @admin_user.presentation
     %p.text-center
-      %a.btn.btn-meflat.scrollto.white.icon-left{ href: "http://www.upwork.com/fl/nisevi"}
+      %a.btn.btn-meflat.white.icon-left{ href: "#{@admin_user.links.find_by_name("freelance")}", target: "_blank"}
         %i.fa.fa-desktop Hire Me
 
 <!-- ========= PORTFOLIO ========= -->
 %section#work.gray-bg.padding-top-bottom
   .container
     %header.section-header.text-center
-      %h1.scrollimation.scale-in My Works
+      %h1 My Works
       %p
-        I've worked with many serious brands in the Design and Code industry.
+        I've been working on several projects .
         %br/
         See a collection of works I am proud of!
 
     #work-slide.owl-carousel
-      %div
-        .col-md-6.margin-btm-30
-          .work-detail
-            %h1 Work Title
-            %p
-              We believe on our work.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            %p
-              We believe on our work.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            %p
-              We believe on our work.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            %p
-              %strong Cleant:
-              Design_mylife
-            %p
-              %strong Skills:
-              HTMl5 / CSS3 / Bootstrap3
-            %p
-              %a.btn.btn-dark{ href: "#" } Visit Project
-        .col-md-6
-          = image_tag("work-2.png", class: "img img-responsive", alt: "")
-      %div
-        .col-md-6.margin-btm-30
-          .work-detail
-            %h1 Work Title
-            %p
-              We believe on our work.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            %p
-              We believe on our work.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            %p
-              We believe on our work.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            %p
-              %strong Cleant:
-              Design_mylife
-            %p
-              %strong Skills:
-              HTMl5 / CSS3 / Bootstrap3
-            %p
-              %a.btn.btn-dark{ href: "#" } Visit Project
-        .col-md-6
-          = image_tag("work-2.png", class: "img img-responsive", alt: "")
-      %div
-        .col-md-6.margin-btm-30
-          .work-detail
-            %h1 Work Title
-            %p
-              We believe on our work.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            %p
-              We believe on our work.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            %p
-              We believe on our work.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            %p
-              %strong Cleant:
-              Design_mylife
-            %p
-              %strong Skills:
-              HTMl5 / CSS3 / Bootstrap3
-            %p
-              %a.btn.btn-dark{ href: "#" } Visit Project
-        .col-md-6
-          = image_tag("work-2.png", class: "img img-responsive", alt: "")
+      - @works.each do |work|
+        %div
+          .col-md-6.margin-btm-30
+            .work-detail
+              %h1= work.title
+              %p= work.description
+              %p
+                %strong Client:
+                = work.client
+              %p
+                %strong Skills:
+                = work.portfolio_skills.map{|skill| skill.name}.join("/ ")
+              %p
+                %a.btn.btn-dark{ href: "#{work.url_project}", target: "_blank"} Visit Project
+          .col-md-6
+            %img.img.img-responsive{ src: "#{work.images.find_by_header(true).url}", alt: "" }
 
 <!-- ========= BLOG ========= -->
 %section#blog.white-bg.padding-top-bottom
   .container
     %header.section-header.text-center
-      %h1.scrollimation.scale-in Latest News
+      %h1 Latest News
       %p
-        I've worked with many serious brands in the Design and Code industry.
+        I have worked with many serious brands in the Design and Code industry.
         %br/
         See a collection of works I am proud of!
+    - @articles.each do |article|
+      - url_image = article.images.find_by_header(true).url
+      .col-sm-4.margin-btm-30
+        .item-img-wrap
+          = image_tag("#{url_image}", class: "img-responsive", alt: "working")
+          .item-img-overlay
+            %a.show-image{href: "#{url_image}"}
+              %span
+        .blog-desc
+          %h3
+            %a{ href: "#{article_path}" }= article.title
+          %span= article.date_article.strftime("%F")
+          %p
+            article.description
+          %p.text-right
+            %a.btn.btn-dark.btn-xs{ href: "#{article_path}" } Read More
 
-    .col-sm-4.margin-btm-30.wow.animated.fadeInUp{ "data-wow-duration": "700ms", "data-wow-delay": "100ms" }
-      .item-img-wrap
-        = image_tag("work-2.png", class: "img-responsive", alt: "working")
-        .item-img-overlay
-          %a.show-image{href: "assets/work-2.png"}
-            %span
-      .blog-desc
-        %h3
-          %a{ href: "#" } Blog post title
-        %span 27 August 2014
-        %p
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry
-        %p.text-right
-          %a.btn.btn-dark.btn-xs{ href: "#" } Read More
-    .col-sm-4.margin-btm-30.wow.animated.fadeInUp{ "data-wow-duration": "700ms", "data-wow-delay": "100ms" }
-      .item-img-wrap
-        = image_tag("work-2.png", class: "img-responsive", alt: "working")
-        .item-img-overlay
-          %a.show-image{href: "assets/work-2.png"}
-            %span
-      .blog-desc
-        %h3
-          %a{ href: "#" } Blog post title
-        %span 27 August 2014
-        %p
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry
-        %p.text-right
-          %a.btn.btn-dark.btn-xs{ href: "#" } Read More
-    .col-sm-4.margin-btm-30.wow.animated.fadeInUp{ "data-wow-duration": "700ms", "data-wow-delay": "100ms" }
-      .item-img-wrap
-        = image_tag("work-2.png", class: "img-responsive", alt: "working")
-        .item-img-overlay
-          %a.show-image{href: "assets/work-2.png"}
-            %span
-      .blog-desc
-        %h3
-          %a{ href: "#" } Blog post title
-        %span 27 August 2014
-        %p
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry
-        %p.text-right
-          %a.btn.btn-dark.btn-xs{ href: "#" } Read More
+<!-- ========= CONTACT ========= -->
+%section#contact_me.gray-bg.padding-top-bottom
+  .container
+    %header.section-header.text-center
+      %h1 Drop Me a Line
+      %p
+        I am available for freelance.
+        %br/
+        Can not wait for the next exciting project! Could be yours?
+    = form_for @contact, url: welcome_index_path(@contact), as: :contact, remote: true, html: {class: "contact-submit"} do |f|
+      = f.label :name
+      = f.text_field :name
+      = f.label :email
+      = f.email_field :email
+      = f.label :message
+      = f.text_area :message, size: "60x12"
+      = f.submit "Send Message"
 
-<!-- ========= SCROLL TO TOP ========= -->
-%a.scrollToTop{ href: "#" }
-  %i.fa.fa-angle-up
+<!-- ========= FOOTER ========= -->
+%footer#main-footer.dark-bg.light-typo
+  .container
+    .row
+      .col-sm-12.text-center
+        .footer-col
+          %ul.social-links
+            - @social_links.each do |link|
+              %li
+                %a{ href: "#{link.url}",  target: "_blank"}>
+                  %i{class: "fa fa-#{link.name} fa-fw"}
