@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160715161058) do
+ActiveRecord::Schema.define(version: 20160716110925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,12 @@ ActiveRecord::Schema.define(version: 20160715161058) do
     t.index ["user_id"], name: "index_languages_on_user_id", using: :btree
   end
 
+  create_table "links", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "phone_numbers", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "phone_number"
@@ -91,6 +97,14 @@ ActiveRecord::Schema.define(version: 20160715161058) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["user_id"], name: "index_phone_numbers_on_user_id", using: :btree
+  end
+
+  create_table "portfolio_skills", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "portfolio_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["portfolio_id"], name: "index_portfolio_skills_on_portfolio_id", using: :btree
   end
 
   create_table "portfolios", force: :cascade do |t|
@@ -111,6 +125,7 @@ ActiveRecord::Schema.define(version: 20160715161058) do
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.boolean  "hidden"
     t.index ["user_id"], name: "index_services_on_user_id", using: :btree
   end
 
@@ -118,6 +133,16 @@ ActiveRecord::Schema.define(version: 20160715161058) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_links", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "link_id"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["link_id"], name: "index_user_links_on_link_id", using: :btree
+    t.index ["user_id"], name: "index_user_links_on_user_id", using: :btree
   end
 
   create_table "user_skills", force: :cascade do |t|
@@ -155,6 +180,7 @@ ActiveRecord::Schema.define(version: 20160715161058) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.boolean  "admin",                  default: false
+    t.string   "presentation"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
@@ -169,6 +195,7 @@ ActiveRecord::Schema.define(version: 20160715161058) do
   add_foreign_key "images", "services"
   add_foreign_key "languages", "users"
   add_foreign_key "phone_numbers", "users"
+  add_foreign_key "portfolio_skills", "portfolios"
   add_foreign_key "portfolios", "users"
   add_foreign_key "services", "users"
 end
