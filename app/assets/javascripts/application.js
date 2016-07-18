@@ -17,14 +17,4 @@
 //= require react
 //= require react_ujs
 //= require components
-//= require jquery.easing.1.3.min
-//= require jquery.fittext
-//= require jquery.flexslider-min
-//= require jquery.masonry
-//= require jquery.scrollto
-//= require modernizr.min
-//= require waypoints.min
-//= require owl.carousel.min
-//= require jquery.magnific-popup.min
-//= require wow.min
 //= require_tree .
