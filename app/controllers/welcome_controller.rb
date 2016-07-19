@@ -1,11 +1,11 @@
 class WelcomeController < ApplicationController
   def index
     @contact = Contact.new
-    @articles = Article.last(3)
+    @articles = Article.visible.last(3)
     @works = Portfolio.last(3)
     @services = Service.visible
     @admin_user = User.find_by_admin(true)
-    @social_links = @admin_user.links.social_links
+    @social_links = @admin_user.user_links.social_links
   end
 
   def create
