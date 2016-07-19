@@ -110,12 +110,12 @@
               %span
         .blog-desc
           %h3
-            %a{ href: "#{article_path}" }= article.title
+            %a{ href: "#{article_path(article)}" }= article.title
           %span= article.date_article.strftime("%F")
           %p
             article.description
           %p.text-right
-            %a.btn.btn-dark.btn-xs{ href: "#{article_path}" } Read More
+            %a.btn.btn-dark.btn-xs{ href: "#{article_path(article)}" } Read More
 
 <!-- ========= CONTACT ========= -->
 %section#contact_me.gray-bg.padding-top-bottom
