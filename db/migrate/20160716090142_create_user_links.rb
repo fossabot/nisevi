@@ -4,6 +4,7 @@ class CreateUserLinks < ActiveRecord::Migration[5.0]
       t.belongs_to :user, index: true
       t.belongs_to :link, index: true
       t.string :url
+      t.string :name
 
       t.timestamps
     end
