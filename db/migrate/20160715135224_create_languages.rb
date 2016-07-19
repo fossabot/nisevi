@@ -4,7 +4,7 @@ class CreateLanguages < ActiveRecord::Migration[5.0]
       t.references :user, foreign_key: true
       t.string :name
       t.string :description
-      t.string :url_languaje
+      t.string :url_language
       t.date :date_language
 
       t.timestamps

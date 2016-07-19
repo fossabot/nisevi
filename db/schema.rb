@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20160716110925) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "description"
-    t.string   "url_languaje"
+    t.string   "url_language"
     t.date     "date_language"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
