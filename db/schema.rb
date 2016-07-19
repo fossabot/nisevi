@@ -123,9 +123,9 @@ ActiveRecord::Schema.define(version: 20160716110925) do
     t.integer  "user_id"
     t.string   "title"
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.boolean  "hidden"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "hidden",      default: false
     t.index ["user_id"], name: "index_services_on_user_id", using: :btree
   end
 
