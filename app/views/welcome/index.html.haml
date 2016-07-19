@@ -44,7 +44,7 @@
         to design for fitting user experiences that make people happy.
     .row.services
       - @services.each do |service|
-        .col-md-3.col-sm-6.item
+        .col-md-3.col-sm-6.col-xs-12.item
           .icon
             %img.img-responsive.img-center{ src: "#{service.images.find_by_header(true).url}", alt: "" }
           %h2= service.title
