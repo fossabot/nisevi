@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :phone_numbers
   has_many :languages
   has_many :portfolios
+  has_many :services
   has_many :user_skils
   has_many :skills, through: :user_skills
   has_many :user_links
