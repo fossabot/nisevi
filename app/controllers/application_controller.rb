@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   include Pundit
 
+  before_action :social_links
+
   rescue_from Pundit::NotAuthorizedError, AuthorizationNotPerformedError, with: :user_not_authorized
 
   # Prevent CSRF attacks by raising an exception.
@@ -22,6 +24,11 @@ class ApplicationController < ActionController::Base
       format.html { render template: 'errors/404', status: 404 }
       format.all { render nothing: true, status: 404 }
     end
+  end
+
+  # Footer social links.
+  def social_links
+    @social_links = User.find_by_admin(true).user_links.social_links
   end
 
   private

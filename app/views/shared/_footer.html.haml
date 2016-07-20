@@ -1,23 +1,10 @@
-<!-- ==============================================
-FOOTER
-=============================================== -->
-%footer#main-footer.dark-bg.light-typo
+<!-- ========= FOOTER ========= -->
+%footer.dark-bg.light-typo.navbar.navbar-fixed-bottom
   .container
-    %hr
-    .row
-      .col-sm-6
-        %ul.social-links
-          %li.scrollimation.fade-right.d4
-            %a{ href: "https://github.com/nisevi" }
-              %i.fa.fa-github-alt.fa-fw
-          %li.scrollimation.fade-right.d3
-            %a{ href: "https://de.linkedin.com/in/nicolassebastianvidal" }
-              %i.fa.fa-linkedin.fa-fw
-          %li.scrollimation.fade-right.d2
-            %a{ href: "http://stackoverflow.com/cv/nisevi" }
-              %i.fa.fa-stack-overflow.fa-fw
-          %li.scrollimation.fade-right.d2
-            %a{ href: "https://twitter.com/NicoSVidal" }
-              %i.fa.fa-twitter.fa-fw
-      .col-sm-6.text-right
-        %p
+    .col-sm-12.text-center
+      %ul.social-links
+        - cache do
+          - @social_links.each do |link|
+            %li
+              %a{href: "#{link.url}",  target: "_blank"}>
+                %i{class: "fa fa-#{link.name} fa-fw"}

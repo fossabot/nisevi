@@ -1,35 +1,9 @@
-<!-- ========= MAIN NAV ========= -->
-#main-nav.navbar.navbar-fixed-top
-  .container
-    .navbar-header
-      %button.navbar-toggle{ "type": "button", "data-toggle": "collapse", "data-target": "#site-nav" }
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      <!-- ======= LOGO (for small screens)========-->
-      %a.navbar-brand.visible-xs.scrollto{href: "#home"} NSV
-
-    #site-nav.navbar-collapse.collapse
-      %ul.nav.navbar-nav
-        %li
-          %a.scrollto{ href: "#home"} HOME
-        %li
-          %a.scrollto{ href: "#services"} WHAT I DO
-        %li
-          %a.scrollto{ href: "#about"} ABOUT ME
-        %li
-          %a.scrollto{ href: "#work"} MY WORKS
-        %li
-          %a.scrollto{ href: "#blog"} BLOG
-        %li
-          %a.scrollto{ href: "#contact_me"} CONTACT ME
-
-<!-- ========= HEADER ========= -->
-%header#home.jumbotron.bg-image
+<!-- ========= PRESENTATION ========= -->
+%header#home.jumbotron.bg-image.vertical-center
   .container
     .row
       .col-sm-12.text-col.text-center
-        %h1 Hi, I am "#{@admin_user.first_name} #{@admin_user.last_name}"
+        %h1= "Hi, I am #{@admin_user.first_name} #{@admin_user.last_name}"
         %p software engineer
 
 <!-- ========= SERVICES ========= -->
@@ -73,11 +47,17 @@
         %br/
         See a collection of works I am proud of!
 
-    #work-slide.owl-carousel
-      - @works.each do |work|
-        %div
-          .col-md-6.margin-btm-30
-            .work-detail
+    #work-carousel.carousel.slide{ "data-ride": "carousel" }
+      %ol.carousel-indicators
+        - @works.each_index do |i|
+          - if i == 0
+            %li.active{ "data-target": "#work-carousel", "data-slide-to": "0" }
+          - else
+            %li{ "data-target": "#work-carousel", "data-slide-to": "#{i}" }
+      .carousel-inner{ role: "listbox" }
+        - @works.each do |work|
+          .carousel-item
+            .col-md-6.margin-btm-30
               %h1= work.title
               %p= work.description
               %p
@@ -87,9 +67,9 @@
                 %strong Skills:
                 = work.portfolio_skills.map{|skill| skill.name}.join("/ ")
               %p
-                %a.btn.btn-dark{ href: "#{work.url_project}", target: "_blank"} Visit Project
-          .col-md-6
-            %img.img.img-responsive{ src: "#{work.images.find_by_header(true).url}", alt: "" }
+                %a.btn.btn-dark{ href: "#{work.url_project}", target: "_blank" } Visit Project
+            .col-md-6
+              %img.img.img-responsive{ src: "#{work.images.find_by_header(true).url}", alt: "" }
 
 <!-- ========= BLOG ========= -->
 %section#blog.white-bg.padding-top-bottom
@@ -112,8 +92,7 @@
           %h3
             %a{ href: "#{article_path(article)}" }= article.title
           %span= article.date_article.strftime("%F")
-          %p
-            article.description
+          %p= "#{article.text[0..70]}..."
           %p.text-right
             %a.btn.btn-dark.btn-xs{ href: "#{article_path(article)}" } Read More
 
@@ -127,22 +106,18 @@
         %br/
         Can not wait for the next exciting project! Could be yours?
     = form_for @contact, url: welcome_index_path(@contact), as: :contact, remote: true, html: {class: "contact-submit"} do |f|
-      = f.label :name
-      = f.text_field :name
-      = f.label :email
-      = f.email_field :email
-      = f.label :message
-      = f.text_area :message, size: "60x12"
-      = f.submit "Send Message"
-
-<!-- ========= FOOTER ========= -->
-%footer#main-footer.dark-bg.light-typo
-  .container
-    .row
-      .col-sm-12.text-center
-        .footer-col
-          %ul.social-links
-            - @social_links.each do |link|
-              %li
-                %a{ href: "#{link.url}",  target: "_blank"}>
-                  %i{class: "fa fa-#{link.name} fa-fw"}
+      .form-group.col-xs-12.col-md-12
+        = f.label :name, class: "col-xs-12 col-sm-2 control-label"
+        .col-sm-7.col-xs-12
+          = f.text_field :name, class: "form-control", placeholder: "Name"
+      .form-group.col-xs-12.col-md-12
+        = f.label :email, class: "col-sm-2 control-label"
+        .col-sm-7.col-xs-12
+          = f.email_field :email, class: "form-control", placeholder: "Email"
+      .form-group.col-xs-12.col-md-12
+        = f.label :message, class: "col-sm-2 control-label"
+        .col-sm-7.col-xs-12
+          = f.text_area :message, class: "contact-textarea"
+      .form-group.col-xs-12.col-md-12
+        .col-sm-10.col-xs-12
+          = f.submit "Send Message", class: "btn btn-default"
