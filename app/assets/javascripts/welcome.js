@@ -1,6 +1,6 @@
 $(document).ready(function() {
   /*Carousel*/
-  $("#work-carousel").carousel();
+  $("#work-carousel").carousel({interval: 5000});
 
   /*ScrollSpy*/
   $('body').scrollspy({target: "#site-nav", offset: 50});

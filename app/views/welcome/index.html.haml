@@ -1,3 +1,5 @@
+= render partial: "shared/header"
+
 <!-- ========= PRESENTATION ========= -->
 %header#home.jumbotron.bg-image.vertical-center
   .container
@@ -55,8 +57,8 @@
           - else
             %li{ "data-target": "#work-carousel", "data-slide-to": "#{i}" }
       .carousel-inner{ role: "listbox" }
-        - @works.each do |work|
-          .carousel-item
+        - @works.each_with_index do |work, index|
+          %div{class: "#{index==0 and 'item active' or 'item'}"}
             .col-md-6.margin-btm-30
               %h1= work.title
               %p= work.description

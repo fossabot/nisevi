@@ -86,3 +86,11 @@
 .contact-textarea {
 	min-width: 100%;
 }
+
+/*-----Portfolio Styles-----*/
+#work-carousel{
+  .carousel-indicators li {
+    background-color: gray;
+    border: none;
+  }
+}
