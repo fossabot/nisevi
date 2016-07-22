@@ -20,11 +20,12 @@
         to design for fitting user experiences that make people happy.
     .row.services
       - @services.each do |service|
-        .col-md-3.col-sm-6.col-xs-12.item
-          .icon
-            %img.img-responsive.img-center{ src: "#{service.images.find_by_header(true).url}", alt: "" }
-          %h2= service.title
-          %p= service.description
+        - cache service do
+          .col-md-3.col-sm-6.col-xs-12.item
+            .icon
+              %img.img-responsive.img-center{ src: "#{service.images.find_by_header(true).url}", alt: "" }
+            %h2= service.title
+            %p= service.description
 
 <!-- ========= ABOUT ========= -->
 %section#about.dark-bg.light-typo.padding-top-bottom
@@ -55,20 +56,21 @@
           %li{class: "#{i == 0 and "active" or ""}", "data-target": "#work-carousel", "data-slide-to": "#{i}" }
       .carousel-inner{ role: "listbox" }
         - @works.each_with_index do |work, index|
-          %div{class: "#{index==0 and 'item active' or 'item'}"}
-            .col-md-6.margin-btm-30
-              %h1= work.title
-              %p= work.description
-              %p
-                %strong Client:
-                = work.client
-              %p
-                %strong Skills:
-                = work.portfolio_skills.map{|skill| skill.name}.join("/ ")
-              %p
-                %a.btn.btn-dark{ href: "#{work.url_project}", target: "_blank" } Visit Project
-            .col-md-6
-              %img.img.img-responsive{ src: "#{work.images.find_by_header(true).url}", alt: "" }
+          - cache work do
+            %div{class: "#{index==0 and 'item active' or 'item'}"}
+              .col-md-6.margin-btm-30
+                %h1= work.title
+                %p= work.description
+                %p
+                  %strong Client:
+                  = work.client
+                %p
+                  %strong Skills:
+                  = work.portfolio_skills.map{|skill| skill.name}.join("/ ")
+                %p
+                  %a.btn.btn-dark{ href: "#{work.url_project}", target: "_blank" } Visit Project
+              .col-md-6
+                %img.img.img-responsive{ src: "#{work.images.find_by_header(true).url}", alt: "" }
 
 <!-- ========= BLOG ========= -->
 %section#blog.white-bg.padding-top-bottom
@@ -80,20 +82,21 @@
         %br/
         See a collection of works I am proud of!
     - @articles.each do |article|
-      - url_image = article.images.find_by_header(true).url
-      .col-sm-4.margin-btm-30
-        .item-img-wrap
-          = image_tag("#{url_image}", class: "img-responsive", alt: "working")
-          .item-img-overlay
-            %a.show-image{href: "#{url_image}"}
-              %span
-        .blog-desc
-          %h3
-            %a{ href: "#{article_path(article)}" }= article.title
-          %span= article.date_article.strftime("%F")
-          %p= "#{article.text[0..70]}..."
-          %p.text-right
-            %a.btn.btn-dark.btn-xs{ href: "#{article_path(article)}" } Read More
+      - cache article do
+        - url_image = article.images.find_by_header(true).url
+        .col-sm-4.margin-btm-30
+          .item-img-wrap
+            = image_tag("#{url_image}", class: "img-responsive", alt: "working")
+            .item-img-overlay
+              %a.show-image{href: "#{url_image}"}
+                %span
+          .blog-desc
+            %h3
+              %a{ href: "#{article_path(article)}" }= article.title
+            %span= article.date_article.strftime("%F")
+            %p= "#{article.text[0..70]}..."
+            %p.text-right
+              %a.btn.btn-dark.btn-xs{ href: "#{article_path(article)}" } Read More
 
 <!-- ========= CONTACT ========= -->
 %section#contact_me.gray-bg.padding-top-bottom

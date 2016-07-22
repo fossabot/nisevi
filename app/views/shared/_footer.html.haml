@@ -3,8 +3,8 @@
   .container
     .col-sm-12.text-center
       %ul.social-links
-        - cache do
-          - @social_links.each do |link|
+        - @social_links.each do |link|
+          - cache link do
             %li
               %a{href: "#{link.url}",  target: "_blank"}>
                 %i{class: "fa fa-#{link.name} fa-fw"}
