@@ -1,17 +1,23 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+#new_session.container
+  .row
+    .col-md-6.col-md-offset-2
+      %h2.text-center Log in
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .form-group.col-xs-12.col-md-12
+          = f.label :email, class: "col-xs-12 col-sm-3 control-label"
+          .col-sm-9.col-xs-12
+            = f.email_field :email, autofocus: true, autocomplete: "off", required: true,  class: "form-control", placeholder: "Email"
+        .form-group.col-xs-12.col-md-12
+          = f.label :password, class: "col-xs-12 col-sm-3  control-label"
+          .col-sm-9.col-xs-12
+            = f.password_field :password, autocomplete: "off", class: "form-control", required: true
+        .form-group.col-xs-12.col-md-9.col-md-offset-3
+          - if devise_mapping.rememberable?
+            .form-group.col-xs-12.col-md-7
+              = f.check_box :remember_me
+              = f.label :remember_me
+          %div{class: "#{devise_mapping.rememberable? and 'col-md-5 text-left' or 'col-md-6 col-md-offset-6 text-left'}"}
+            = f.submit "Log in", class: "btn btn-lg btn-primary btn-block"
+  .row
+    .col-md-12.text-center
+      = render "devise/shared/links"
