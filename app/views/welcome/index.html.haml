@@ -52,10 +52,7 @@
     #work-carousel.carousel.slide{ "data-ride": "carousel" }
       %ol.carousel-indicators
         - @works.each_index do |i|
-          - if i == 0
-            %li.active{ "data-target": "#work-carousel", "data-slide-to": "0" }
-          - else
-            %li{ "data-target": "#work-carousel", "data-slide-to": "#{i}" }
+          %li{class: "#{i == 0 and "active" or ""}", "data-target": "#work-carousel", "data-slide-to": "#{i}" }
       .carousel-inner{ role: "listbox" }
         - @works.each_with_index do |work, index|
           %div{class: "#{index==0 and 'item active' or 'item'}"}
