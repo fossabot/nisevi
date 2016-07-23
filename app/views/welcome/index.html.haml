@@ -101,25 +101,27 @@
 <!-- ========= CONTACT ========= -->
 %section#contact_me.gray-bg.padding-top-bottom
   .container
-    %header.section-header.text-center
-      %h1 Drop Me a Line
-      %p
-        I am available for freelance.
-        %br/
-        Can not wait for the next exciting project! Could be yours?
-    = form_for @contact, url: welcome_index_path(@contact), as: :contact, remote: true, html: {class: "contact-submit"} do |f|
-      .form-group.col-xs-12.col-md-12
-        = f.label :name, class: "col-xs-12 col-sm-2 control-label"
-        .col-sm-7.col-xs-12
-          = f.text_field :name, class: "form-control", placeholder: "Name"
-      .form-group.col-xs-12.col-md-12
-        = f.label :email, class: "col-sm-2 control-label"
-        .col-sm-7.col-xs-12
-          = f.email_field :email, class: "form-control", placeholder: "Email"
-      .form-group.col-xs-12.col-md-12
-        = f.label :message, class: "col-sm-2 control-label"
-        .col-sm-7.col-xs-12
-          = f.text_area :message, class: "contact-textarea"
-      .form-group.col-xs-12.col-md-12
-        .col-sm-10.col-xs-12
-          = f.submit "Send Message", class: "btn btn-default"
+    .row
+      .col-md-8-.col-md-offset-2
+        %header.section-header.text-center
+          %h1 Drop Me a Line
+          %p
+            I am available for freelance.
+            %br/
+            Can not wait for the next exciting project! Could be yours?
+        = form_for @contact, url: welcome_index_path(@contact), as: :contact, remote: true, html: {class: "contact-submit"} do |f|
+          .form-group.col-xs-12.col-md-12
+            = f.label :name, class: "col-xs-12 col-sm-2 control-label"
+            .col-sm-8.col-xs-12
+              = f.text_field :name, class: "form-control", placeholder: "Name"
+          .form-group.col-xs-12.col-md-12
+            = f.label :email, class: "col-sm-2 control-label"
+            .col-sm-8.col-xs-12
+              = f.email_field :email, class: "form-control", placeholder: "Email"
+          .form-group.col-xs-12.col-md-12
+            = f.label :message, class: "col-sm-2 control-label"
+            .col-sm-8.col-xs-12
+              = f.text_area :message, class: "contact-textarea"
+          .form-group.col-xs-12.col-md-12
+            .col-sm-10.col-xs-12
+              = f.submit "Send Message", class: "btn btn-default"
