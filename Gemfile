@@ -21,7 +21,6 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'uglifier', '>= 1.3.0'
 gem 'therubyracer', '~> 0.12.2'
 gem 'jquery-rails'
-gem 'turbolinks', '~> 5.0.0'
 gem 'react-rails'
 
 ## Font-Awesome ##
