@@ -51,13 +51,10 @@
         See a collection of works I am proud of!
 
     #work-carousel.carousel.slide{ "data-ride": "carousel" }
-      %ol.carousel-indicators
-        - @works.each_index do |i|
-          %li{class: "#{i == 0 and "active" or ""}", "data-target": "#work-carousel", "data-slide-to": "#{i}" }
       .carousel-inner{ role: "listbox" }
-        - @works.each_with_index do |work, index|
+        - @works.each do |work|
           - cache work do
-            %div{class: "#{index==0 and 'item active' or 'item'}"}
+            %div{class: "#{@works[0] == work ? 'item active' : 'item'}"}
               .col-md-6.margin-btm-30
                 %h1= work.title
                 %p= work.description
@@ -71,6 +68,9 @@
                   %a.btn.btn-dark{ href: "#{work.url_project}", target: "_blank" } Visit Project
               .col-md-6
                 %img.img.img-responsive{ src: "#{work.images.find_by_header(true).url}", alt: "" }
+      %ol.carousel-indicators
+        - @works.each_index do |i|
+          %li{class: "#{i == 0 and "active" or ""}", "data-target": "#work-carousel", "data-slide-to": "#{i}" }
 
 <!-- ========= BLOG ========= -->
 %section#blog.white-bg.padding-top-bottom

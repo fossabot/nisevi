@@ -10,7 +10,7 @@ $(document).ready(function() {
 
 	$('#site-nav a').click(function(){
 		//Toggle Class
-		$(".active").removeClass("active");
+		$(this).removeClass("active");
 		$(this).closest('li').addClass("active");
 		var theClass = $(this).attr("class");
 		$('.'+theClass).parent('li').addClass('active');
@@ -23,7 +23,5 @@ $(document).ready(function() {
 	$('.scrollTop a').scrollTop();
 
   /*Carousel*/
-  $(function(){
-		$("#work-carousel").carousel({interval: 5000});
-	});
+  $(".carousel").carousel({interval: 3000});
 });
