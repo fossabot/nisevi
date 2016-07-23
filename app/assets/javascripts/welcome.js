@@ -1,7 +1,4 @@
 $(document).ready(function() {
-  /*Carousel*/
-  $("#work-carousel").carousel({interval: 5000});
-
   /*ScrollSpy*/
   $('body').scrollspy({target: "#site-nav", offset: 50});
 
@@ -24,4 +21,9 @@ $(document).ready(function() {
 		return false;
 	});
 	$('.scrollTop a').scrollTop();
+
+  /*Carousel*/
+  $(function(){
+		$("#work-carousel").carousel({interval: 5000});
+	});
 });
