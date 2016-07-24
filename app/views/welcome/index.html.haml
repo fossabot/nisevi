@@ -37,7 +37,7 @@
         %img.img-responsive.img-center.img-circle{ src: "#{@admin_user.image}", alt:""}
         %p.text-center= @admin_user.presentation
     %p.text-center
-      %a.btn.btn-meflat.white.icon-left{ href: "#{@admin_user.links.find_by_name("freelance")}", target: "_blank"}
+      %a.black-button.white-to-black{ href: "#{@admin_user.links.find_by_name("freelance")}", target: "_blank"}
         %i.fa.fa-desktop Hire Me
 
 <!-- ========= PORTFOLIO ========= -->
@@ -65,12 +65,20 @@
                   %strong Skills:
                   = work.portfolio_skills.map{|skill| skill.name}.join("/ ")
                 %p
-                  %a.btn.btn-dark{ href: "#{work.url_project}", target: "_blank" } Visit Project
+                  %a.no_decoration.black-button.black-to-white{ href: "#{work.url_project}", target: "_blank" } Visit Project
               .col-md-6
                 %img.img.img-responsive{ src: "#{work.images.find_by_header(true).url}", alt: "" }
       %ol.carousel-indicators
         - @works.each_index do |i|
           %li{class: "#{i == 0 and "active" or ""}", "data-target": "#work-carousel", "data-slide-to": "#{i}" }
+
+%section#all-works.dark-bg
+  .container
+    .row
+      .col-md-8.col-md-offset-2.text-center
+        %p.text-center
+          %a.black-button.white-to-black{href: articles_path}
+            %i.fa.fa-rocket All my jobs
 
 <!-- ========= BLOG ========= -->
 %section#blog.white-bg.padding-top-bottom
@@ -96,7 +104,15 @@
             %span= article.date_article.strftime("%F")
             %p= "#{article.text[0..70]}..."
             %p.text-right
-              %a.btn.btn-dark.btn-xs{ href: "#{article_path(article)}" } Read More
+              %a.no_decoration.black-button.black-to-white{ href: "#{article_path(article)}" } Read More
+
+%section#all-articles.dark-bg
+  .container
+    .row
+      .col-md-8.col-md-offset-2.text-center
+        %p.text-center
+          %a.black-button.white-to-black{href: articles_path}
+            %i.fa.fa-coffee All my articles
 
 <!-- ========= CONTACT ========= -->
 %section#contact_me.gray-bg.padding-top-bottom

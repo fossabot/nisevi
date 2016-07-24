@@ -107,62 +107,47 @@ a:focus,
 }
 
 /*----- Buttons ------*/
-.btn-meflat {
-	border: none;
-	font-family: inherit;
-	font-size: inherit;
-	cursor: pointer;
-	padding: 10px 30px;
-	display: inline-block;
-	margin:20px 0;
-	text-transform: none;
-	text-decoration: none;
-	letter-spacing: 1px;
-	font-weight: 400;
-	line-height:28px;
-	height:52px;
-	outline: none;
-	position: relative;
-	background: #38A5DB;
-	color: #fff;
-	box-shadow: none;
-	border-radius: 52px;
-	opacity:0.8;
-	-webkit-transition: none;
-	-moz-transition: none;
-	transition: none;
+.black-button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
 }
 
-.btn-meflat:hover,
-.btn-meflat:focus,
-.btn-meflat:active {
-	color: #fff;
-	opacity:1;
-	text-decoration: none;
+.white-to-black {
+		border-radius: 12px;
+    background-color: white;
+    color: black;
+		border: 2px solid white;
 }
 
-.btn-meflat.white {
-	background: transparent;
-	border:2px solid #fff;
-	box-shadow: none;
-	-webkit-transition:all .1s ease-out;
-	transition:all .1s ease-out;
-	text-decoration: none;
+.white-to-black:hover {
+    background-color: #1D2026;
+    color: white;
+		border: 2px solid white;
 }
 
-.btn-meflat.white:hover,
-.btn-meflat.white:focus,
-.btn-meflat.white:active {
-	top:0;
-	text-decoration: none;
+.black-to-white {
+    background-color: #1D2026;
+    color: white;
+		border: 2px solid #1D2026;
 }
 
-.btn-meflat.icon-left [class*=fa]{
-  margin-right:10px;
+.black-to-white:hover {
+    background-color: white;
+    color: #1D2026;
+		border: 2px solid #1D2026;
 }
 
-.btn-meflat.icon-right [class*=fa]{
-  margin-left:10px;
+.no_decoration {
+	text-decoration: none !important;
 }
 
 /*-----Colors-----*/
@@ -227,4 +212,10 @@ a:focus,
 .social-links li a:hover {
   color:#fff;
   background:#38A5DB;
+}
+
+/*Links to all*/
+
+#all-works, #all-articles {
+	padding-top: 20px;
 }
