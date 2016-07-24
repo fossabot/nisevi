@@ -26,6 +26,9 @@ gem 'react-rails'
 ## Font-Awesome ##
 gem "font-awesome-sass"
 
+## Humanize ##
+gem 'humanize'
+
 ## HAML ##
 gem 'haml', '~> 4.0', '>= 4.0.7'
 
