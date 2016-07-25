@@ -1,4 +1,28 @@
-= render partial: "shared/header"
+<!-- ========= HEADER ========= -->
+%nav#main-nav.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapsed{ "type": "button", "data-toggle": "collapse", "data-target": "#site-nav", "aria-expanded": "false", "aria-controls": "navbar" }
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      <!-- ======= LOGO (for small screens)========-->
+      %a.navbar-brand.visible-xs{href: "#home"} NSV
+
+    #site-nav.navbar-collapse.collapse
+      %ul.nav.navbar-nav.nav-tabs
+        %li
+          %a{role:"presentation", href: "#home"} HOME
+        %li
+          %a{role:"presentation", href: "#services"} WHAT I DO
+        %li
+          %a{role:"presentation", href: "#about"} ABOUT ME
+        %li
+          %a{role:"presentation", href: "#work"} MY WORKS
+        %li
+          %a{role:"presentation", href: "#blog"} BLOG
+        %li
+          %a{role:"presentation", href: "#contact_me"} CONTACT ME
 
 <!-- ========= PRESENTATION ========= -->
 %header#home.jumbotron.bg-image.vertical-center
