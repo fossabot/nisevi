@@ -61,7 +61,7 @@
         %img.img-responsive.img-center.img-circle{ src: "#{@admin_user.image_url}", alt:""}
         %p.text-center= @admin_user.presentation
     %p.text-center
-      %a.black-button.white-to-black{ href: "#{@admin_user.links.find_by_name("freelance")}", target: "_blank"}
+      %a.black-button.white-to-black{ href: "#{@admin_user.user_links.find_by_name("freelancer").url}", target: "_blank"}
         %i.fa.fa-desktop &nbsp;&nbsp; Hire Me
 
 <!-- ========= PORTFOLIO ========= -->
