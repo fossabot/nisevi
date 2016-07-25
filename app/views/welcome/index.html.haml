@@ -125,7 +125,7 @@
             %h3
               %a{ href: "#{article_path(article)}" }= article.title
             %span= article.date_article.strftime("%F")
-            %p= "#{article.content[0..70]}..."
+            %p= article.description
             %p.text-right
               %a.no_decoration.black-button.black-to-white{ href: "#{article_path(article)}" } Read More
 
