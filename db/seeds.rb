@@ -1,9 +1,18 @@
 admin = User.create(
           first_name: "Nicolas",
           last_name: "Vidal",
-          location: "location",
-          presentation: "",
-          image: ENV["IMAGE_SEEDS"],
+          date_of_birth: Time.new(1987,03,10),
+          location: "Germany",
+          presentation:
+          "
+          I am Nicolas Sebastian Vidal, a twenty five year old designer from NY. I have
+          graduated with a Bachelor degree of Graphic &amp; Web Design, from
+          the University of Peiraias. I have a passion for creating challenging,
+          intuitive and beautiful products. My design process is very hands-on
+          and visual.Creating is not just a job for me, it's a passion.
+          ",
+          image_url: ENV["IMAGE_SEEDS"],
+          image_path: "",
           email: ENV["USERNAME_MAILER"],
           username: ENV["ADMIN_USERNAME"],
           password: ENV["ADMIN_PASSWORD"],
@@ -15,6 +24,7 @@ admin = User.create(
 portfolio_teenormous = Portfolio.create(
                          {
                            user: admin,
+                           hidden: false,
                            client: "Brainyatom",
                            description:
                              "
@@ -23,12 +33,15 @@ portfolio_teenormous = Portfolio.create(
                              How to find the perfect t-shirt.
                              ",
                            title: "Teenormous",
+                           image_url: ENV["IMAGE_SEEDS"],
+                           image_path: "",
                            url_project: "http://teenormous.com",
                          },
                        )
 portfolio_everycostume = Portfolio.create(
                            {
                              user: admin,
+                             hidden: false,
                              client: "Brainyatom",
                              description:
                                "
@@ -40,12 +53,15 @@ portfolio_everycostume = Portfolio.create(
                                costumes you can actually buy online.
                                ",
                              title: "Everycostume",
+                             image_url: ENV["IMAGE_SEEDS"],
+                             image_path: "",
                              url_project: "http://everycostume.com",
                            },
                          )
 portfolio_trendypurse = Portfolio.create(
                           {
                             user: admin,
+                            hidden: false,
                             client: "Brainyatom",
                             description:
                               "
@@ -58,6 +74,8 @@ portfolio_trendypurse = Portfolio.create(
                               with confidence.
                               ",
                             title: "Trendypurse",
+                            image_url: ENV["IMAGE_SEEDS"],
+                            image_path: "",
                             url_project: "http://trendypurse.com",
                           }
                         )
@@ -77,32 +95,13 @@ portfolio_sills = PortfolioSkill.create([
                     {portfolio: portfolio_trendypurse, name: "Sidekiq"},
                   ])
 
-### PORTFOLIO IMAGES ###
-portfolio_teenormous_image = Image.create(
-                               url: ENV["IMAGE_SEEDS"],
-                               path: "",
-                               header: true,
-                               portfolio: portfolio_teenormous
-                             )
-portfolio_everycostome_image = Image.create(
-                                 url: ENV["IMAGE_SEEDS"],
-                                 path: "",
-                                 header: true,
-                                 portfolio: portfolio_everycostume
-                               )
-portfolio_trendypurse_image = Image.create(
-                                url: ENV["IMAGE_SEEDS"],
-                                path: "",
-                                header: true,
-                                portfolio: portfolio_trendypurse
-                              )
-
 ### LINKS ###
 link_github = Link.create(name: "github")
 link_stackoverflow = Link.create(name: "stack-overflow")
 link_googleplus = Link.create(name: "google-plus")
 link_linkedin = Link.create(name: "twitter")
 link_twitter = Link.create(name: "linkedin")
+link_freelancer = Link.create(name: "freelancer")
 
 ### USER LINKS ###
 user_links = UserLink.create([
@@ -135,6 +134,12 @@ user_links = UserLink.create([
                  name: "twitter",
                  link: link_twitter,
                  url: "https://twitter.com/NicoSVidal"
+               },
+               {
+                 user: admin,
+                 name: "freelancer",
+                 link: link_freelancer,
+                 url: "http://www.upwork.com/fl/nisevi"
                }
              ])
 
@@ -143,6 +148,8 @@ service_web_scraping = Service.create(
                         user: admin,
                         hidden: false,
                         title: "Web Scraping",
+                        image_url: ENV["IMAGE_SEEDS"],
+                        image_path: "",
                         description:
                           "
                           Using vanguard technologies for extracting large
@@ -154,6 +161,8 @@ service_web_development = Service.create(
                             user: admin,
                             hidden: false,
                             title: "Web Development",
+                            image_url: ENV["IMAGE_SEEDS"],
+                            image_path: "",
                             description:
                               "
                               From a simple website to a complex business.
@@ -165,6 +174,8 @@ service_web_seo = Service.create(
                     user: admin,
                     hidden: false,
                     title: "SEO Content",
+                    image_url: ENV["IMAGE_SEEDS"],
+                    image_path: "",
                     description:
                       "
                       Are you producing quality content? Search engine
@@ -176,6 +187,8 @@ service_web_mail = Service.create(
                     user: admin,
                     hidden: false,
                     title: "Mail Campaigns",
+                    image_url: ENV["IMAGE_SEEDS"],
+                    image_path: "",
                     description:
                       "
                       Create your new campaign, start building your
@@ -183,32 +196,6 @@ service_web_mail = Service.create(
                       you are looking for your bussines.
                       "
                   )
-
-### SERVICE IMAGES ###
-service_web_scraping_image = Image.create(
-                               url: ENV["IMAGE_SEEDS"],
-                               path: "",
-                               header: true,
-                               service: service_web_scraping
-                             )
-service_web_development_image = Image.create(
-                                  url: ENV["IMAGE_SEEDS"],
-                                  path: "",
-                                  header: true,
-                                  service: service_web_development
-                                )
-service_web_seo_image = Image.create(
-                          url: ENV["IMAGE_SEEDS"],
-                          path: "",
-                          header: true,
-                          service: service_web_seo
-                        )
-service_web_mail_image = Image.create(
-                           url: ENV["IMAGE_SEEDS"],
-                           path: "",
-                           header: true,
-                           service: service_web_mail
-                         )
 
 ### PHONE NUMBERS ###
 phone_numbers = PhoneNumber.create([
@@ -261,7 +248,7 @@ first_article = Article.create(
                   user: admin,
                   published: true,
                   title: "Contraction and expansion of Internet.",
-                  text:
+                  content:
                     "
                     Lorem ipsum dolor sit amet, ei quod aeterno qualisque
                     usu, eu sea autem erant. Cu dictas liberavisse sit,
@@ -270,13 +257,15 @@ first_article = Article.create(
                     appareat, recusabo ocurreret eam ne. Per autem option
                     ad, adhuc albucius consequat ex pri.
                     ",
+                  image_url: ENV["IMAGE_SEEDS"],
+                  image_path: "",
                   date_article: Time.now
                 )
 second_article = Article.create(
                    user: admin,
                    published: true,
                    title: "Contraction and expansion of Internet.",
-                   text:
+                   content:
                      "
                      Lorem ipsum dolor sit amet, ei quod aeterno qualisque
                      usu, eu sea autem erant. Cu dictas liberavisse sit,
@@ -285,13 +274,15 @@ second_article = Article.create(
                      appareat, recusabo ocurreret eam ne. Per autem option
                      ad, adhuc albucius consequat ex pri.
                      ",
+                   image_url: ENV["IMAGE_SEEDS"],
+                   image_path: "",
                    date_article: Time.now
                  )
 third_article = Article.create(
                   user: admin,
                   published: true,
                   title: "Contraction and expansion of Internet.",
-                  text:
+                  content:
                     "
                     Lorem ipsum dolor sit amet, ei quod aeterno qualisque
                     usu, eu sea autem erant. Cu dictas liberavisse sit,
@@ -300,25 +291,7 @@ third_article = Article.create(
                     appareat, recusabo ocurreret eam ne. Per autem option
                     ad, adhuc albucius consequat ex pri.
                     ",
+                  image_url: ENV["IMAGE_SEEDS"],
+                  image_path: "",
                   date_article: Time.now
                 )
-
-### ARTICLE IMAGES ###
-first_article_image = Image.create(
-                        url: ENV["IMAGE_SEEDS"],
-                        path: "",
-                        header: true,
-                        article: first_article
-                      )
-second_article_image = Image.create(
-                         url: ENV["IMAGE_SEEDS"],
-                         path: "",
-                         header: true,
-                         article: second_article
-                       )
-third_article_image = Image.create(
-                        url: ENV["IMAGE_SEEDS"],
-                        path: "",
-                        header: true,
-                        article: third_article
-                      )

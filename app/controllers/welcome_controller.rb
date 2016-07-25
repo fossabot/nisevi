@@ -3,7 +3,7 @@ class WelcomeController < ApplicationController
     @contact = Contact.new
     @admin_user = User.find_by_admin(true)
     @articles = @admin_user.articles.visible.last(3)
-    @works = @admin_user.portfolios.last(3)
+    @works = @admin_user.portfolios.visible.last(3)
     @services = @admin_user.services.visible
   end
 
