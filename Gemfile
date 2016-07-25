@@ -40,6 +40,9 @@ gem 'kaminari', '~> 0.17.0'
 ## Sideqik ##
 gem 'sidekiq', '~> 4.1'
 
+## WYSIWYG ##
+gem 'ckeditor'
+
 ## Authentication ##
 gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'devise'
