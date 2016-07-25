@@ -5,6 +5,8 @@ class CreateIdentities < ActiveRecord::Migration
       t.string :uid
       t.string :token
       t.string :secret
+      t.string :image_path
+      t.string :image_url
       t.boolean :expires
       t.date :expires_at
       t.jsonb :raw_info, null: false, default: '{}'

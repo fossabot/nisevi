@@ -10,19 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725094039) do
+ActiveRecord::Schema.define(version: 20160725100233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
-    t.text     "text"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.integer  "user_id"
+    t.string   "content"
+    t.string   "image_path"
+    t.string   "image_url"
     t.boolean  "published",    default: false
     t.date     "date_article"
+    t.integer  "user_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.index ["user_id"], name: "index_articles_on_user_id", using: :btree
   end
 
@@ -30,9 +32,9 @@ ActiveRecord::Schema.define(version: 20160725094039) do
     t.string   "commenter"
     t.text     "body"
     t.integer  "article_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id"
     t.index ["article_id"], name: "index_comments_on_article_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
@@ -50,6 +52,8 @@ ActiveRecord::Schema.define(version: 20160725094039) do
     t.string   "uid"
     t.string   "token"
     t.string   "secret"
+    t.string   "image_path"
+    t.string   "image_url"
     t.boolean  "expires"
     t.date     "expires_at"
     t.jsonb    "raw_info",   default: "{}", null: false
@@ -57,20 +61,6 @@ ActiveRecord::Schema.define(version: 20160725094039) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.index ["user_id"], name: "index_identities_on_user_id", using: :btree
-  end
-
-  create_table "images", force: :cascade do |t|
-    t.text     "url"
-    t.text     "path"
-    t.integer  "article_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.boolean  "header"
-    t.integer  "portfolio_id"
-    t.integer  "service_id"
-    t.index ["article_id"], name: "index_images_on_article_id", using: :btree
-    t.index ["portfolio_id"], name: "index_images_on_portfolio_id", using: :btree
-    t.index ["service_id"], name: "index_images_on_service_id", using: :btree
   end
 
   create_table "languages", force: :cascade do |t|
@@ -112,11 +102,13 @@ ActiveRecord::Schema.define(version: 20160725094039) do
     t.string   "client"
     t.string   "description"
     t.string   "title"
+    t.string   "image_path"
+    t.string   "image_url"
     t.string   "url_project"
     t.date     "date_project"
+    t.boolean  "hidden"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.boolean  "hidden"
     t.index ["user_id"], name: "index_portfolios_on_user_id", using: :btree
   end
 
@@ -124,9 +116,11 @@ ActiveRecord::Schema.define(version: 20160725094039) do
     t.integer  "user_id"
     t.string   "title"
     t.string   "description"
+    t.string   "image_path"
+    t.string   "image_url"
+    t.boolean  "hidden",      default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-    t.boolean  "hidden",      default: false
     t.index ["user_id"], name: "index_services_on_user_id", using: :btree
   end
 
@@ -163,10 +157,15 @@ ActiveRecord::Schema.define(version: 20160725094039) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "location"
-    t.string   "image"
+    t.string   "image_path"
+    t.string   "image_url"
     t.string   "email",                                  null: false
     t.string   "encrypted_password",                     null: false
     t.string   "username"
+    t.boolean  "admin",                  default: false
+    t.string   "presentation"
+    t.string   "string"
+    t.date     "date_of_birth"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -181,10 +180,6 @@ ActiveRecord::Schema.define(version: 20160725094039) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
-    t.boolean  "admin",                  default: false
-    t.string   "presentation"
-    t.date     "date_of_birth"
-    t.string   "presentation_image"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
@@ -194,9 +189,6 @@ ActiveRecord::Schema.define(version: 20160725094039) do
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"
   add_foreign_key "identities", "users"
-  add_foreign_key "images", "articles"
-  add_foreign_key "images", "portfolios"
-  add_foreign_key "images", "services"
   add_foreign_key "languages", "users"
   add_foreign_key "phone_numbers", "users"
   add_foreign_key "portfolio_skills", "portfolios"

@@ -5,11 +5,14 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.string :location
-      t.string :image
+      t.string :image_path
+      t.string :image_url
       t.string :email             , null: false
       t.string :encrypted_password, null: false
       t.string :username
-      t.string :role              , null: false, default: "user"
+      t.boolean :admin, default: false
+      t.string :presentation, :string
+      t.date :date_of_birth
 
       ## Recoverable
       t.string   :reset_password_token
