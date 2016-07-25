@@ -248,6 +248,7 @@ first_article = Article.create(
                   user: admin,
                   published: true,
                   title: "Contraction and expansion of Internet.",
+                  description: "This is the description of the article.",
                   content:
                     "
                     Lorem ipsum dolor sit amet, ei quod aeterno qualisque
@@ -265,6 +266,7 @@ second_article = Article.create(
                    user: admin,
                    published: true,
                    title: "Contraction and expansion of Internet.",
+                   description: "This is the description of the article.",
                    content:
                      "
                      Lorem ipsum dolor sit amet, ei quod aeterno qualisque
@@ -282,6 +284,7 @@ third_article = Article.create(
                   user: admin,
                   published: true,
                   title: "Contraction and expansion of Internet.",
+                  description: "This is the description of the article.",
                   content:
                     "
                     Lorem ipsum dolor sit amet, ei quod aeterno qualisque
