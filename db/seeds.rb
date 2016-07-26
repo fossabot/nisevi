@@ -244,57 +244,23 @@ languages = Language.create([
             ])
 
 ### ARTICLES ###
-first_article = Article.create(
-                  user: admin,
-                  published: true,
-                  title: "Contraction and expansion of Internet.",
-                  description: "This is the description of the article.",
-                  content:
-                    "
-                    Lorem ipsum dolor sit amet, ei quod aeterno qualisque
-                    usu, eu sea autem erant. Cu dictas liberavisse sit,
-                    vix euismod consulatu et, saepe consul ex mei. Alia
-                    meliore est te, cu cum unum nonumes. Ut est sint
-                    appareat, recusabo ocurreret eam ne. Per autem option
-                    ad, adhuc albucius consequat ex pri.
-                    ",
-                  image_url: ENV["IMAGE_SEEDS"],
-                  image_path: "",
-                  date_article: Time.now
-                )
-second_article = Article.create(
-                   user: admin,
-                   published: true,
-                   title: "Contraction and expansion of Internet.",
-                   description: "This is the description of the article.",
-                   content:
-                     "
-                     Lorem ipsum dolor sit amet, ei quod aeterno qualisque
-                     usu, eu sea autem erant. Cu dictas liberavisse sit,
-                     vix euismod consulatu et, saepe consul ex mei. Alia
-                     meliore est te, cu cum unum nonumes. Ut est sint
-                     appareat, recusabo ocurreret eam ne. Per autem option
-                     ad, adhuc albucius consequat ex pri.
-                     ",
-                   image_url: ENV["IMAGE_SEEDS"],
-                   image_path: "",
-                   date_article: Time.now
-                 )
-third_article = Article.create(
-                  user: admin,
-                  published: true,
-                  title: "Contraction and expansion of Internet.",
-                  description: "This is the description of the article.",
-                  content:
-                    "
-                    Lorem ipsum dolor sit amet, ei quod aeterno qualisque
-                    usu, eu sea autem erant. Cu dictas liberavisse sit,
-                    vix euismod consulatu et, saepe consul ex mei. Alia
-                    meliore est te, cu cum unum nonumes. Ut est sint
-                    appareat, recusabo ocurreret eam ne. Per autem option
-                    ad, adhuc albucius consequat ex pri.
-                    ",
-                  image_url: ENV["IMAGE_SEEDS"],
-                  image_path: "",
-                  date_article: Time.now
-                )
+(0...100).each do |n|
+  Article.create(
+    user: admin,
+    published: true,
+    title: "Title number #{n}.",
+    description: "This is the description of the article number #{n}.",
+    content:
+      "
+      Lorem ipsum dolor sit amet, ei quod aeterno qualisque
+      usu, eu sea autem erant. Cu dictas liberavisse sit,
+      vix euismod consulatu et, saepe consul ex mei. Alia
+      meliore est te, cu cum unum nonumes. Ut est sint
+      appareat, recusabo ocurreret eam ne. Per autem option
+      ad, adhuc albucius consequat ex pri.
+      ",
+    image_url: ENV["IMAGE_SEEDS"],
+    image_path: "",
+    date_article: Time.now
+  )
+end
