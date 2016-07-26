@@ -132,6 +132,22 @@ a:focus,
 }
 
 /*---Main Layout Styles---*/
+.row-btm5{margin-bottom:5px;}
+.row-btm10{margin-bottom:10px;}
+.row-btm20{margin-bottom:20px;}
+.row-btm30{margin-bottom:30px;}
+.row-btm40{margin-bottom:40px;}
+.row-btm50{margin-bottom:50px;}
+.row-btm60{margin-bottom:60px;}
+.row-btm70{margin-bottom:70px;}
+.row-btm80{margin-bottom:80px;}
+.row-btm90{margin-bottom:90px;}
+.row-btm100{margin-bottom:100px;}
+
+.nopadding-left {
+  padding-left:0;
+}
+
 .img-center{
   margin:0 auto;
 }
@@ -201,6 +217,10 @@ a:focus,
 /*-----Colors-----*/
 .white-bg{
   background:#fff;
+}
+
+.intense-gray-bg{
+  background:#e1e1e1;
 }
 
 .gray-bg{
