@@ -1,0 +1,35 @@
+#header-articles{
+  .jumbotron {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+    overflow: hidden;
+  }
+
+	h2 {
+		font-size:400;
+		color: #fff
+	}
+
+  .jumbotron.articles-image {
+    position: relative;
+    background-image:url(../assets/articles.jpg);
+    background-position:50% 50%;
+    background-size: cover;
+    margin-bottom:0;
+    height: 300px;
+  }
+
+  .jumbotron.articles-image:before {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: .4;
+  }
+}
