@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Kaminari.paginate_array(policy_scope(Article)).page(params[:page])
+    @articles = Kaminari.paginate_array(policy_scope(Article)).page(params[:page]).per(5)
   end
 
   def show

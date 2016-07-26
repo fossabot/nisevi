@@ -1,0 +1,25 @@
+<!-- ========= PRESENTATION ========= -->
+%header#header-articles
+  .jumbotron.articles-image
+    .container
+      .row
+        .col-sm-12
+          %h2
+            "The only advice I can give that I guarantee is true is that you'll never succeed
+            unless you try. Just please start. You don't need anyone's permission - certanly
+            not mine."
+          %p.text-right Alexis Ohanian.
+
+<!--============= ALL MY ARTICLES =============-->
+%section#all_articles.intense-gray-bg.padding-top-bottom
+  .container
+    - @articles.each do |article|
+      .row.gray-bg.row-btm20
+        .col-md-3.nopadding-left
+          %img.img.img-responsive{ src: "#{article.image_url}", alt: "" }
+        .col-md-9
+          %h2
+            %a{href: article_path(article)}= article.title
+          %p= article.description
+    .col-md-6.col-md-offset-3.text-center
+      = paginate @articles
