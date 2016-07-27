@@ -7,7 +7,7 @@ class CreateArticles < ActiveRecord::Migration
       t.string :image_path
       t.string :image_url
       t.boolean :published, default: false
-      t.date :date_article
+      t.date :publication_date
       t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false

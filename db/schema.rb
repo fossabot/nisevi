@@ -21,17 +21,16 @@ ActiveRecord::Schema.define(version: 20160725100233) do
     t.string   "content"
     t.string   "image_path"
     t.string   "image_url"
-    t.boolean  "published",    default: false
-    t.date     "date_article"
+    t.boolean  "published",        default: false
+    t.date     "publication_date"
     t.integer  "user_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.index ["user_id"], name: "index_articles_on_user_id", using: :btree
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string   "commenter"
-    t.text     "body"
+    t.text     "content"
     t.integer  "article_id"
     t.integer  "user_id"
     t.datetime "created_at", null: false
