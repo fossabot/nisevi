@@ -261,6 +261,26 @@ languages = Language.create([
       ",
     image_url: ENV["IMAGE_SEEDS"],
     image_path: "",
-    date_article: Time.now
+    publication_date: Time.now
   )
+end
+
+Article.all.each do |article|
+  # create 10 comments per article
+  (0...10).each do |n|
+    Comment.create(
+      article: article,
+      user: admin,
+      content:
+        "
+        Comment number #{n}. Lorem ipsum dolor sit amet,
+        ei quod aeterno qualisque usu, eu sea autem erant.
+        Cu dictas liberavisse sit, vix euismod consulatu
+        et, saepe consul ex mei. Alia meliore est te,
+        cu cum unum nonumes. Ut est sint appareat,
+        recusabo ocurreret eam ne. Per autem option
+        ad, adhuc albucius consequat ex pri.
+        "
+    )
+  end
 end
