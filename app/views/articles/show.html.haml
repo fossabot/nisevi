@@ -1,0 +1,22 @@
+= render "shared/header"
+
+<!--============= ARTICLE =============-->
+%section#article
+  .container
+    .row.gray-bg.row-btm0.padding-top-bottom
+      .col-md-6.col-md-offset-3
+        %img.img.img-responsive{ src: @article.image_url, alt: "" }
+      .col-md-10.col-md-offset-1
+        %h1= @article.title
+        %p= @article.publication_date
+        %h3= @article.description
+        %p= @article.content
+      .col-md-10.col-md-offset-1
+        - @comments.each do |comment|
+          .col-md-3
+            %img.img-circle.img.img-responsive{ src: "#{comment.user.image_url}", alt: "" }
+          .col-md-9
+            %h3= "#{comment.user.first_name} #{comment.created_at.strftime("%F")}"
+            %p= comment.content
+      .col-md-10.col-md-offset-1.text-center
+        = paginate @comments
