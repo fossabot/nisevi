@@ -50,7 +50,7 @@ class User < ApplicationRecord
   def self.create_from_omniauth(auth)
       User.new(
         username: auth.info.nickname || "",
-        image: auth.info.image,
+        image_url: auth.info.image,
         email: auth.info.email,
         password: Devise.friendly_token,
         first_name: auth.info.first_name,
