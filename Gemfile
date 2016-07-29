@@ -43,6 +43,9 @@ gem 'sidekiq', '~> 4.1'
 ## WYSIWYG ##
 gem 'ckeditor'
 
+## reCAPTCHA ##
+gem "recaptcha", require: "recaptcha/rails"
+
 ## Authentication ##
 gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'devise'
