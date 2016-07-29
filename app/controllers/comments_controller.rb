@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
   def destroy
     @article = Article.find(params[:article_id])
     @comment = @article.comments.find(params[:id])
-    if current_user and @comment.user_id == current_user.id
+    if (current_user and @comment.user_id == current_user.id) || current_user.admin
       @comment.destroy
 			@comments = @article.comments.order('id DESC').page(params[:page]).per(5)
 			respond_to do |format|
