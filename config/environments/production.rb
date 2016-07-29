@@ -83,4 +83,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Google analytics
+  GA.tracker = ENV["TRACKING_ID"]
+  GA.script_source = :doubleclick
 end
