@@ -21,79 +21,34 @@ admin = User.create(
         )
 
 ### PORTFOLIO ###
-portfolio_teenormous = Portfolio.create(
-                         {
-                           user: admin,
-                           hidden: false,
-                           client: "Brainyatom",
-                           description:
-                             "
-                             Teenormous.com was born in the summer of 2008 to
-                             solve one of the world's most important problems:
-                             How to find the perfect t-shirt.
-                             ",
-                           title: "Teenormous",
-                           image_url: ENV["IMAGE_SEEDS"],
-                           image_path: "",
-                           url_project: "http://teenormous.com",
-                         },
-                       )
-portfolio_everycostume = Portfolio.create(
-                           {
-                             user: admin,
-                             hidden: false,
-                             client: "Brainyatom",
-                             description:
-                               "
-                               EveryCostume.com scours the internet looking for
-                               the best costumes from the coolest costume sites
-                               on the net. They catalog and index them all in
-                               one place.The results you get from a EveryCostume.com
-                               search come from all over the net and they are
-                               costumes you can actually buy online.
-                               ",
-                             title: "Everycostume",
-                             image_url: ENV["IMAGE_SEEDS"],
-                             image_path: "",
-                             url_project: "http://everycostume.com",
-                           },
-                         )
-portfolio_trendypurse = Portfolio.create(
-                          {
-                            user: admin,
-                            hidden: false,
-                            client: "Brainyatom",
-                            description:
-                              "
-                              The Trendy Purse is the place to shop for the best deals
-                              on the most popular ladies purses and handbags. When
-                              browsing their site, you'll find the largest selection
-                              of purses for sale online. They do all the hard work
-                              by searching the internet for quality handbags so that
-                              you can have a positive shopping experience and buy
-                              with confidence.
-                              ",
-                            title: "Trendypurse",
-                            image_url: ENV["IMAGE_SEEDS"],
-                            image_path: "",
-                            url_project: "http://trendypurse.com",
-                          }
-                        )
+(0...10).each do |n|
+  Portfolio.create(
+    {
+      user: admin,
+      hidden: false,
+      client: "Brainyatom #{1}",
+      description:
+        "
+        Teenormous.com#{n} was born in the summer of 2008 to
+        solve one of the world's most important problems:
+        How to find the perfect t-shirt.
+        ",
+      title: "Teenormous#{n}",
+      image_url: ENV["IMAGE_SEEDS"],
+      image_path: "",
+      url_project: "http://teenormous.com",
+    },
+  )
+end
 
-portfolio_sills = PortfolioSkill.create([
-                    {portfolio: portfolio_teenormous, name: "Ruby"},
-                    {portfolio: portfolio_teenormous, name: "Ruby on Rails"},
-                    {portfolio: portfolio_teenormous, name: "Sidekiq"},
-                    {portfolio: portfolio_teenormous, name: "MailChimp"},
-
-                    {portfolio: portfolio_everycostume, name: "Ruby"},
-                    {portfolio: portfolio_everycostume, name: "Ruby on Rails"},
-                    {portfolio: portfolio_everycostume, name: "Sidekiq"},
-
-                    {portfolio: portfolio_trendypurse, name: "Ruby"},
-                    {portfolio: portfolio_trendypurse, name: "Ruby on Rails"},
-                    {portfolio: portfolio_trendypurse, name: "Sidekiq"},
-                  ])
+Portfolio.all.each do |portfolio|
+  PortfolioSkill.create([
+    {portfolio: portfolio, name: "Ruby"},
+    {portfolio: portfolio, name: "Ruby on Rails"},
+    {portfolio: portfolio, name: "Sidekiq"},
+    {portfolio: portfolio, name: "MailChimp"},
+  ])
+end
 
 ### LINKS ###
 link_github = Link.create(name: "github")
