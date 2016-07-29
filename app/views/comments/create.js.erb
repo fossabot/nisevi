@@ -1,4 +1,8 @@
 /* Replace html on articles-show view. */
+// clean fields after comment was created
 $("#render-comments").html("<%= escape_javascript(render @comments) %>");
 $("#paginate-comments").html("<%= escape_javascript(paginate(@comments, :remote => true).to_s) %>");
 $("#comment_content").val("")
+
+// reset reCAPTCHA after comment was created
+grecaptcha.reset();
