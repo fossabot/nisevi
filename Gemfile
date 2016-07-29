@@ -46,6 +46,9 @@ gem 'ckeditor'
 ## reCAPTCHA ##
 gem "recaptcha", require: "recaptcha/rails"
 
+## GOOGLE ANALYTICS ##
+gem 'google-analytics-rails', '1.1.0'
+
 ## Authentication ##
 gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'devise'
