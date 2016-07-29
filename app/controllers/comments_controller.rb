@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     @article = Article.find(params[:article_id])
     @comment = @article.comments.new(comment_params.merge(user: current_user))
 		respond_to do |format|
-			if @comment.save
+			if verify_recaptcha(model: @comment) && @comment.save
         @comments = @article.comments.order('id DESC').page(params[:page]).per(5)
 				format.html { redirect_to @article, notice: 'Comment was successfully created.' }
 				format.js   { }

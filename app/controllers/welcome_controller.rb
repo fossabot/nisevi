@@ -11,7 +11,7 @@ class WelcomeController < ApplicationController
     @contact = Contact.new(contact_params)
 
     respond_to do |format|
-      if @contact.save
+      if verify_recaptcha(model: @comment) && @contact.save
         # Tell ContactMailer to send a welcome email after save
         ContactMailer.contact_email(@contact).deliver
         # Tell ContactMailer to send the client message

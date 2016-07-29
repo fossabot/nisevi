@@ -5,4 +5,7 @@
     .col-sm-12.col-xs-12.col-md-12
       = f.text_area :content, class: "comments-textarea", required: true
     .col-sm-12.col-xs-12.col-md-12
-      = f.submit "COMMENT", class: "black-button black-to-white", style: "float: right;"
+      .col-sm-6.col-xs-6.nopadding-left
+        = recaptcha_tags
+      .col-sm-6.col-xs-6.nopadding-right
+        = f.submit "COMMENT", class: "black-button black-to-white", style: "float: right;"

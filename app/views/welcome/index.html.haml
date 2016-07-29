@@ -39,9 +39,8 @@
       %h1.scrollimation.scale-in What I Do
       %p
         I am passionate about providing simple solutions combining
-        function, interaction and form
-        %br/
-        to design for fitting user experiences that make people happy.
+        function, interaction and form to design for fitting user
+        experiences that make people happy.
     .row.services
       - @services.each do |service|
         - cache service do
@@ -161,4 +160,7 @@
             = f.label :message, class: "col-sm-2 control-label"
             .col-sm-8.col-xs-12
               = f.text_area :message, class: "contact-textarea", required: true
-              = f.submit "Send Message", class: "black-button black-to-white", style:"float: right;"
+              .col-sm-6.col-xs-6.nopadding-left
+                = recaptcha_tags
+              .col-sm-6.col-xs-6.nopadding-right
+                = f.submit "Send Message", class: "black-button black-to-white", style:"float: right;"
