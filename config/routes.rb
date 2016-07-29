@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :portfolios
+  resources :portfolios, only: [:index]
 
   resources :articles do
     resources :comments
