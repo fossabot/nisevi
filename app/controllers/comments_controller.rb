@@ -2,8 +2,18 @@ class CommentsController < ApplicationController
 
   def create
     @article = Article.find(params[:article_id])
-    @comment = @article.comments.create(comment_params.merge(user: current_user))
-    redirect_to article_path(@article)
+    @comment = @article.comments.new(comment_params.merge(user: current_user))
+		respond_to do |format|
+			if @comment.save
+        @comments = @article.comments.order('id DESC').page(params[:page]).per(5)
+				format.html { redirect_to @article, notice: 'Comment was successfully created.' }
+				format.js   { }
+				format.json { render json: @comment, status: :created, location: @comment }
+			else
+				format.html { render @article }
+				format.json { render json: @commnent.errors, status: :unprocessable_entity }
+			end
+		end
   end
 
   def destroy
@@ -11,7 +21,12 @@ class CommentsController < ApplicationController
     @comment = @article.comments.find(params[:id])
     if current_user and @comment.user_id == current_user.id
       @comment.destroy
-      redirect_to article_path(@article)
+			@comments = @article.comments.order('id DESC').page(params[:page]).per(5)
+			respond_to do |format|
+				format.html { redirect_to article_path(@article) }
+				format.json { head :no_content }
+				format.js   { }
+			end
     else
       raise Pundit::NotAuthorizedError
     end
@@ -19,6 +34,6 @@ class CommentsController < ApplicationController
 
   private
     def comment_params
-      params.require(:comment).permit(:commenter, :body)
+      params.require(:comment).permit(:content)
     end
 end

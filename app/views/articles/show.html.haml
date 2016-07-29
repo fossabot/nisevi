@@ -11,12 +11,27 @@
         %p= @article.publication_date
         %h3= @article.description
         %p= @article.content
-      .col-md-10.col-md-offset-1
-        - @comments.each do |comment|
-          .col-md-3
-            %img.img-circle.img.img-responsive{ src: "#{comment.user.image_url}", alt: "" }
-          .col-md-9
-            %h3= "#{comment.user.first_name} #{comment.created_at.strftime("%F")}"
-            %p= comment.content
+
+    -# = list comments if any
+    .row.gray-bg
+      .col-md-12
+        - if @comments.empty?
+          %h3 Be the first one leaving a comment for this post.
+        - else
+          %h3= @comments.count == 1 ? "1 Comment" : "#{@article.comments.count} Comments"
+          #render-comments
+            = render @comments
+
+    -# = display pagination
+    .row.gray-bg
       .col-md-10.col-md-offset-1.text-center
-        = paginate @comments
+        #paginate-comments
+          = paginate @comments, remote: true
+
+    -# = if user signed in then allow it to make a comment
+    .row.padding-top-bottom.gray-bg
+      .col-md-10.col-md-offset-1
+        - if user_signed_in?
+          = render "comments/form"
+        - else
+          %h4 Please sign in if you want to leave a comment.

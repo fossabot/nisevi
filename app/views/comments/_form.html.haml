@@ -1,11 +1,6 @@
-= form_for([@article, @article.comments.build]) do |f|
-  %p
-    = f.label :commenter
-    %br/
-    = f.text_field :commenter
-  %p
-    = f.label :body
-    %br/
-    = f.text_area :body
-  %p
-    = f.submit
+= form_for([@article, @article.comments.build], remote: true) do |f|
+  .form-group.col-xs-12.col-md-12
+    = f.label :message, "Leave a reply", class: "col-sm-2 control-label"
+    .col-sm-8.col-xs-12
+      = f.text_area :content, class: "form-control"
+      = f.submit "Add your comment.", class: "black-button black-to-white", style: "float: right;"

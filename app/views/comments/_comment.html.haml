@@ -1,11 +1,11 @@
-%p
-  %strong Commenter:
-  = comment.commenter
-%p
-  %strong Comment:
-  = comment.body
-
-- if user_signed_in? and comment.user_id == current_user.try(:id)
-  %p
-    = link_to 'Destroy Comment', [comment.article, comment], method: :delete,
-      data: { confirm: 'Are you sure?' }
+#comments.row.gray-bg
+  .col-md-12.col-xs-12
+    .col-md-1.col-xs-1
+      %img.img-circle.img.img-responsive{ src: "#{comment.user.image_url}", alt: "" }
+    .col-md-10.col-xs-10
+      %h3= "#{comment.user.first_name} #{comment.created_at.strftime("%F")}"
+      %p= comment.content
+    .col-md-1.col-xs-1
+      - if user_signed_in? and comment.user_id == current_user.try(:id)
+        = button_to [comment.article, comment], method: :delete, class: "btn btn-danger", remote: true do
+          %span.glyphicon.glyphicon-trash
