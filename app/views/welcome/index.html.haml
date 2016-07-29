@@ -152,13 +152,13 @@
           .form-group.col-xs-12.col-md-12
             = f.label :name, class: "col-xs-12 col-sm-2 control-label"
             .col-sm-8.col-xs-12
-              = f.text_field :name, class: "form-control", placeholder: "Name"
+              = f.text_field :name, class: "form-control", placeholder: "Name", required: true
           .form-group.col-xs-12.col-md-12
             = f.label :email, class: "col-sm-2 control-label"
             .col-sm-8.col-xs-12
-              = f.email_field :email, class: "form-control", placeholder: "Email"
+              = f.email_field :email, class: "form-control", placeholder: "Email", required: true
           .form-group.col-xs-12.col-md-12
             = f.label :message, class: "col-sm-2 control-label"
             .col-sm-8.col-xs-12
-              = f.text_area :message, class: "contact-textarea"
+              = f.text_area :message, class: "contact-textarea", required: true
               = f.submit "Send Message", class: "black-button black-to-white", style:"float: right;"

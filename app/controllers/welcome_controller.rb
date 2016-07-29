@@ -17,11 +17,11 @@ class WelcomeController < ApplicationController
         # Tell ContactMailer to send the client message
         ContactMailer.client_message(@contact).deliver
 
-        format.html redirect_to welcome_index_path(@contact)
-        format.js
+        format.html { render action: :index }
+        format.js { }
       else
-        format.html redirect_to welcome_index_path(@contact)
-        format.js
+        format.html { render action: :index }
+        format.js { }
       end
     end
   end

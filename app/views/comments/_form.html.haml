@@ -3,6 +3,6 @@
     .col-sm-12.col-xs-12.col-md-12
       = f.label :message, "Leave a reply", class: "control-label"
     .col-sm-12.col-xs-12.col-md-12
-      = f.text_area :content, class: "comments-textarea"
+      = f.text_area :content, class: "comments-textarea", required: true
     .col-sm-12.col-xs-12.col-md-12
       = f.submit "COMMENT", class: "black-button black-to-white", style: "float: right;"
