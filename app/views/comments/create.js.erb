@@ -1,3 +1,4 @@
 /* Replace html on articles-show view. */
 $("#render-comments").html("<%= escape_javascript(render @comments) %>");
 $("#paginate-comments").html("<%= escape_javascript(paginate(@comments, :remote => true).to_s) %>");
+$("#comment_content").val("")
