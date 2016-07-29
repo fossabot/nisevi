@@ -6,7 +6,7 @@
       %h3= "#{comment.user.first_name} #{comment.created_at.strftime("%F")}"
       %p= comment.content
     .col-md-1.col-xs-1
-      - if current_user.admin
+      - if current_user and current_user.try(:admin)
         = button_to [comment.article, comment], method: :delete, class: "btn btn-danger", remote: true do
           %span.glyphicon.glyphicon-trash
       - elsif user_signed_in? and comment.user_id == current_user.try(:id)
