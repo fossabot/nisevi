@@ -1,10 +1,14 @@
 <!-- ========= FOOTER ========= -->
 %footer.dark-bg.light-typo.navbar.navbar-fixed-bottom
   .container
-    .col-sm-12.text-center
-      %ul.social-links
-        - @social_links.each do |link|
-          - cache link do
-            %li
-              %a{href: "#{link.url}",  target: "_blank"}>
-                %i{class: "fa fa-#{link.name} fa-fw"}
+    .row
+      .col-sm-8.col-sm-offset-2.text-center
+        %ul.social-links
+          - @social_links.each do |link|
+            - cache link do
+              %li
+                %a{href: "#{link.url}",  target: "_blank"}>
+                  %i{class: "fa fa-#{link.name} fa-fw"}
+      .col-sm-2.text-right
+        %span#cdSiteSeal2
+          %script{ type:"text/javascript", src:"#{ENV["GODADDY_CERTIFICATE"]}"}
