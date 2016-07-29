@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :portfolios
+
   resources :articles do
     resources :comments
   end
