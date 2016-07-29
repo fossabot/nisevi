@@ -14,12 +14,12 @@
 
 	.navbar-collapse {
 		border-top: 1px solid transparent;
-		box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+		box-shadow: inset 0 0.63em 0 rgba(255,255,255,0.1);
 	}
 
 	.navbar-fixed-top {
 		top: 0;
-		border-width: 0 0 1px;
+		border-width: 0 0 0.063em;
 	}
 
 	.navbar-collapse.collapse {
@@ -28,7 +28,7 @@
 
 	.navbar-nav {
 		float: none!important;
-		margin-top: 7.5px;
+		margin-top: 0.469em;
 	}
 
 	.navbar-nav>li {
@@ -37,13 +37,17 @@
 	}
 
 	.navbar-nav>li>a {
-		padding-top: 10px;
-		padding-bottom: 10px;
+		padding-top: 0.625em;
+		padding-bottom: 0.625em;
 	}
 
 	.collapse.in{
 		display:block !important;
 	}
+}
+
+#main-nav {
+  font-size:1.5em;
 }
 
 /*-----Main Styles------*/
@@ -54,7 +58,7 @@ body {
 
 body{
 	font-family: 'Titillium Web', sans-serif;
-	font-size:18px;
+	font-size:1.625em;
 	color:#3a3c4a;
 	font-weight:300;
 	overflow-x:hidden;
@@ -70,25 +74,25 @@ h6{
 	font-family: 'Roboto Slab',serif;
   font-weight:400;
   letter-spacing:0.02em;
-  margin:0 0 20px;
+  margin:0 0 1.250em;
 }
 
 p {
 	font-family: 'Roboto Slab',serif;
   font-weight:400;
-  font-size:18px;
-  line-height:24px;
+  font-size:1.625em;
+  line-height:1.500em;
   font-weight:300;
-  margin-bottom:20px;
+  margin-bottom:1.250em;
 }
 
 .lead {
-  font-size:20px;
-  line-height:28px;
+  font-size:1.650em;
+  line-height:1.750em;
   font-weight:100;
   letter-spacing:0.02em;
-  margin-top:40px;
-  margin-bottom:40px;
+  margin-top:2.500em;
+  margin-bottom:2.500em;
 }
 
 a,
@@ -133,20 +137,24 @@ a:focus,
 
 /*---Main Layout Styles---*/
 .row-btm0{margin-bottom:0;}
-.row-btm5{margin-bottom:5px;}
-.row-btm10{margin-bottom:10px;}
-.row-btm20{margin-bottom:20px;}
-.row-btm30{margin-bottom:30px;}
-.row-btm40{margin-bottom:40px;}
-.row-btm50{margin-bottom:50px;}
-.row-btm60{margin-bottom:60px;}
-.row-btm70{margin-bottom:70px;}
-.row-btm80{margin-bottom:80px;}
-.row-btm90{margin-bottom:90px;}
-.row-btm100{margin-bottom:100px;}
+.row-btm5{margin-bottom:0.313em;}
+.row-btm10{margin-bottom:0.625em;}
+.row-btm20{margin-bottom:1.250em;}
+.row-btm30{margin-bottom:1.875em;}
+.row-btm40{margin-bottom:2.500em;}
+.row-btm50{margin-bottom:3.125em;}
+.row-btm60{margin-bottom:3.750em;}
+.row-btm70{margin-bottom:4.375em;}
+.row-btm80{margin-bottom:5.000em;}
+.row-btm90{margin-bottom:5.625em;}
+.row-btm100{margin-bottom:6.250em;}
 
 .nopadding-left {
   padding-left:0;
+}
+
+.nopadding-right {
+  padding-right:0;
 }
 
 .img-center{
@@ -154,19 +162,19 @@ a:focus,
 }
 
 .padding-top-bottom {
-  padding:100px 0;
+  padding:6.250em 0;
 }
 
 .padding-top {
-  padding:100px 0 0;
+  padding:6.250em 0 0;
 }
 
 .section-header {
-  margin-bottom:80px;
+  margin-bottom:5.000em;
 }
 
 .section-header h1{
-  font-size:48px;
+  font-size:3.000em;
   font-weight:600;
   letter-spacing:0.05em;
 }
@@ -176,40 +184,40 @@ a:focus,
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
-    padding: 16px 32px;
+    padding: 1.000em 2.000em;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    font-size: 1.000em;
+    margin: 0.250em 0.125em;
     transition-duration: 0.4s;
     cursor: pointer;
 }
 
 .white-to-black {
-		border-radius: 12px;
+		border-radius: 0.750em;
     background-color: white;
     color: black;
-		border: 2px solid white;
+		border: 0.125em solid white;
 }
 
 .white-to-black:hover {
     background-color: #1D2026;
     color: white;
-		border: 2px solid white;
+		border: 0.125em solid white;
 }
 
 .black-to-white {
     background-color: #1D2026;
     font-weight:600;
     color: white;
-		border: 2px solid #1D2026;
+		border: 0.125em solid #1D2026;
 }
 
 .black-to-white:hover {
     background-color: white;
     color: #1D2026;
-		border: 2px solid #1D2026;
+		border: 0.125em solid #1D2026;
 }
 
 .no_decoration {
@@ -251,15 +259,15 @@ a:focus,
   list-style:none;
   margin:0;
   padding:0;
-  margin-bottom:20px;
-  margin-top:20px;
+  margin-bottom:1.250em;
+  margin-top:1.250em;
 }
 
 .social-links li{
   display:inline-block;
-  margin:0 5px;
-  border-radius:3px;
-  box-shadow:0 4px 0 transparent;
+  margin:0 0.313em;
+  border-radius:0.188em;
+  box-shadow:0 0.250em 0 transparent;
   -webkit-transition:all .3s ease-out;
   transition:all .3s ease-out;
 }
@@ -269,9 +277,9 @@ a:focus,
   color:#fff;
   color:#38A5DB;
   font-size:18px;
-  width:40px;
-  height:40px;
-  line-height:40px;
+  width:2.500em;
+  height:2.500em;
+  line-height:2.500em;
   text-align:center;
   background:rgba(0,0,0,0.2);
   border-radius:50%;
@@ -287,5 +295,5 @@ a:focus,
 /*Links to all*/
 
 #all-works, #all-articles {
-	padding-top: 20px;
+	padding-top: 1.250em;
 }
