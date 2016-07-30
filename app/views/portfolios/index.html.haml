@@ -15,10 +15,10 @@
 <!--============= ALL MY JOBS =============-->
 %section#all_portfolios.intense-gray-bg.padding-top-bottom
   .container
-    - @portfolios.each_slice(3) do |batch|
+    - @portfolios.each_slice(2) do |batch|
       .row
         - batch.each do |portfolio|
-          .col-md-4
+          .col-md-6
             %img.img.img-responsive{ src: "#{portfolio.image_url}", alt: "" }
             %h1= portfolio.title
             %p= portfolio.description

@@ -5,11 +5,12 @@ admin = User.create(
           location: "Germany",
           presentation:
           "
-          I am Nicolas Sebastian Vidal, a twenty five year old designer from NY. I have
-          graduated with a Bachelor degree of Graphic &amp; Web Design, from
-          the University of Peiraias. I have a passion for creating challenging,
-          intuitive and beautiful products. My design process is very hands-on
-          and visual.Creating is not just a job for me, it's a passion.
+          Lorem ipsum dolor sit amet, ei quod aeterno qualisque
+          usu, eu sea autem erant. Cu dictas liberavisse sit,
+          vix euismod consulatu et, saepe consul ex mei. Alia
+          meliore est te, cu cum unum nonumes. Ut est sint
+          appareat, recusabo ocurreret eam ne. Per autem option
+          ad, adhuc albucius consequat ex pri.
           ",
           image_url: ENV["IMAGE_SEEDS"],
           image_path: "",
