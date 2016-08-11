@@ -1,4 +1,47 @@
-/*New Session*/
-.devise-container {
+#devise_edit_session,
+#devise_new_session,
+#devise_new_registration,
+#devise_new_password {
 	padding-top: 1.250em;
+
+  h1 {
+    font-family: 'Roboto Slab',serif;
+    font-weight:900;
+    letter-spacing:0.02em;
+    margin-bottom:0;
+    font-size: 4em;
+  }
+
+  label {
+    padding-left:0;
+    font-size:1.5em;
+  }
+
+  input {
+    font-size:1.25em;
+  }
+
+  a {
+    font-size:2em;
+  }
+
+  li {
+    margin-bottom:1em;
+  }
+
+	.custom-bullet li {
+			display: block;
+	}
+
+	.custom-bullet li:before
+	{
+			/*Using a Bootstrap glyphicon as the bullet point*/
+			content: "\002a";
+			font-family: 'Glyphicon Halflings';
+			font-size:2em;
+			float: left;
+			margin-top: 4px;
+			margin-left: -17px;
+	}
+
 }
