@@ -28,7 +28,13 @@ class ApplicationController < ActionController::Base
 
   # Footer social links.
   def social_links
-    @social_links = User.find_by_admin(true).user_links.social_links
+    # If no data was added to the database,
+    # rescue the error and return an empty array
+    begin
+      @social_links = User.find_by_admin(true).user_links.social_links
+    rescue NoMethodError => e
+      @social_links = []
+    end
   end
 
   private

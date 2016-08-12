@@ -2,9 +2,15 @@ class WelcomeController < ApplicationController
   def index
     @contact = Contact.new
     @admin_user = User.find_by_admin(true)
-    @articles = @admin_user.articles.visible.last(3)
-    @works = @admin_user.portfolios.visible.last(3)
-    @services = @admin_user.services.visible
+    if @admin_user
+      @articles = @admin_user.articles.visible.last(3)
+      @works = @admin_user.portfolios.visible.last(3)
+      @services = @admin_user.services.visible
+    else
+      @articles = []
+      @works = []
+      @services = []
+    end
   end
 
   def create
