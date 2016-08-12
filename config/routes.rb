@@ -14,7 +14,8 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources "welcome", path: "contact"
+  resources :welcome, path: :contact
+  resources :management_console, only: [:index]
 
   root "welcome#index"
 end
