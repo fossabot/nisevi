@@ -2,6 +2,9 @@ class WelcomeController < ApplicationController
   def index
     @contact = Contact.new
     @admin_user = User.find_by_admin(true)
+
+    # This condition was created only to not break
+    # the views when no data has been generated.
     if @admin_user
       @articles = @admin_user.articles.visible.last(3)
       @works = @admin_user.portfolios.visible.last(3)
@@ -24,10 +27,10 @@ class WelcomeController < ApplicationController
         ContactMailer.client_message(@contact).deliver
 
         format.html { render action: :index }
-        format.js { }
+        format.js {}
       else
         format.html { render action: :index }
-        format.js { }
+        format.js {}
       end
     end
   end
