@@ -50,6 +50,7 @@ gem "recaptcha", require: "recaptcha/rails"
 gem 'google-analytics-rails', '1.1.0'
 
 ## Elasticsearch ##
+gem 'elasticsearch'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'elasticsearch-persistence'

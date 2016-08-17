@@ -284,6 +284,7 @@ DEPENDENCIES
   coffee-rails
   devise
   dotenv-rails
+  elasticsearch
   elasticsearch-model
   elasticsearch-persistence
   elasticsearch-rails
