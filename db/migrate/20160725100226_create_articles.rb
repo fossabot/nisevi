@@ -2,8 +2,8 @@ class CreateArticles < ActiveRecord::Migration
   def change
     create_table :articles do |t|
       t.string :title
-      t.string :description
-      t.string :content
+      t.text :description
+      t.text :content
       t.string :image_path
       t.string :image_url
       t.boolean :published, default: false
