@@ -28,6 +28,7 @@ admin = User.create(
       user: admin,
       hidden: false,
       client: "Brainyatom #{1}",
+      date_project: Time.now,
       description:
         "
         Teenormous.com#{n} was born in the summer of 2008 to
