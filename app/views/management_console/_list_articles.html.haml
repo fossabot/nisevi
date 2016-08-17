@@ -1,0 +1,21 @@
+.col-md-12
+  %table.table.table-condensed.image-fixed
+    %tr
+      %td Title
+      %td Description
+      %td Publication Date
+      %td Created At
+      %td Published
+      %td Image
+    - articles.each do |article|
+      %tr{class: "#{article.published ? 'success' : 'danger'}"}
+        %td= article.title
+        %td= article.description
+        - if article.published
+          %td= article.publication_date.strftime("%F")
+        - else
+          %td.text-center -
+        %td= article.created_at.strftime("%F")
+        %td= "#{article.published ? 'YES' : 'NO'}"
+        %td
+          %img.image-responsive{ src: "#{article.image_url}", alt: "" }

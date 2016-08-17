@@ -1,0 +1,14 @@
+.col-md-12
+  %table.table.table-condensed.image-fixed
+    %tr
+      %td Title
+      %td Description
+      %td Hidden
+      %td Image
+    - services.each do |service|
+      %tr{class: "#{service.hidden ? 'danger' : 'success'}"}
+        %td= service.title
+        %td= service.description
+        %td= "#{service.hidden ? 'YES' : 'NO'}"
+        %td
+          %img.image-responsive{ src: "#{service.image_url}", alt: "" }

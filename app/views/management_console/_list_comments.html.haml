@@ -1,0 +1,14 @@
+.col-md-12
+  %table.table.table-condensed.image-fixed
+    %tr
+      %td Username
+      %td Email
+      %td Content
+      %td Image
+    - comments.each do |comment|
+      %tr
+        %td= comment.user.username
+        %td= comment.user.email
+        %td= comment.content
+        %td
+          %img.image-responsive{ src: "#{comment.user.image_url}", alt: "" }

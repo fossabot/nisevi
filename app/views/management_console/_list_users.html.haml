@@ -1,0 +1,26 @@
+.col-md-12
+  %table.table.table-condensed.image-fixed
+    %tr
+      %td First Name
+      %td Last Name
+      %td Username
+      %td Email
+      %td Location
+      %td Date of Birth
+      %td Last SignIn IP
+      %td Last SignIn Date
+      %td Creation Date
+      %td Image
+    - users.each do |user|
+      %tr
+        %td= user.first_name
+        %td= user.last_name
+        %td= user.username
+        %td= user.email
+        %td= user.location
+        %td= user.date_of_birth.strftime("%F")
+        %td= user.last_sign_in_ip
+        %td= user.last_sign_in_at.strftime("%F")
+        %td= user.created_at.strftime("%F")
+        %td
+          %img.image-responsive{ src: "#{user.image_url}", alt: "" }
