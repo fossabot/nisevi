@@ -1,0 +1,14 @@
+#management_users,
+#management_services,
+#management_portfolio,
+#management_articles,
+#management_comments {
+  img{
+    width: 5em;
+    height: 5em;
+  }
+
+  .table > tbody > tr > td {
+    vertical-align: middle;
+  }
+}
