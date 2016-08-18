@@ -1,0 +1,4 @@
+/* Replace html on management_console-index view. */
+// render comments for pagination
+$("#render-list-comments").html("<%= escape_javascript(render partial: "list_comments", locals: {comments: @comments}) %>");
+$("#paginate-management-comments").html("<%= escape_javascript(paginate(@comments, remote: true, param_name: :page_comments).to_s) %>");

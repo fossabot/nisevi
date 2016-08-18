@@ -6,7 +6,7 @@
       %td Content
       %td Image
     - comments.each do |comment|
-      %tr
+      %tr{class: "#{comment.user.admin ? "info" : "success"}"}
         %td= comment.user.username
         %td= comment.user.email
         %td= comment.content

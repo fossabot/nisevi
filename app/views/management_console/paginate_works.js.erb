@@ -1,0 +1,4 @@
+/* Replace html on management_console-index view. */
+// render works for pagination
+$("#render-list-works").html("<%= escape_javascript(render partial: "list_works", locals: {works: @works}) %>");
+$("#paginate-management-works").html("<%= escape_javascript(paginate(@works, remote: true, param_name: :page_works).to_s) %>");

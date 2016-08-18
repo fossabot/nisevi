@@ -18,47 +18,52 @@
   .row
     .col-md-8.col-md-offset-2
       %h2.text-center Users
-    = render partial: "list_users", locals: {users: @users}
+    #render-list-users
+      = render partial: "list_users", locals: {users: @users}
     .col-md-8.col-md-offset-2.text-center
       #paginate-management-users
-        = paginate @users
+        = paginate @users, remote: true, param_name: :page_users
 
 <!-- SERVICES -->
 %section#management_services.container.padding-bottom
   .row
     .col-md-8.col-md-offset-2
       %h2.text-center Services
-    = render partial: "list_services", locals: {services: @services}
+    #render-list-services
+      = render partial: "list_services", locals: {services: @services}
     .col-md-8.col-md-offset-2.text-center
       #paginate-management-services
-        = paginate @services
+        = paginate @services, remote: true, param_name: :page_services
 
 <!-- PORTFOLIO -->
 %section#management_portfolio.container.padding-bottom
   .row
     .col-md-8.col-md-offset-2
       %h2.text-center Portfolio
-    = render partial: "list_works", locals: {works: @works}
+    #render-list-works
+      = render partial: "list_works", locals: {works: @works}
     .col-md-8.col-md-offset-2.text-center
       #paginate-management-works
-        = paginate @works
+        = paginate @works, remote: true, param_name: :page_works
 
 <!-- ARTICLES -->
 %section#management_articles.container.padding-bottom
   .row
     .col-md-8.col-md-offset-2
       %h2.text-center Articles
-    = render partial: "list_articles", locals: {articles: @articles}
+    #render-list-articles
+      = render partial: "list_articles", locals: {articles: @articles}
     .col-md-8.col-md-offset-2.text-center
       #paginate-management-articles
-        = paginate @articles
+        = paginate @articles, remote: true, param_name: :page_articles
 
 <!-- COMMENTS -->
 %section#management_comments.container.padding-bottom
   .row
     .col-md-8.col-md-offset-2
       %h2.text-center Comments
-    = render partial: "list_comments", locals: {comments: @comments}
+    #render-list-comments
+      = render partial: "list_comments", locals: {comments: @comments}
     .col-md-8.col-md-offset-2.text-center
       #paginate-management-comments
-        = paginate @comments
+        = paginate @comments, remote: true, param_name: :page_comments

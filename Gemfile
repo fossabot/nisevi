@@ -35,7 +35,7 @@ gem 'haml', '~> 4.0', '>= 4.0.7'
 gem 'rmagick'
 
 ## Pagination ##
-gem 'kaminari', '~> 0.17.0'
+gem 'kaminari', git: "git@github.com:amatsuda/kaminari.git", branch: "master"
 
 ## Sideqik ##
 gem 'sidekiq', '~> 4.1'

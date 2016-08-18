@@ -1,0 +1,4 @@
+/* Replace html on management_console-index view. */
+// render services for pagination
+$("#render-list-services").html("<%= escape_javascript(render partial: "list_services", locals: {services: @services}) %>");
+$("#paginate-management-services").html("<%= escape_javascript(paginate(@services, remote: true, param_name: :page_services).to_s) %>");
