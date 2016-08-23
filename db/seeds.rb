@@ -1,3 +1,5 @@
+IMAGE="https://assets.imgix.net/examples/bluehat.jpg"
+
 ### USERS ###
 # Admin user
 admin = User.new(
@@ -14,12 +16,12 @@ admin = User.new(
   appareat, recusabo ocurreret eam ne. Per autem option
   ad, adhuc albucius consequat ex pri.
   ",
-  image_url: ENV["IMAGE_SEEDS"],
+  image_url: IMAGE,
   image_path: "",
-  email: ENV["USERNAME_MAILER"],
-  username: ENV["ADMIN_USERNAME"],
-  password: ENV["ADMIN_PASSWORD"],
-  password_confirmation: ENV["ADMIN_PASSWORD"],
+  email: "admin@example.com",
+  username: "username_admin",
+  password: "admin1234",
+  password_confirmation: "admin1234",
   admin: true
 )
 # Deactivated confirmation email
@@ -42,7 +44,7 @@ admin.save!
     appareat, recusabo ocurreret eam ne. Per autem option
     ad, adhuc albucius consequat ex pri.
     ",
-    image_url: ENV["IMAGE_SEEDS"],
+    image_url: IMAGE,
     image_path: "",
     email: "example#{n}@email.com",
     username: "username#{n}",
@@ -71,7 +73,7 @@ end
         How to find the perfect t-shirt.
         ",
       title: "Teenormous#{n}",
-      image_url: ENV["IMAGE_SEEDS"],
+      image_url: IMAGE,
       image_path: "",
       url_project: "http://teenormous.com",
     },
@@ -141,7 +143,7 @@ user_links = UserLink.create([
     user: admin,
     hidden: n%2==0 ? false : true,
     title: "Service#{n}",
-    image_url: ENV["IMAGE_SEEDS"],
+    image_url: IMAGE,
     image_path: "",
     description:"Service#{n} description."
   )
@@ -150,7 +152,7 @@ service_web_scraping = Service.create(
   user: admin,
   hidden: false,
   title: "Web Scraping",
-  image_url: ENV["IMAGE_SEEDS"],
+  image_url: IMAGE,
   image_path: "",
   description:
     "
@@ -163,7 +165,7 @@ service_web_development = Service.create(
   user: admin,
   hidden: false,
   title: "Web Development",
-  image_url: ENV["IMAGE_SEEDS"],
+  image_url: IMAGE,
   image_path: "",
   description:
     "
@@ -176,7 +178,7 @@ service_web_seo = Service.create(
   user: admin,
   hidden: false,
   title: "SEO Content",
-  image_url: ENV["IMAGE_SEEDS"],
+  image_url: IMAGE,
   image_path: "",
   description:
     "
@@ -189,7 +191,7 @@ service_web_mail = Service.create(
   user: admin,
   hidden: false,
   title: "Mail Campaigns",
-  image_url: ENV["IMAGE_SEEDS"],
+  image_url: IMAGE,
   image_path: "",
   description:
     "
@@ -261,7 +263,7 @@ languages = Language.create([
       appareat, recusabo ocurreret eam ne. Per autem option
       ad, adhuc albucius consequat ex pri.
       ",
-    image_url: ENV["IMAGE_SEEDS"],
+    image_url: IMAGE,
     image_path: "",
     publication_date: Time.now
   )
