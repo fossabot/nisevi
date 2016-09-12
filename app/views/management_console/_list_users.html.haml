@@ -18,7 +18,7 @@
         %td= user.username
         %td= user.email
         %td= user.location
-        %td= user.date_of_birth.strftime("%F")
+        %td= user.date_of_birth ? user.date_of_birth.strftime("%F") : "-"
         %td= user.last_sign_in_ip
         %td= user.last_sign_in_at ? user.last_sign_in_at.strftime("%F") : "-"
         %td= user.created_at.strftime("%F")
