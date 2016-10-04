@@ -7,5 +7,7 @@
     = javascript_include_tag 'application', media: "all"
     = csrf_meta_tags
   %body{"data-spy": "scroll", "data-target": "#site-nav"}
+    - flash.each do |key, value|
+      %p{id: key}= value
     = yield
     = render 'shared/footer'
