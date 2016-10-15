@@ -1,4 +1,4 @@
-# nisevi
+# NISEVI
 
 # Database model of the website:
 
