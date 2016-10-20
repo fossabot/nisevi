@@ -1,290 +1,195 @@
-IMAGE="https://assets.imgix.net/examples/bluehat.jpg"
+Faker::Config.locale = 'en-US'
+IMAGE = 'https://assets.imgix.net/examples/bluehat.jpg'
 
 ### USERS ###
 # Admin user
+puts "\n Creating admin."
 admin = User.new(
-  first_name: "Nicolas",
-  last_name: "Vidal",
+  first_name: 'Nicolas',
+  last_name: 'Vidal',
   date_of_birth: Time.new,
-  location: "Germany",
-  presentation:
-  "
-  Lorem ipsum dolor sit amet, ei quod aeterno qualisque
-  usu, eu sea autem erant. Cu dictas liberavisse sit,
-  vix euismod consulatu et, saepe consul ex mei. Alia
-  meliore est te, cu cum unum nonumes. Ut est sint
-  appareat, recusabo ocurreret eam ne. Per autem option
-  ad, adhuc albucius consequat ex pri.
-  ",
+  location: Faker::Address.country,
+  presentation: Faker::Hacker.say_something_smart,
   image_url: IMAGE,
-  image_path: "",
-  email: "admin@example.com",
-  username: "username_admin",
-  password: "admin1234",
-  password_confirmation: "admin1234",
+  image_path: Faker::File.file_name('path/to'),
+  email: 'admin@example.com',
+  username: 'username_admin',
+  password: 'admin1234',
+  password_confirmation: 'admin1234',
   admin: true
 )
 # Deactivated confirmation email
 admin.skip_confirmation!
 admin.save!
 
-(0...100).each do |n|
+puts "\n Creating normal users."
+(0...100).each do
   # Generation of normal users (no admin users)
+  password = Faker::Internet.password
   u = User.new(
-    first_name: "FirstNameUser#{n}",
-    last_name: "LastNameUser#{n}",
+    first_name: Faker::Name.name,
+    last_name: Faker::Name.last_name,
     date_of_birth: Time.new,
-    location: "Location#{n}",
-    presentation:
-    "
-    #{n}Lorem ipsum dolor sit amet, ei quod aeterno qualisque
-    usu, eu sea autem erant. Cu dictas liberavisse sit,
-    vix euismod consulatu et, saepe consul ex mei. Alia
-    meliore est te, cu cum unum nonumes. Ut est sint
-    appareat, recusabo ocurreret eam ne. Per autem option
-    ad, adhuc albucius consequat ex pri.
-    ",
+    location: Faker::Pokemon.location,
+    presentation: Faker::Hacker.say_something_smart,
     image_url: IMAGE,
-    image_path: "",
-    email: "example#{n}@email.com",
-    username: "username#{n}",
-    password: "username#{n}",
-    password_confirmation: "username#{n}",
+    image_path:  Faker::File.file_name('path/to'),
+    email: Faker::Internet.email,
+    username: Faker::Internet.user_name,
+    password: password,
+    password_confirmation: password,
   )
   # Deactivated confirmation email
   # in order to avoid email limit
   u.skip_confirmation!
   u.save!
+  print '.'
 end
 
 ### PORTFOLIO ###
+puts "\n Creating portfolios."
 (0...100).each do |n|
   Portfolio.create(
-    {
-      user: admin,
-      # Alternate hidden attribute between hidden=true and hidden=false
-      hidden: n%2==0 ? true : false,
-      client: "Brainyatom #{1}",
-      date_project: Time.now,
-      description:
-        "
-        Teenormous.com#{n} was born in the summer of 2008 to
-        solve one of the world's most important problems:
-        How to find the perfect t-shirt.
-        ",
-      title: "Teenormous#{n}",
-      image_url: IMAGE,
-      image_path: "",
-      url_project: "http://teenormous.com",
-    },
+    user: admin,
+    # Alternate hidden attribute between hidden=true and hidden=false
+    hidden: n%2==0 ? true : false,
+    client: Faker::Company.name,
+    date_project: Time.now,
+    description: Faker::Hacker.say_something_smart,
+    title: Faker::Book.title,
+    image_url: IMAGE,
+    image_path: Faker::File.file_name('path/to'),
+    url_project: Faker::Internet.url
   )
-end
-
-Portfolio.all.each do |portfolio|
-  PortfolioSkill.create([
-    {portfolio: portfolio, name: "Ruby"},
-    {portfolio: portfolio, name: "Ruby on Rails"},
-    {portfolio: portfolio, name: "Sidekiq"},
-    {portfolio: portfolio, name: "MailChimp"},
-  ])
+  print '.'
 end
 
 ### LINKS ###
-link_github = Link.create(name: "github")
-link_stackoverflow = Link.create(name: "stack-overflow")
-link_googleplus = Link.create(name: "google-plus")
-link_linkedin = Link.create(name: "twitter")
-link_twitter = Link.create(name: "linkedin")
-link_freelancer = Link.create(name: "freelancer")
+puts "\n Creating links."
+%w(github stack-overflow google-plus twitter linkedin freelancer).each do |social_media|
+  Link.create(name: social_media)
+  print '.'
+end
 
 ### USER LINKS ###
-user_links = UserLink.create([
-  {
-   user: admin,
-   name: "github",
-   link: link_github,
-   url: "https://github.com/nisevi"
-  },
-  {
-   user: admin,
-   name: "stack-overflow",
-   link: link_stackoverflow,
-   url: "http://stackoverflow.com/cv/nisevi"
-  },
-  {
-   user: admin,
-   name: "google-plus",
-   link: link_googleplus,
-   url: "https://plus.google.com/+Nicol%C3%A1sSebasti%C3%A1nVidal"
-  },
-  {
-   user: admin,
-   name: "linkedin",
-   link: link_linkedin,
-   url: "https://de.linkedin.com/in/nicolassebastianvidal"
-  },
-  {
-   user: admin,
-   name: "twitter",
-   link: link_twitter,
-   url: "https://twitter.com/NicoSVidal"
-  },
-  {
-   user: admin,
-   name: "freelancer",
-   link: link_freelancer,
-   url: "http://www.upwork.com/fl/nisevi"
-  }
-])
+puts "\n Creating user links."
+Link.all.each do |link|
+  UserLink.create([
+    {
+     user: admin,
+     link: link,
+     url: Faker::Internet.url
+    }
+  ])
+  print '.'
+end
 
 ### SERVICES ###
+puts "\n Creating services."
 (0...100).each do |n|
   Service.create(
     user: admin,
     hidden: n%2==0 ? false : true,
-    title: "Service#{n}",
+    title: Faker::Name.title,
     image_url: IMAGE,
-    image_path: "",
-    description:"Service#{n} description."
+    image_path: Faker::File.file_name('path/to'),
+    description: Faker::Hacker.say_something_smart
   )
+  print '.'
 end
-service_web_scraping = Service.create(
-  user: admin,
-  hidden: false,
-  title: "Web Scraping",
-  image_url: IMAGE,
-  image_path: "",
-  description:
-    "
-    Using vanguard technologies for extracting large
-    amounts of data from websites, for further analysis
-    or for product estimations.
-    "
-)
-service_web_development = Service.create(
-  user: admin,
-  hidden: false,
-  title: "Web Development",
-  image_url: IMAGE,
-  image_path: "",
-  description:
-    "
-    From a simple website to a complex business.
-    I will provide you with the best solutions,
-    to satisfy your users and customers as well.
-    "
-)
-service_web_seo = Service.create(
-  user: admin,
-  hidden: false,
-  title: "SEO Content",
-  image_url: IMAGE,
-  image_path: "",
-  description:
-    "
-    Are you producing quality content? Search engine
-    optimization on your website will give you the
-    best possible ranking.
-    "
-)
-service_web_mail = Service.create(
-  user: admin,
-  hidden: false,
-  title: "Mail Campaigns",
-  image_url: IMAGE,
-  image_path: "",
-  description:
-    "
-    Create your new campaign, start building your
-    audience, give that personalized touch that
-    you are looking for your bussines.
-    "
-)
 
-### PHONE NUMBERS ###
-phone_numbers = PhoneNumber.create([
-  {
+### PHONES ###
+puts "\n Creating phones."
+(0...10).each do
+  Phone.create(
     user: admin,
-    phone_number: "1234567890",
-    description: "home"
-  },
-  {
+    country_code: Faker::Address.country_code,
+    area_code: Faker::PhoneNumber.area_code,
+    extension: Faker::PhoneNumber.extension,
+    number: Faker::PhoneNumber.phone_number,
+    notes: Faker::Hacker.say_something_smart
+  )
+  print '.'
+end
+
+### ADDRESSES ###
+puts "\n Creating addresses."
+(0...10).each do
+  Address.create(
     user: admin,
-    phone_number: "0987654321",
-    description: "mobile"
-  },
-  {
-    user: admin,
-    phone_number: "6789012345",
-    description: "work"
-  },
-  {
-    user: admin,
-    phone_number: "1234509876",
-    description: "others"
-  }
-])
+    city: Faker::Address.city,
+    street_name: Faker::Address.street_name,
+    street_number: Faker::Number.number(10),
+    secondary_address: Faker::Address.secondary_address,
+    building_number: Faker::Address.building_number,
+    zip_code: Faker::Address.zip_code,
+    time_zone: Faker::Address.time_zone,
+    state: Faker::Address.state,
+    state_abbr: Faker::Address.state_abbr,
+    country: Faker::Address.country,
+    country_code: Faker::Address.country_code,
+    notes: Faker::Hacker.say_something_smart
+  )
+  print '.'
+end
 
 ### LANGUAGES ###
-languages = Language.create([
-  {
+puts "\n Creating languages."
+(0...10).each do
+  Language.create(
     user: admin,
-    name: "English",
-    description: "proficiency",
-    url_language: ""
-  },
-  {
-    user: admin,
-    name: "Spanish",
-    description: "native",
-    url_language: ""
-  },
-  {
-    user: admin,
-    name: "German",
-    description: "initial",
-    url_language: ""
-  },
-])
+    name: Faker::App.name,
+    description: Faker::Hacker.say_something_smart,
+    url_language: Faker::Internet.url
+  )
+  print '.'
+end
+
+### CATEGORIES ###
+puts "\n Creating categories."
+%w(programming database front-end back-end algorithms mongodb).each do |cat|
+  Category.create(name: cat)
+  print '.'
+end
 
 ### ARTICLES ###
+puts "\n Creating articles."
 (0...100).each do |n|
   Article.create(
     user: admin,
     published: n%2==0 ? true : false,
-    title: "Title number #{n}.",
-    description: "This is the description of the article number #{n}.",
-    content:
-      "
-      Lorem ipsum dolor sit amet, ei quod aeterno qualisque
-      usu, eu sea autem erant. Cu dictas liberavisse sit,
-      vix euismod consulatu et, saepe consul ex mei. Alia
-      meliore est te, cu cum unum nonumes. Ut est sint
-      appareat, recusabo ocurreret eam ne. Per autem option
-      ad, adhuc albucius consequat ex pri.
-      ",
+    title: Faker::Name.title,
+    description: Faker::Hacker.say_something_smart,
+    content: Faker::Lorem.paragraph,
     image_url: IMAGE,
-    image_path: "",
+    image_path: Faker::File.file_name('path/to'),
     publication_date: Time.now
   )
+  print '.'
 end
 
+### ARTICLE CATEGORIES ###
+puts "\n Creating article categories."
+Article.all.each do |art|
+  Category.all.shuffle[1..-1].each do |cat|
+    ArticleCategory.create(
+      article: art,
+      category: cat
+    )
+    print '.'
+  end
+end
+
+### COMMENTS ###
+puts "\n Creating comments."
 Article.all.each do |article|
   # create 10 comments per article
   (0...10).each do |n|
     Comment.create(
       article: article,
       user: n%2==0 ? admin : User.all.shuffle[0],
-      content:
-        "
-        Comment number #{n}. Lorem ipsum dolor sit amet,
-        ei quod aeterno qualisque usu, eu sea autem erant.
-        Cu dictas liberavisse sit, vix euismod consulatu
-        et, saepe consul ex mei. Alia meliore est te,
-        cu cum unum nonumes. Ut est sint appareat,
-        recusabo ocurreret eam ne. Per autem option
-        ad, adhuc albucius consequat ex pri.
-        "
+      content: Faker::Lorem.paragraph,
     )
+    print '.'
   end
 end
