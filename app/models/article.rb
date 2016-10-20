@@ -1,7 +1,11 @@
 require 'elasticsearch/model'
 
 class Article < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, inverse_of: :articles
+
+  has_many :article_categories, dependent: :destroy
+  has_many :categories, through: :article_categories
+
   has_many :comments, dependent: :destroy
 
   include Elasticsearch::Model

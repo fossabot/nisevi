@@ -1,14 +1,17 @@
 class User < ApplicationRecord
-  has_many :articles
-  has_many :comments
-  has_many :identities
-  has_many :phone_numbers
-  has_many :languages
-  has_many :portfolios
-  has_many :services
-  has_many :user_skils
+  has_many :addresses, dependent: :destroy, inverse_of: :user
+  has_many :identities, dependent: :destroy, inverse_of: :user
+  has_many :phones, dependent: :destroy, inverse_of: :user
+  has_many :languages, dependent: :destroy, inverse_of: :user
+  has_many :portfolios, dependent: :destroy, inverse_of: :user
+  has_many :services, dependent: :destroy, inverse_of: :user
+  has_many :comments, dependent: :destroy, inverse_of: :user
+  has_many :articles, dependent: :destroy, inverse_of: :user
+
+  has_many :user_skills, dependent: :destroy
   has_many :skills, through: :user_skills
-  has_many :user_links
+
+  has_many :user_links, dependent: :destroy
   has_many :links, through: :user_links
 
   # Include devise modules. Others available are ':lockable' and ':timeoutable'
@@ -49,7 +52,7 @@ class User < ApplicationRecord
 
   def self.create_from_omniauth(auth)
       User.new(
-        username: auth.info.nickname || "",
+        username: auth.info.nickname || '',
         image_url: auth.info.image,
         email: auth.info.email,
         password: Devise.friendly_token,

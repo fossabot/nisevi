@@ -10,10 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725100233) do
+ActiveRecord::Schema.define(version: 20161018151955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "city"
+    t.string   "street_name"
+    t.string   "street_number"
+    t.string   "secondary_address"
+    t.string   "building_number"
+    t.string   "zip_code"
+    t.string   "time_zone"
+    t.string   "state"
+    t.string   "state_abbr"
+    t.string   "country"
+    t.string   "country_code"
+    t.text     "notes"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
+  end
+
+  create_table "article_categories", force: :cascade do |t|
+    t.integer  "article_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["article_id"], name: "index_article_categories_on_article_id", using: :btree
+    t.index ["category_id"], name: "index_article_categories_on_category_id", using: :btree
+  end
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -27,6 +55,13 @@ ActiveRecord::Schema.define(version: 20160725100233) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.index ["user_id"], name: "index_articles_on_user_id", using: :btree
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_categories_on_name", using: :btree
   end
 
   create_table "comments", force: :cascade do |t|
@@ -65,12 +100,12 @@ ActiveRecord::Schema.define(version: 20160725100233) do
 
   create_table "languages", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "name"
-    t.string   "description"
-    t.string   "url_language"
-    t.date     "date_language"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "name",         limit: 200
+    t.text     "description"
+    t.string   "url_language", limit: 200
+    t.date     "obtained"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.index ["user_id"], name: "index_languages_on_user_id", using: :btree
   end
 
@@ -78,23 +113,28 @@ ActiveRecord::Schema.define(version: 20160725100233) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_links_on_name", using: :btree
   end
 
-  create_table "phone_numbers", force: :cascade do |t|
+  create_table "phones", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "phone_number"
-    t.string   "description"
+    t.string   "country_code"
+    t.string   "area_code"
+    t.string   "extension"
+    t.string   "number"
+    t.text     "notes"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["user_id"], name: "index_phone_numbers_on_user_id", using: :btree
+    t.index ["user_id"], name: "index_phones_on_user_id", using: :btree
   end
 
   create_table "portfolio_skills", force: :cascade do |t|
-    t.string   "name"
     t.integer  "portfolio_id"
+    t.integer  "skill_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["portfolio_id"], name: "index_portfolio_skills_on_portfolio_id", using: :btree
+    t.index ["skill_id"], name: "index_portfolio_skills_on_skill_id", using: :btree
   end
 
   create_table "portfolios", force: :cascade do |t|
@@ -128,13 +168,13 @@ ActiveRecord::Schema.define(version: 20160725100233) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_skills_on_name", using: :btree
   end
 
   create_table "user_links", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "link_id"
     t.string   "url"
-    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["link_id"], name: "index_user_links_on_link_id", using: :btree
@@ -144,7 +184,7 @@ ActiveRecord::Schema.define(version: 20160725100233) do
   create_table "user_skills", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "skill_id"
-    t.string   "description"
+    t.text     "description"
     t.string   "url_skill"
     t.date     "date_user_skill"
     t.datetime "created_at",      null: false
@@ -184,13 +224,21 @@ ActiveRecord::Schema.define(version: 20160725100233) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "addresses", "users"
+  add_foreign_key "article_categories", "articles"
+  add_foreign_key "article_categories", "categories"
   add_foreign_key "articles", "users"
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"
   add_foreign_key "identities", "users"
   add_foreign_key "languages", "users"
-  add_foreign_key "phone_numbers", "users"
+  add_foreign_key "phones", "users"
   add_foreign_key "portfolio_skills", "portfolios"
+  add_foreign_key "portfolio_skills", "skills"
   add_foreign_key "portfolios", "users"
   add_foreign_key "services", "users"
+  add_foreign_key "user_links", "links"
+  add_foreign_key "user_links", "users"
+  add_foreign_key "user_skills", "skills"
+  add_foreign_key "user_skills", "users"
 end

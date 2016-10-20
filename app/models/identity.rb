@@ -1,5 +1,5 @@
 class Identity < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, inverse_of: :identities
 
   validates_presence_of :uid, :provider
   validates_uniqueness_of :uid, :scope => :provider
