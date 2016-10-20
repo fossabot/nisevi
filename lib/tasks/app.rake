@@ -1,4 +1,7 @@
-namespace :no_seed do
-  desc "Reset the database but it doesn't run the seed."
-  task reset: ['db:drop', 'db:create', 'db:migrate']
+namespace :db do
+  desc "Refresh the database (drop-create-migrate)."
+  task refresh: ['db:drop', 'db:create', 'db:migrate']
+
+  desc "Reload the database (drop-create-migrate-seed)."
+  task reload: ['db:refresh', 'db:seed']
 end
