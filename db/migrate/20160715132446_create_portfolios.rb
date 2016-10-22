@@ -5,8 +5,6 @@ class CreatePortfolios < ActiveRecord::Migration[5.0]
       t.string :client
       t.string :description
       t.string :title
-      t.string :image_path
-      t.string :image_url
       t.string :url_project
       t.date :date_project
       t.boolean :hidden

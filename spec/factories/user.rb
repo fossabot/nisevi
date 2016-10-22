@@ -37,8 +37,6 @@ FactoryGirl.define do
     date_of_birth Time.new
     location Faker::Pokemon.location
     presentation Faker::Hacker.say_something_smart
-    image_url Faker::Avatar.image
-    image_path  Faker::File.file_name('path/to')
     email Faker::Internet.email
     username Faker::Internet.user_name
     password 'password'
@@ -52,8 +50,6 @@ FactoryGirl.define do
     date_of_birth Time.new
     location Faker::Pokemon.location
     presentation Faker::Hacker.say_something_smart
-    image_url Faker::Avatar.image
-    image_path  Faker::File.file_name('path/to')
     email Faker::Internet.email
     username Faker::Internet.user_name
     password 'password'

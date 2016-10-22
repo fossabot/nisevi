@@ -10,8 +10,6 @@ admin = User.new(
   date_of_birth: Time.new,
   location: Faker::Address.country,
   presentation: Faker::Hacker.say_something_smart,
-  image_url: IMAGE,
-  image_path: Faker::File.file_name('path/to'),
   email: 'admin@example.com',
   username: 'username_admin',
   password: 'admin1234',
@@ -21,6 +19,10 @@ admin = User.new(
 # Deactivated confirmation email
 admin.skip_confirmation!
 admin.save!
+admin.images.create(
+  path: Faker::File.file_name('path/to'),
+  url: IMAGE
+)
 
 puts "\n Creating normal users."
 (0...100).each do
@@ -32,8 +34,6 @@ puts "\n Creating normal users."
     date_of_birth: Time.new,
     location: Faker::Pokemon.location,
     presentation: Faker::Hacker.say_something_smart,
-    image_url: IMAGE,
-    image_path:  Faker::File.file_name('path/to'),
     email: Faker::Internet.email,
     username: Faker::Internet.user_name,
     password: password,
@@ -43,6 +43,10 @@ puts "\n Creating normal users."
   # in order to avoid email limit
   u.skip_confirmation!
   u.save!
+  u.images.create(
+    path: Faker::File.file_name('path/to'),
+    url: IMAGE
+  )
   print '.'
 end
 
@@ -57,8 +61,6 @@ puts "\n Creating portfolios."
     date_project: Time.now,
     description: Faker::Hacker.say_something_smart,
     title: Faker::Book.title,
-    image_url: IMAGE,
-    image_path: Faker::File.file_name('path/to'),
     url_project: Faker::Internet.url
   )
   print '.'
@@ -114,13 +116,15 @@ end
 ### SERVICES ###
 puts "\n Creating services."
 (0...100).each do |n|
-  Service.create(
+  service = Service.create(
     user: admin,
-    hidden: n%2==0 ? false : true,
+    active: n<4 ? true : false,
     title: Faker::Name.title,
-    image_url: IMAGE,
-    image_path: Faker::File.file_name('path/to'),
     description: Faker::Hacker.say_something_smart
+  )
+  service.images.create(
+    path: Faker::File.file_name('path/to'),
+    url: IMAGE
   )
   print '.'
 end
@@ -183,15 +187,17 @@ end
 ### ARTICLES ###
 puts "\n Creating articles."
 (0...100).each do |n|
-  Article.create(
+  article = Article.create(
     user: admin,
     published: n%2==0 ? true : false,
     title: Faker::Name.title,
     description: Faker::Hacker.say_something_smart,
     content: Faker::Lorem.paragraph,
-    image_url: IMAGE,
-    image_path: Faker::File.file_name('path/to'),
     publication_date: Time.now
+  )
+  article.images.create(
+    path: Faker::File.file_name('path/to'),
+    url: IMAGE
   )
   print '.'
 end

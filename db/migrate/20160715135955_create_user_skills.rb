@@ -4,8 +4,7 @@ class CreateUserSkills < ActiveRecord::Migration[5.0]
       t.references :user, index: true, foreign_key: true
       t.references :skill, index: true, foreign_key: true
       t.text :description
-      t.string :url_skill
-      t.date  :date_user_skill
+      t.string :url
 
       t.timestamps
     end

@@ -4,8 +4,6 @@ class CreateArticles < ActiveRecord::Migration
       t.string :title
       t.text :description
       t.text :content
-      t.string :image_path
-      t.string :image_url
       t.boolean :published, default: false
       t.date :publication_date
       t.references :user, index: true, foreign_key: true

@@ -6,8 +6,6 @@
 #  title            :string
 #  description      :text
 #  content          :text
-#  image_path       :string
-#  image_url        :string
 #  published        :boolean          default(FALSE)
 #  publication_date :date
 #  user_id          :integer

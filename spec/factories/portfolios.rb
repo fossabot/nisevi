@@ -7,8 +7,6 @@
 #  client       :string
 #  description  :string
 #  title        :string
-#  image_path   :string
-#  image_url    :string
 #  url_project  :string
 #  date_project :date
 #  hidden       :boolean

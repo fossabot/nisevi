@@ -4,9 +4,7 @@ class CreateServices < ActiveRecord::Migration[5.0]
       t.references :user, index: true, foreign_key: true
       t.string :title
       t.string :description
-      t.string :image_path
-      t.string :image_url
-      t.boolean :hidden, default: false
+      t.boolean :active, default: false
 
       t.timestamps
     end

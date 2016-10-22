@@ -1,3 +1,35 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :integer          not null, primary key
+#  first_name             :string
+#  last_name              :string
+#  location               :string
+#  image_path             :string
+#  image_url              :string
+#  email                  :string           not null
+#  encrypted_password     :string           not null
+#  username               :string
+#  admin                  :boolean          default(FALSE)
+#  presentation           :text
+#  date_of_birth          :date
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :inet
+#  last_sign_in_ip        :inet
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#
+
 class User < ApplicationRecord
   has_many :addresses, dependent: :destroy, inverse_of: :user
   has_many :identities, dependent: :destroy, inverse_of: :user
@@ -7,6 +39,7 @@ class User < ApplicationRecord
   has_many :services, dependent: :destroy, inverse_of: :user
   has_many :comments, dependent: :destroy, inverse_of: :user
   has_many :articles, dependent: :destroy, inverse_of: :user
+  has_many :images, dependent: :destroy, inverse_of: :user
 
   has_many :user_skills, dependent: :destroy
   has_many :skills, through: :user_skills
@@ -36,7 +69,6 @@ class User < ApplicationRecord
       identity.user = user
       identity.save!
     end
-
     user
   end
 

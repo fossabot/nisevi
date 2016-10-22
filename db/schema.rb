@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161018151955) do
+ActiveRecord::Schema.define(version: 20161022125257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,8 +47,6 @@ ActiveRecord::Schema.define(version: 20161018151955) do
     t.string   "title"
     t.text     "description"
     t.text     "content"
-    t.string   "image_path"
-    t.string   "image_url"
     t.boolean  "published",        default: false
     t.date     "publication_date"
     t.integer  "user_id"
@@ -61,7 +59,7 @@ ActiveRecord::Schema.define(version: 20161018151955) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_categories_on_name", using: :btree
+    t.index ["name"], name: "index_categories_on_name", unique: true, using: :btree
   end
 
   create_table "comments", force: :cascade do |t|
@@ -87,8 +85,6 @@ ActiveRecord::Schema.define(version: 20161018151955) do
     t.string   "uid"
     t.string   "token"
     t.string   "secret"
-    t.string   "image_path"
-    t.string   "image_url"
     t.boolean  "expires"
     t.date     "expires_at"
     t.jsonb    "raw_info",   default: "{}", null: false
@@ -96,6 +92,21 @@ ActiveRecord::Schema.define(version: 20161018151955) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.index ["user_id"], name: "index_identities_on_user_id", using: :btree
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "identity_id"
+    t.integer  "article_id"
+    t.integer  "service_id"
+    t.text     "url"
+    t.text     "path"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["article_id"], name: "index_images_on_article_id", using: :btree
+    t.index ["identity_id"], name: "index_images_on_identity_id", using: :btree
+    t.index ["service_id"], name: "index_images_on_service_id", using: :btree
+    t.index ["user_id"], name: "index_images_on_user_id", using: :btree
   end
 
   create_table "languages", force: :cascade do |t|
@@ -113,7 +124,7 @@ ActiveRecord::Schema.define(version: 20161018151955) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_links_on_name", using: :btree
+    t.index ["name"], name: "index_links_on_name", unique: true, using: :btree
   end
 
   create_table "phones", force: :cascade do |t|
@@ -142,8 +153,6 @@ ActiveRecord::Schema.define(version: 20161018151955) do
     t.string   "client"
     t.string   "description"
     t.string   "title"
-    t.string   "image_path"
-    t.string   "image_url"
     t.string   "url_project"
     t.date     "date_project"
     t.boolean  "hidden"
@@ -156,9 +165,7 @@ ActiveRecord::Schema.define(version: 20161018151955) do
     t.integer  "user_id"
     t.string   "title"
     t.string   "description"
-    t.string   "image_path"
-    t.string   "image_url"
-    t.boolean  "hidden",      default: false
+    t.boolean  "active",      default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.index ["user_id"], name: "index_services_on_user_id", using: :btree
@@ -168,7 +175,7 @@ ActiveRecord::Schema.define(version: 20161018151955) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_skills_on_name", using: :btree
+    t.index ["name"], name: "index_skills_on_name", unique: true, using: :btree
   end
 
   create_table "user_links", force: :cascade do |t|
@@ -185,10 +192,9 @@ ActiveRecord::Schema.define(version: 20161018151955) do
     t.integer  "user_id"
     t.integer  "skill_id"
     t.text     "description"
-    t.string   "url_skill"
-    t.date     "date_user_skill"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "url"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["skill_id"], name: "index_user_skills_on_skill_id", using: :btree
     t.index ["user_id"], name: "index_user_skills_on_user_id", using: :btree
   end
@@ -231,6 +237,10 @@ ActiveRecord::Schema.define(version: 20161018151955) do
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"
   add_foreign_key "identities", "users"
+  add_foreign_key "images", "articles"
+  add_foreign_key "images", "identities"
+  add_foreign_key "images", "services"
+  add_foreign_key "images", "users"
   add_foreign_key "languages", "users"
   add_foreign_key "phones", "users"
   add_foreign_key "portfolio_skills", "portfolios"

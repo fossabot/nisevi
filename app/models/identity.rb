@@ -1,5 +1,24 @@
+# == Schema Information
+#
+# Table name: identities
+#
+#  id         :integer          not null, primary key
+#  provider   :string
+#  uid        :string
+#  token      :string
+#  secret     :string
+#  expires    :boolean
+#  expires_at :date
+#  raw_info   :jsonb            not null
+#  user_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Identity < ApplicationRecord
   belongs_to :user, inverse_of: :identities
+
+  has_many :images, dependent: :destroy, inverse_of: :identity
 
   validates_presence_of :uid, :provider
   validates_uniqueness_of :uid, :scope => :provider

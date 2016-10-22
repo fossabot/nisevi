@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: portfolios
+#
+#  id           :integer          not null, primary key
+#  user_id      :integer
+#  client       :string
+#  description  :string
+#  title        :string
+#  url_project  :string
+#  date_project :date
+#  hidden       :boolean
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
 class Portfolio < ApplicationRecord
   belongs_to :user, inverse_of: :portfolios
 

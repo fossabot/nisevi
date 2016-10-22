@@ -6,8 +6,6 @@
 #  title            :string
 #  description      :text
 #  content          :text
-#  image_path       :string
-#  image_url        :string
 #  published        :boolean          default(FALSE)
 #  publication_date :date
 #  user_id          :integer
@@ -22,8 +20,6 @@ FactoryGirl.define do
     title Faker::Name.title
     description Faker::Hacker.say_something_smart
     content Faker::Lorem.paragraph
-    image_url Faker::Avatar.image
-    image_path Faker::File.file_name('path/to')
     publication_date Time.now
   end
 end
