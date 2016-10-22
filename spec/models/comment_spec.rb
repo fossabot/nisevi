@@ -1,15 +1,17 @@
 # == Schema Information
 #
-# Table name: links
+# Table name: comments
 #
 #  id         :integer          not null, primary key
-#  name       :string
+#  content    :text
+#  article_id :integer
+#  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 require 'rails_helper'
 
-RSpec.describe Link, type: :model do
+RSpec.describe Comment, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
 end
