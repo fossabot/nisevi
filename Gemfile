@@ -70,6 +70,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails'
   gem 'faker', '~> 1.6', '>= 1.6.3'
+  gem 'annotate', '~> 2.7', '>= 2.7.1'
 end
 
 gem "spring", group: :development
