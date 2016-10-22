@@ -1,15 +1,19 @@
 # == Schema Information
 #
-# Table name: links
+# Table name: comments
 #
 #  id         :integer          not null, primary key
-#  name       :string
+#  content    :text
+#  article_id :integer
+#  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 FactoryGirl.define do
-  factory :link do
-    name Faker::Team.creature
+  factory :comment do
+    article nil
+    user nil
+    content Faker::Lorem.paragraph
   end
 end

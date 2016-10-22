@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: links
+# Table name: categories
 #
 #  id         :integer          not null, primary key
 #  name       :string
@@ -9,7 +9,7 @@
 #
 
 FactoryGirl.define do
-  factory :link do
-    name Faker::Team.creature
+  factory :category do
+    name Faker::Color.color_name
   end
 end
