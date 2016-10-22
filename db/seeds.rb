@@ -74,13 +74,40 @@ end
 ### USER LINKS ###
 puts "\n Creating user links."
 Link.all.each do |link|
-  UserLink.create([
-    {
-     user: admin,
-     link: link,
-     url: Faker::Internet.url
-    }
-  ])
+  UserLink.create(
+    user: admin,
+    link: link,
+    url: Faker::Internet.url
+  )
+  print '.'
+end
+
+### SKILLS ###
+puts "\n Creating skills."
+%w(mysql python php ruby rails mongodb).each do |skill|
+  Skill.create(name: skill)
+  print '.'
+end
+
+### USER SKILLS ###
+puts "\n Creating user skills."
+User.all.each do |user|
+  UserSkill.create(
+    skill: Skill.all.shuffle[0],
+    user: user,
+    description: Faker::Hacker.say_something_smart,
+    url: Faker::Internet.url
+  )
+  print '.'
+end
+
+### PORTFOLIO SKILLS ###
+puts "\n Creating portfolio skills."
+Portfolio.all.each do |portfolio|
+  PortfolioSkill.create(
+    skill: Skill.all.shuffle[0],
+    portfolio: portfolio
+  )
   print '.'
 end
 
@@ -140,7 +167,8 @@ puts "\n Creating languages."
     user: admin,
     name: Faker::App.name,
     description: Faker::Hacker.say_something_smart,
-    url_language: Faker::Internet.url
+    url_language: Faker::Internet.url,
+    obtained: Time.now
   )
   print '.'
 end
@@ -193,3 +221,16 @@ Article.all.each do |article|
     print '.'
   end
 end
+
+### CONTACTS ###
+puts "\n Creating contacts."
+(0...100).each do
+  Contact.create(
+    name: Faker::Name.name,
+    email: Faker::Internet.email,
+    message: Faker::Hacker.say_something_smart
+  )
+  print '.'
+end
+
+puts "\n Seeding finished."
