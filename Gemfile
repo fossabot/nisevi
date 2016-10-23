@@ -37,7 +37,7 @@ gem 'rmagick'
 ## Pagination ##
 # Using the master branch on github in order to have
 # params on the first page: https://github.com/amatsuda/kaminari/issues/44
-gem 'kaminari', git: "git@github.com:amatsuda/kaminari.git", branch: "master"
+gem 'kaminari', git: "https://github.com/amatsuda/kaminari", branch: "master"
 
 ## Sideqik ##
 gem 'sidekiq', '~> 4.1'

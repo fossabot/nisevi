@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:amatsuda/kaminari.git
+  remote: https://github.com/amatsuda/kaminari
   revision: 5344ee9896d4a101d54b86924da9518b0bbdcc5b
   branch: master
   specs:
