@@ -206,8 +206,6 @@ ActiveRecord::Schema.define(version: 20161022125257) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "location"
-    t.string   "image_path"
-    t.string   "image_url"
     t.string   "email",                                  null: false
     t.string   "encrypted_password",                     null: false
     t.string   "username"
