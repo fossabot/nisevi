@@ -54,42 +54,55 @@ class User < ApplicationRecord
   validates_presence_of :email
   validates_uniqueness_of :email
 
-  def self.from_omniauth(auth, signed_in_resource=nil)
-    # Get the identity and user if they exist
-    identity = Identity.find_with_omniauth(auth)
-    identity = Identity.create_with_omniauth(auth) if identity.nil?
-
-    user = signed_in_resource ? signed_in_resource : identity.user
-
-    # Find or create the user if needed
-    user = find_or_create_from_omniauth(auth) if user.nil?
-
-    # Associate the identity with the user if needed
-    if identity.user != user
-      identity.user = user
-      identity.save!
+  def freelance_site
+    freelance_media = User.select('users.id, user_links.url, links.social_media')
+                          .joins(:links)
+                          .where('users.admin=? AND links.social_media=?', true, 'freelancer')
+    unless freelance_media.empty?
+      freelance_media.first.url
+    else
+      '#'
     end
-    user
   end
 
-  def self.find_or_create_from_omniauth(auth)
-    # We try to find the user by using the email
-    user = User.find_by(email: auth.info.email)
-    # Create the user if it's a new registration
-    user = create_from_omniauth(auth) if user.nil?
-    user.skip_confirmation!
-    user.save!
-    user
-  end
+  class << self
+    def from_omniauth(auth, signed_in_resource=nil)
+      # Get the identity and user if they exist
+      identity = Identity.find_with_omniauth(auth)
+      identity = Identity.create_with_omniauth(auth) if identity.nil?
 
-  def self.create_from_omniauth(auth)
-      User.new(
-        username: auth.info.nickname || '',
-        image_url: auth.info.image,
-        email: auth.info.email,
-        password: Devise.friendly_token,
-        first_name: auth.info.first_name,
-        last_name: auth.info.last_name
-      )
+      user = signed_in_resource ? signed_in_resource : identity.user
+
+      # Find or create the user if needed
+      user = find_or_create_from_omniauth(auth) if user.nil?
+
+      # Associate the identity with the user if needed
+      if identity.user != user
+        identity.user = user
+        identity.save!
+      end
+      user
+    end
+
+    def find_or_create_from_omniauth(auth)
+      # We try to find the user by using the email
+      user = User.find_by(email: auth.info.email)
+      # Create the user if it's a new registration
+      user = create_from_omniauth(auth) if user.nil?
+      user.skip_confirmation!
+      user.save!
+      user
+    end
+
+    def create_from_omniauth(auth)
+        User.new(
+          username: auth.info.nickname || '',
+          image_url: auth.info.image,
+          email: auth.info.email,
+          password: Devise.friendly_token,
+          first_name: auth.info.first_name,
+          last_name: auth.info.last_name
+        )
+    end
   end
 end

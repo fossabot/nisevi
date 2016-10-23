@@ -16,5 +16,6 @@ class Service < ApplicationRecord
 
   has_many :images, dependent: :destroy, inverse_of: :service
 
-  scope :visible, -> { where(active: false) }
+  scope :active, -> { where(active: true) }
+  scope :deactivated, -> { where(active: false) }
 end

@@ -18,7 +18,8 @@ class Image < ApplicationRecord
   belongs_to :identity, inverse_of: :images
   belongs_to :article, inverse_of: :images
   belongs_to :service, inverse_of: :images
+  belongs_to :portfolio, inverse_of: :images
 
-  scope :hidden, -> { where(active: false) }
-  scope :visible, -> { where(active: true) }
+  scope :active, -> { where(active: true) }
+  scope :deactivated, -> { where(active: false) }
 end

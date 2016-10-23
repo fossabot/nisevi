@@ -99,12 +99,15 @@ ActiveRecord::Schema.define(version: 20161022125257) do
     t.integer  "identity_id"
     t.integer  "article_id"
     t.integer  "service_id"
+    t.integer  "portfolio_id"
     t.text     "url"
     t.text     "path"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "active",       default: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.index ["article_id"], name: "index_images_on_article_id", using: :btree
     t.index ["identity_id"], name: "index_images_on_identity_id", using: :btree
+    t.index ["portfolio_id"], name: "index_images_on_portfolio_id", using: :btree
     t.index ["service_id"], name: "index_images_on_service_id", using: :btree
     t.index ["user_id"], name: "index_images_on_user_id", using: :btree
   end
@@ -121,10 +124,10 @@ ActiveRecord::Schema.define(version: 20161022125257) do
   end
 
   create_table "links", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_links_on_name", unique: true, using: :btree
+    t.string   "social_media"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["social_media"], name: "index_links_on_social_media", unique: true, using: :btree
   end
 
   create_table "phones", force: :cascade do |t|
@@ -239,6 +242,7 @@ ActiveRecord::Schema.define(version: 20161022125257) do
   add_foreign_key "identities", "users"
   add_foreign_key "images", "articles"
   add_foreign_key "images", "identities"
+  add_foreign_key "images", "portfolios"
   add_foreign_key "images", "services"
   add_foreign_key "images", "users"
   add_foreign_key "languages", "users"

@@ -20,5 +20,10 @@ class Portfolio < ApplicationRecord
   has_many :portfolio_skills
   has_many :skills, through: :portfolio_skills
 
-  scope :visible, -> { where(hidden: false) }
+  has_many :images, dependent: :destroy, inverse_of: :portfolio
+
+  scope :published, -> { where(hidden: false) }
+  scope :unpublished, -> { where(hidden: true) }
+
+
 end
