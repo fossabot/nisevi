@@ -3,7 +3,8 @@ IMAGE = 'https://assets.imgix.net/examples/bluehat.jpg'
 
 ### USERS ###
 # Admin user
-puts "\n Creating admin."
+puts "\n Start seeding."
+puts "\n Creating admin:"
 admin = User.new(
   first_name: 'Nicolas',
   last_name: 'Vidal',
@@ -21,10 +22,11 @@ admin.skip_confirmation!
 admin.save!
 admin.images.create(
   path: Faker::File.file_name('path/to'),
-  url: IMAGE
+  url: IMAGE,
+  active: true
 )
 
-puts "\n Creating normal users."
+puts "\n Creating normal users:"
 (0...100).each do
   # Generation of normal users (no admin users)
   password = Faker::Internet.password
@@ -45,15 +47,16 @@ puts "\n Creating normal users."
   u.save!
   u.images.create(
     path: Faker::File.file_name('path/to'),
-    url: IMAGE
+    url: IMAGE,
+    active: true
   )
   print '.'
 end
 
 ### PORTFOLIO ###
-puts "\n Creating portfolios."
+puts "\n Creating portfolios:"
 (0...100).each do |n|
-  Portfolio.create(
+  portfolio = Portfolio.create(
     user: admin,
     # Alternate hidden attribute between hidden=true and hidden=false
     hidden: n%2==0 ? true : false,
@@ -63,18 +66,23 @@ puts "\n Creating portfolios."
     title: Faker::Book.title,
     url_project: Faker::Internet.url
   )
+  portfolio.images.create(
+    path: Faker::File.file_name('path/to'),
+    url: IMAGE,
+    active: true
+  )
   print '.'
 end
 
 ### LINKS ###
-puts "\n Creating links."
+puts "\n Creating links:"
 %w(github stack-overflow google-plus twitter linkedin freelancer).each do |social_media|
-  Link.create(name: social_media)
+  Link.create(social_media: social_media)
   print '.'
 end
 
 ### USER LINKS ###
-puts "\n Creating user links."
+puts "\n Creating user links:"
 Link.all.each do |link|
   UserLink.create(
     user: admin,
@@ -85,14 +93,14 @@ Link.all.each do |link|
 end
 
 ### SKILLS ###
-puts "\n Creating skills."
+puts "\n Creating skills:"
 %w(mysql python php ruby rails mongodb).each do |skill|
   Skill.create(name: skill)
   print '.'
 end
 
 ### USER SKILLS ###
-puts "\n Creating user skills."
+puts "\n Creating user skills:"
 User.all.each do |user|
   UserSkill.create(
     skill: Skill.all.shuffle[0],
@@ -104,7 +112,7 @@ User.all.each do |user|
 end
 
 ### PORTFOLIO SKILLS ###
-puts "\n Creating portfolio skills."
+puts "\n Creating portfolio skills:"
 Portfolio.all.each do |portfolio|
   PortfolioSkill.create(
     skill: Skill.all.shuffle[0],
@@ -114,7 +122,7 @@ Portfolio.all.each do |portfolio|
 end
 
 ### SERVICES ###
-puts "\n Creating services."
+puts "\n Creating services:"
 (0...100).each do |n|
   service = Service.create(
     user: admin,
@@ -124,13 +132,14 @@ puts "\n Creating services."
   )
   service.images.create(
     path: Faker::File.file_name('path/to'),
-    url: IMAGE
+    url: IMAGE,
+    active: true
   )
   print '.'
 end
 
 ### PHONES ###
-puts "\n Creating phones."
+puts "\n Creating phones:"
 (0...10).each do
   Phone.create(
     user: admin,
@@ -144,7 +153,7 @@ puts "\n Creating phones."
 end
 
 ### ADDRESSES ###
-puts "\n Creating addresses."
+puts "\n Creating addresses:"
 (0...10).each do
   Address.create(
     user: admin,
@@ -165,7 +174,7 @@ puts "\n Creating addresses."
 end
 
 ### LANGUAGES ###
-puts "\n Creating languages."
+puts "\n Creating languages:"
 (0...10).each do
   Language.create(
     user: admin,
@@ -178,14 +187,14 @@ puts "\n Creating languages."
 end
 
 ### CATEGORIES ###
-puts "\n Creating categories."
+puts "\n Creating categories:"
 %w(programming database front-end back-end algorithms mongodb).each do |cat|
   Category.create(name: cat)
   print '.'
 end
 
 ### ARTICLES ###
-puts "\n Creating articles."
+puts "\n Creating articles:"
 (0...100).each do |n|
   article = Article.create(
     user: admin,
@@ -197,13 +206,14 @@ puts "\n Creating articles."
   )
   article.images.create(
     path: Faker::File.file_name('path/to'),
-    url: IMAGE
+    url: IMAGE,
+    active: true
   )
   print '.'
 end
 
 ### ARTICLE CATEGORIES ###
-puts "\n Creating article categories."
+puts "\n Creating article categories:"
 Article.all.each do |art|
   Category.all.shuffle[1..-1].each do |cat|
     ArticleCategory.create(
@@ -215,7 +225,7 @@ Article.all.each do |art|
 end
 
 ### COMMENTS ###
-puts "\n Creating comments."
+puts "\n Creating comments:"
 Article.all.each do |article|
   # create 10 comments per article
   (0...10).each do |n|
@@ -229,7 +239,7 @@ Article.all.each do |article|
 end
 
 ### CONTACTS ###
-puts "\n Creating contacts."
+puts "\n Creating contacts:"
 (0...100).each do
   Contact.create(
     name: Faker::Name.name,

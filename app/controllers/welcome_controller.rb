@@ -1,14 +1,14 @@
 class WelcomeController < ApplicationController
   def index
     @contact = Contact.new
-    @admin_user = User.find_by_admin(true)
+    @admin_user = User.find_by_admin(:true)
 
     # This condition was created only to not break
     # the views when no data has been generated.
     if @admin_user
-      @articles = @admin_user.articles.visible.last(3)
-      @works = @admin_user.portfolios.visible.last(3)
-      @services = @admin_user.services.visible
+      @articles = @admin_user.articles.published.last(3)
+      @works = @admin_user.portfolios.published.last(3)
+      @services = @admin_user.services.active
     else
       @articles = []
       @works = []

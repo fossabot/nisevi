@@ -2,27 +2,27 @@
 %nav#main-nav.navbar.navbar-default.navbar-fixed-top
   .container
     .navbar-header
-      %button.navbar-toggle.collapsed{ "type": "button", "data-toggle": "collapse", "data-target": "#site-nav", "aria-expanded": "false", "aria-controls": "navbar" }
+      %button.navbar-toggle.collapsed{ 'type': 'button', 'data-toggle': 'collapse', 'data-target': '#site-nav', 'aria-expanded': 'false', 'aria-controls': 'navbar' }
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
       <!-- ======= LOGO (for small screens)========-->
-      %a.navbar-brand.visible-xs{href: "#home"} NSV
+      %a.navbar-brand.visible-xs{href: '#home'} NSV
 
     #site-nav.navbar-collapse.collapse
       %ul.nav.navbar-nav.nav-tabs
         %li
-          %a{role:"presentation", href: "#home"} HOME
+          %a{role:'presentation', href: '#home'} HOME
         %li
-          %a{role:"presentation", href: "#services"} WHAT I DO
+          %a{role:'presentation', href: '#services'} WHAT I DO
         %li
-          %a{role:"presentation", href: "#about"} ABOUT ME
+          %a{role:'presentation', href: '#about'} ABOUT ME
         %li
-          %a{role:"presentation", href: "#work"} MY WORKS
+          %a{role:'presentation', href: '#work'} MY WORKS
         %li
-          %a{role:"presentation", href: "#blog"} BLOG
+          %a{role:'presentation', href: '#blog'} BLOG
         %li
-          %a{role:"presentation", href: "#contact_me"} CONTACT ME
+          %a{role:'presentation', href: '#contact_me'} CONTACT ME
 
 <!-- ========= PRESENTATION ========= -->
 %header#home.jumbotron.bg-image.vertical-center
@@ -50,7 +50,7 @@
         - cache service do
           .col-lg-3.col-md-6.col-sm-12.col-xs-12.item
             .icon
-              %img.img-responsive.img-center{ src: "#{service.image_url}", alt: "" }
+              %img.img-responsive.img-center{ src: "#{service.images.active.first.url}", alt: '' }
             %h2= service.title
             %p= service.description
 
@@ -61,16 +61,16 @@
       %h1 About Me
     .row
       .col-sm-4.col-sm-offset-4
-        %img.img-responsive.img-center.img-circle{ src: "#{@admin_user ? @admin_user.image_url : ""}", alt:"" }
+        %img.img-responsive.img-center.img-circle{ src: "#{@admin_user ? @admin_user.images.active.first.url : ''}", alt:'' }
       .col-sm-10.col-sm-offset-1
         %p.text-center= @admin_user ? @admin_user.presentation : ''
     .row
       %p.text-center
         - if @admin_user.nil? || @admin_user.user_links.empty?
-          %a.black-button.white-to-black{ href: "#", target: "_blank" }
+          %a.black-button.white-to-black{ href: '#', target: '_blank' }
             %i.fa.fa-desktop &nbsp;&nbsp; Hire Me
         - else
-          %a.black-button.white-to-black{ href: "#{@admin_user ? @admin_user.user_links.find_by_name("freelancer").url : '#'}", target: "_blank" }
+          %a.black-button.white-to-black{ href: "#{@admin_user ? @admin_user.freelance_site : '#'}", target: '_blank' }
             %i.fa.fa-desktop &nbsp;&nbsp; Hire Me
 
 <!-- ========= PORTFOLIO ========= -->
@@ -84,8 +84,8 @@
           %br/
           See a collection of works I am proud of!
     .row
-      #work-carousel.carousel.slide{ "data-ride": "carousel" }
-        .carousel-inner{ role: "listbox" }
+      #work-carousel.carousel.slide{ 'data-ride': 'carousel' }
+        .carousel-inner{ role: 'listbox' }
           - @works.each do |work|
             - cache work do
               %div{class: "#{@works[0] == work ? 'item active' : 'item'}"}
@@ -97,14 +97,14 @@
                     = work.client
                   %p
                     %strong Skills:
-                    = work.portfolio_skills.map{|skill| skill.name}.join("/ ")
+                    = work.skills.map{|skill| skill.name}.join('/ ')
                   %p
-                    %a.no_decoration.black-button.black-to-white{ href: "#{work.url_project}", target: "_blank" } Visit Project
+                    %a.no_decoration.black-button.black-to-white{ href: "#{work.url_project}", target: '_blank' } Visit Project
                 .col-md-6
-                  %img.img.img-responsive{ src: "#{work.image_url}", alt: "" }
+                  %img.img.img-responsive{ src: "#{work.images.active.first.url}", alt: '' }
         %ol.carousel-indicators
           - @works.each_index do |i|
-            %li{class: "#{i == 0 and "active" or ""}", "data-target": "#work-carousel", "data-slide-to": "#{i}" }
+            %li{class: "#{i == 0 and 'active' or ''}", 'data-target': '#work-carousel', 'data-slide-to': "#{i}" }
 
 %section#all-works.dark-bg
   .container
@@ -127,11 +127,12 @@
     .row
       - @articles.each do |article|
         - cache article do
-          .col-sm-4.margin-btm-30
+          - image_article = article.images.active.first.url
+          .col-lg-4.col-md-12.col-sm-12.col-xs-12.item
             .item-img-wrap
-              = image_tag("#{article.image_url}", class: "img-responsive", alt: "working")
+              = image_tag("#{image_article}", class: 'img-responsive', alt: 'working')
               .item-img-overlay
-                %a.show-image{href: "#{article.image_url}"}
+                %a.show-image{href: "#{image_article}"}
                   %span
             .blog-desc
               %h3
@@ -153,27 +154,26 @@
 %section#contact_me.gray-bg
   .container
     .row.row-btm140
-      .col-md-8-.col-md-offset-2
-        %header.section-header.text-center
-          %h1 Drop Me a Line
-          %p
-            I am available for freelance.
-            %br/
-            Can not wait for the next exciting project! Could be yours?
-        = form_for @contact, url: welcome_index_path(@contact), as: :contact, remote: true, html: {class: "contact-submit"} do |f|
-          .form-group.col-xs-12.col-md-12
-            = f.label :name, class: "col-xs-12 col-sm-2 control-label"
-            .col-sm-8.col-xs-12
-              = f.text_field :name, class: "form-control", placeholder: "Name", required: true
-          .form-group.col-xs-12.col-md-12
-            = f.label :email, class: "col-sm-2 control-label"
-            .col-sm-8.col-xs-12
-              = f.email_field :email, class: "form-control", placeholder: "Email", required: true
-          .form-group.col-xs-12.col-md-12
-            = f.label :message, class: "col-sm-2 control-label"
-            .col-sm-8.col-xs-12
-              = f.text_area :message, class: "contact-textarea", required: true
-              .col-sm-6.col-xs-6.nopadding-left
-                = recaptcha_tags
-              .col-sm-6.col-xs-6.nopadding-right
-                = f.submit "Send Message", class: "black-button black-to-white", style:"float: right;"
+      %header.section-header.text-center
+        %h1 Drop Me a Line
+        %p
+          I am available for freelance.
+          %br/
+          Can not wait for the next exciting project! Could be yours?
+      = form_for @contact, url: welcome_index_path(@contact), as: :contact, remote: true, html: {class: 'contact-submit'} do |f|
+        .form-group.col-xs-12.col-md-12
+          = f.label :name, class: 'col-xs-12 col-sm-2 control-label'
+          .col-sm-8.col-xs-12
+            = f.text_field :name, class: 'form-control', placeholder: 'Name', required: true
+        .form-group.col-xs-12.col-md-12
+          = f.label :email, class: 'col-sm-2 control-label'
+          .col-sm-8.col-xs-12
+            = f.email_field :email, class: 'form-control', placeholder: 'Email', required: true
+        .form-group.col-xs-12.col-md-12
+          = f.label :message, class: 'col-sm-2 control-label'
+          .col-sm-8.col-xs-12
+            = f.text_area :message, class: 'contact-textarea', required: true
+            .col-sm-6.col-xs-6.nopadding-left
+              = recaptcha_tags
+            .col-sm-6.col-xs-6.nopadding-right
+              = f.submit 'Send Message', class: 'black-button black-to-white', style: 'float: right;'

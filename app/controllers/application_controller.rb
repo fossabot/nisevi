@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     # If no data was added to the database,
     # rescue the error and return an empty array
     begin
-      @social_links = User.find_by_admin(true).user_links.social_links
+      @social_links = User.select('users.id, user_links.url, links.social_media').joins(:links)
     rescue NoMethodError => e
       @social_links = []
     end
