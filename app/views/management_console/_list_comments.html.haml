@@ -11,4 +11,4 @@
         %td= comment.user.email
         %td= comment.content
         %td
-          %img.image-responsive{ src: "#{comment.user.image_url}", alt: "" }
+          %img.image-responsive{ src: "#{comment.user.images.active.first.url}", alt: "" }

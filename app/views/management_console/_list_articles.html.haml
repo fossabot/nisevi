@@ -18,4 +18,4 @@
         %td= article.created_at.strftime("%F")
         %td= "#{article.published ? 'YES' : 'NO'}"
         %td
-          %img.image-responsive{ src: "#{article.image_url}", alt: "" }
+          %img.image-responsive{ src: "#{article.images.active.first.url}", alt: "" }

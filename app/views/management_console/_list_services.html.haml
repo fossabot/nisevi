@@ -6,9 +6,9 @@
       %td Hidden
       %td Image
     - services.each do |service|
-      %tr{class: "#{service.hidden ? 'danger' : 'success'}"}
+      %tr{class: "#{service.active ? 'danger' : 'success'}"}
         %td= service.title
         %td= service.description
-        %td= "#{service.hidden ? 'YES' : 'NO'}"
+        %td= "#{service.active ? 'YES' : 'NO'}"
         %td
-          %img.image-responsive{ src: "#{service.image_url}", alt: "" }
+          %img.image-responsive{ src: "#{service.images.active.first.url}", alt: "" }

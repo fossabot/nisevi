@@ -23,4 +23,4 @@
         %td= user.last_sign_in_at ? user.last_sign_in_at.strftime("%F") : "-"
         %td= user.created_at.strftime("%F")
         %td
-          %img.image-responsive{ src: "#{user.image_url}", alt: "" }
+          %img.image-responsive{ src: "#{user.images.active.first.url}", alt: "" }
