@@ -64,4 +64,10 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  # per-form CSRF tokens to mitigate against code-injection attacks with forms created by JavaScript.
+  config.action_controller.per_form_csrf_tokens = true
+
+  # Check if the HTTP Origin header should be checked against the site's origin as an additional CSRF defense.
+  config.action_controller.forgery_protection_origin_check = true
 end

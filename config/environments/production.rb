@@ -87,4 +87,10 @@ Rails.application.configure do
   # Google analytics
   GA.tracker = ENV["TRACKING_ID"]
   GA.script_source = :doubleclick
+
+  # per-form CSRF tokens to mitigate against code-injection attacks with forms created by JavaScript.
+  config.action_controller.per_form_csrf_tokens = true
+
+  # Check if the HTTP Origin header should be checked against the site's origin as an additional CSRF defense.
+  config.action_controller.forgery_protection_origin_check = true
 end
