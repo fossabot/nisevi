@@ -45,7 +45,7 @@ puts "\n Creating normal users:"
   # in order to avoid email limit
   u.skip_confirmation!
   u.save!
-  u.images.create(
+  u.images.create!(
     path: Faker::File.file_name('path/to'),
     url: IMAGE,
     active: true
@@ -56,7 +56,7 @@ end
 ### PORTFOLIO ###
 puts "\n Creating portfolios:"
 (0...100).each do |n|
-  portfolio = Portfolio.create(
+  portfolio = Portfolio.create!(
     user: admin,
     # Alternate hidden attribute between hidden=true and hidden=false
     hidden: n%2==0 ? true : false,
@@ -76,15 +76,15 @@ end
 
 ### LINKS ###
 puts "\n Creating links:"
-%w(github stack-overflow google-plus twitter linkedin freelancer).each do |social_media|
-  Link.create(social_media: social_media)
+%w(github stack-overflow google-plus twitter linkedin freelancer).each do |media|
+  Link.create!(social_media: media)
   print '.'
 end
 
 ### USER LINKS ###
 puts "\n Creating user links:"
 Link.all.each do |link|
-  UserLink.create(
+  UserLink.create!(
     user: admin,
     link: link,
     url: Faker::Internet.url
@@ -95,14 +95,14 @@ end
 ### SKILLS ###
 puts "\n Creating skills:"
 %w(mysql python php ruby rails mongodb).each do |skill|
-  Skill.create(name: skill)
+  Skill.create!(superpower: skill)
   print '.'
 end
 
 ### USER SKILLS ###
 puts "\n Creating user skills:"
 User.all.each do |user|
-  UserSkill.create(
+  UserSkill.create!(
     skill: Skill.all.shuffle[0],
     user: user,
     description: Faker::Hacker.say_something_smart,
@@ -114,7 +114,7 @@ end
 ### PORTFOLIO SKILLS ###
 puts "\n Creating portfolio skills:"
 Portfolio.all.each do |portfolio|
-  PortfolioSkill.create(
+  PortfolioSkill.create!(
     skill: Skill.all.shuffle[0],
     portfolio: portfolio
   )
@@ -124,13 +124,13 @@ end
 ### SERVICES ###
 puts "\n Creating services:"
 (0...100).each do |n|
-  service = Service.create(
+  service = Service.create!(
     user: admin,
     active: n<4 ? true : false,
     title: Faker::Name.title,
     description: Faker::Hacker.say_something_smart
   )
-  service.images.create(
+  service.images.create!(
     path: Faker::File.file_name('path/to'),
     url: IMAGE,
     active: true
@@ -141,7 +141,7 @@ end
 ### PHONES ###
 puts "\n Creating phones:"
 (0...10).each do
-  Phone.create(
+  Phone.create!(
     user: admin,
     country_code: Faker::Address.country_code,
     area_code: Faker::PhoneNumber.area_code,
@@ -155,7 +155,7 @@ end
 ### ADDRESSES ###
 puts "\n Creating addresses:"
 (0...10).each do
-  Address.create(
+  Address.create!(
     user: admin,
     city: Faker::Address.city,
     street_name: Faker::Address.street_name,
@@ -176,7 +176,7 @@ end
 ### LANGUAGES ###
 puts "\n Creating languages:"
 (0...10).each do
-  Language.create(
+  Language.create!(
     user: admin,
     name: Faker::App.name,
     description: Faker::Hacker.say_something_smart,
@@ -189,22 +189,24 @@ end
 ### CATEGORIES ###
 puts "\n Creating categories:"
 %w(programming database front-end back-end algorithms mongodb).each do |cat|
-  Category.create(name: cat)
+  Category.create!(topic: cat)
   print '.'
 end
 
 ### ARTICLES ###
 puts "\n Creating articles:"
 (0...100).each do |n|
-  article = Article.create(
+	title = Faker::Name.title
+  article = Article.create!(
     user: admin,
     published: n%2==0 ? true : false,
-    title: Faker::Name.title,
+    title: title,
+    slug: title.parameterize,
     description: Faker::Hacker.say_something_smart,
     content: Faker::Lorem.paragraph,
     publication_date: Time.now
   )
-  article.images.create(
+  article.images.create!(
     path: Faker::File.file_name('path/to'),
     url: IMAGE,
     active: true
@@ -216,7 +218,7 @@ end
 puts "\n Creating article categories:"
 Article.all.each do |art|
   Category.all.shuffle[1..-1].each do |cat|
-    ArticleCategory.create(
+    ArticleCategory.create!(
       article: art,
       category: cat
     )
@@ -229,7 +231,7 @@ puts "\n Creating comments:"
 Article.all.each do |article|
   # create 10 comments per article
   (0...10).each do |n|
-    Comment.create(
+    Comment.create!(
       article: article,
       user: n%2==0 ? admin : User.all.shuffle[0],
       content: Faker::Lorem.paragraph,
@@ -241,7 +243,7 @@ end
 ### CONTACTS ###
 puts "\n Creating contacts:"
 (0...100).each do
-  Contact.create(
+  Contact.create!(
     name: Faker::Name.name,
     email: Faker::Internet.email,
     message: Faker::Hacker.say_something_smart
