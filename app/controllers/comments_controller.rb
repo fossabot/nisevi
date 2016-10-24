@@ -8,10 +8,9 @@ class CommentsController < ApplicationController
         @comments = @article.comments.order('id DESC').page(params[:page]).per(5)
 				format.html { redirect_to @article, notice: 'Comment was successfully created.' }
 				format.js   { }
-				format.json { render json: @comment, status: :created, location: @comment }
 			else
-				format.html { render @article }
-				format.json { render json: @comment.errors, status: :unprocessable_entity }
+        flash[:error] = 'The comment was not created.'
+        redirect_to request.referer || root_path
 			end
 		end
   end

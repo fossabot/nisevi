@@ -1,19 +1,11 @@
 class ApplicationController < ActionController::Base
   include Pundit
 
-  before_action :social_links
-
   rescue_from Pundit::NotAuthorizedError, AuthorizationNotPerformedError, with: :user_not_authorized
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
-
-  helper_method :check_omniauth_provider?
-
-  def check_omniauth_provider?
-    session[:check_omniauth_provider].present?
-  end
+  protect_from_forgery prepend: true, with: :exception
 
   unless Rails.application.config.consider_all_requests_local
     rescue_from ActionView::MissingTemplate, ActionController::RoutingError, ActiveRecord::RecordNotFound, with: -> { render_404  }
@@ -25,6 +17,8 @@ class ApplicationController < ActionController::Base
       format.all { render nothing: true, status: 404 }
     end
   end
+
+  helper_method :social_links
 
   # Footer social links.
   def social_links

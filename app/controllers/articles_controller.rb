@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+    @article = Article.find_by_slug!(params[:id])
     @comments = @article.comments.order('id DESC').page(params[:page]).per(5)
   end
 
@@ -14,7 +14,7 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article = Article.find(params[:id])
+    @article = Article.find_by_slug!(params[:id])
     authorize @article
   end
 
@@ -29,7 +29,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @article = Article.find(params[:id])
+    @article = Article.find_by_slug!(params[:id])
     authorize @article
     if @article.update(article_params)
       redirect_to @article
@@ -39,7 +39,7 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
+    @article = Article.find_by_slug!(params[:id])
     authorize @article
     @article.destroy
     redirect_to articles_path
