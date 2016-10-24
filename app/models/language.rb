@@ -4,7 +4,7 @@
 #
 #  id           :integer          not null, primary key
 #  user_id      :integer
-#  name         :string(200)
+#  name         :string(200)      not null
 #  description  :text
 #  url_language :string(200)
 #  obtained     :date
@@ -14,4 +14,6 @@
 
 class Language < ApplicationRecord
   belongs_to :user, inverse_of: :languages
+
+	validates :name, presence: true
 end

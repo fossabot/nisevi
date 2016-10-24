@@ -4,9 +4,9 @@
 #
 #  id           :integer          not null, primary key
 #  user_id      :integer
-#  client       :string
-#  description  :string
-#  title        :string
+#  client       :string           not null
+#  description  :string           not null
+#  title        :string           not null
 #  url_project  :string
 #  date_project :date
 #  hidden       :boolean
@@ -22,8 +22,8 @@ class Portfolio < ApplicationRecord
 
   has_many :images, dependent: :destroy, inverse_of: :portfolio
 
+  validates :client, :description, :title, presence: true
+
   scope :published, -> { where(hidden: false) }
   scope :unpublished, -> { where(hidden: true) }
-
-
 end

@@ -3,7 +3,7 @@
 # Table name: skills
 #
 #  id         :integer          not null, primary key
-#  name       :string
+#  superpower :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -14,4 +14,6 @@ class Skill < ApplicationRecord
 
   has_many :portfolio_skills, dependent: :destroy
   has_many :portfolios, through: :portfolio_skills
+
+	validates :superpower, presence: true
 end

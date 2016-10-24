@@ -3,8 +3,8 @@
 # Table name: identities
 #
 #  id         :integer          not null, primary key
-#  provider   :string
-#  uid        :string
+#  provider   :string           not null
+#  uid        :string           not null
 #  token      :string
 #  secret     :string
 #  expires    :boolean
@@ -20,8 +20,8 @@ class Identity < ApplicationRecord
 
   has_many :images, dependent: :destroy, inverse_of: :identity
 
-  validates_presence_of :uid, :provider
-  validates_uniqueness_of :uid, :scope => :provider
+  validates :uid, :provider, :raw_info, presence: true
+  validates :uid, uniqueness: {scope: :provider}
 
   def self.find_with_omniauth(auth)
     find_by(uid: auth.uid, provider: auth.provider)

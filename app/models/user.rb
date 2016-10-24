@@ -6,8 +6,6 @@
 #  first_name             :string
 #  last_name              :string
 #  location               :string
-#  image_path             :string
-#  image_url              :string
 #  email                  :string           not null
 #  encrypted_password     :string           not null
 #  username               :string
@@ -51,8 +49,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :omniauthable,
          :confirmable, :recoverable, :rememberable, :trackable, :validatable
 
-  validates_presence_of :email
-  validates_uniqueness_of :email
+  validates :email, presence: true, uniqueness: true
 
   def freelance_site
     freelance_media = User.select('users.id, user_links.url, links.social_media')
@@ -97,7 +94,6 @@ class User < ApplicationRecord
     def create_from_omniauth(auth)
         User.new(
           username: auth.info.nickname || '',
-          image_url: auth.info.image,
           email: auth.info.email,
           password: Devise.friendly_token,
           first_name: auth.info.first_name,

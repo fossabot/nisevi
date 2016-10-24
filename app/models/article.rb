@@ -3,9 +3,10 @@
 # Table name: articles
 #
 #  id               :integer          not null, primary key
-#  title            :string
-#  description      :text
-#  content          :text
+#  title            :string           not null
+#  slug             :string           not null
+#  description      :text             not null
+#  content          :text             not null
 #  published        :boolean          default(FALSE)
 #  publication_date :date
 #  user_id          :integer
@@ -22,9 +23,25 @@ class Article < ApplicationRecord
   has_many :comments, dependent: :destroy, inverse_of: :article
   has_many :images, dependent: :destroy, inverse_of: :article
 
+  after_create :update_slug
+  before_update :assign_slug
+
   validates :title, presence: true, length: { maximum: 100 }
-  validates :content, presence: true
+  validates :content, :slug, :description, :content, presence: true
 
   scope :published, -> { where(published: true) }
   scope :unpublished, -> { where(published: false) }
+
+	def to_param
+		slug
+	end
+
+  private
+		def assign_slug
+		  self.slug = "#{id}-#{title.parameterize}"
+		end
+
+		def update_slug
+			update_attributes slug: assign_slug
+		end
 end
