@@ -23,7 +23,7 @@ gem 'therubyracer', '~> 0.12.2'
 gem 'jquery-rails'
 
 ## Font-Awesome ##
-gem "font-awesome-sass"
+gem 'font-awesome-sass'
 
 ## Humanize ##
 gem 'humanize'
@@ -37,7 +37,7 @@ gem 'rmagick'
 ## Pagination ##
 # Using the master branch on github in order to have
 # params on the first page: https://github.com/amatsuda/kaminari/issues/44
-gem 'kaminari', git: "https://github.com/amatsuda/kaminari", branch: "master"
+gem 'kaminari', git: 'https://github.com/amatsuda/kaminari', branch: 'master'
 
 ## Sideqik ##
 gem 'sidekiq', '~> 4.1'
@@ -46,7 +46,7 @@ gem 'sidekiq', '~> 4.1'
 gem 'ckeditor'
 
 ## reCAPTCHA ##
-gem "recaptcha", require: "recaptcha/rails"
+gem 'recaptcha', require: 'recaptcha/rails'
 
 ## GOOGLE ANALYTICS ##
 gem 'google-analytics-rails', '1.1.0'
@@ -73,4 +73,4 @@ group :development, :test do
   gem 'annotate', '~> 2.7', '>= 2.7.1'
 end
 
-gem "spring", group: :development
+gem 'spring', group: :development
