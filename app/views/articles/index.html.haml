@@ -18,7 +18,7 @@
     - @articles.each do |article|
       .row.gray-bg.row-btm20
         .col-md-3.nopadding-left
-          %img.img.img-responsive{ src: "#{article.image_url}", alt: "" }
+          %img.img.img-responsive{ src: "#{article.images.active.first.url}", alt: "" }
         .col-md-9
           %h2
             %a{href: article_path(article)}= article.title

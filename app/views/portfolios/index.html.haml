@@ -27,7 +27,7 @@
               = portfolio.client
             %p
               %strong Skills:
-              = portfolio.skills.map{|skill| skill.name}.join("/ ")
+              = portfolio.skills.map{|skill| skill.superpower}.join("/ ")
             %p.text-right
               %a.no_decoration.black-button.black-to-white{ href: "#{portfolio.url_project}", target: "_blank" } Visit Project
     .row.row-btm20

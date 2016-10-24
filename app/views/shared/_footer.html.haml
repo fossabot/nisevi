@@ -4,7 +4,7 @@
     .row
       .col-sm-8.col-sm-offset-2.text-center
         %ul.social-links
-          - @social_links.each do |link|
+          - social_links.each do |link|
             - cache link do
               %li
                 %a{href: "#{link.url}",  target: "_blank"}>

@@ -1,14 +1,14 @@
 #comment.row.gray-bg
   .col-md-12.col-xs-12
     .col-md-1.col-xs-1
-      %img.img-circle.img.img-responsive{ src: "#{comment.user.image_url}", alt: "" }
+      %img.img-circle.img.img-responsive{ src: "#{comment.user.images.active.first.url}", alt: '' }
     .col-md-10.col-xs-10
       %h3= "#{comment.user.first_name} #{comment.created_at.strftime("%F")}"
       %p= comment.content
     .col-md-1.col-xs-1
       - if current_user and current_user.try(:admin)
-        = button_to [comment.article, comment], method: :delete, class: "btn btn-danger", remote: true do
+        = button_to [comment.article, comment], method: :delete, class: 'btn btn-danger', remote: true do
           %span.glyphicon.glyphicon-trash
       - elsif user_signed_in? and comment.user_id == current_user.try(:id)
-        = button_to [comment.article, comment], method: :delete, class: "btn btn-danger", remote: true do
+        = button_to [comment.article, comment], method: :delete, class: 'btn btn-danger', remote: true do
           %span.glyphicon.glyphicon-trash

@@ -97,7 +97,7 @@
                     = work.client
                   %p
                     %strong Skills:
-                    = work.skills.map{|skill| skill.name}.join('/ ')
+                    = work.skills.map{|skill| skill.superpower}.join('/ ')
                   %p
                     %a.no_decoration.black-button.black-to-white{ href: "#{work.url_project}", target: '_blank' } Visit Project
                 .col-md-6

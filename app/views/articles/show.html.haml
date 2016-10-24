@@ -32,6 +32,9 @@
     .row.padding-top-bottom.gray-bg
       .col-md-10.col-md-offset-1
         - if user_signed_in?
-          = render "comments/form"
+          = render 'comments/form'
         - else
-          %h4 Please sign in if you want to leave a comment.
+          %h4
+            Please
+            =link_to "sign in", new_user_session_path
+            if you want to leave a comment.
