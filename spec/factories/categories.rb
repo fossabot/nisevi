@@ -3,13 +3,13 @@
 # Table name: categories
 #
 #  id         :integer          not null, primary key
-#  name       :string
+#  topic      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 FactoryGirl.define do
   factory :category do
-    name Faker::Color.color_name
+	  topic Faker::Color.color_name
   end
 end

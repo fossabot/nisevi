@@ -6,8 +6,8 @@ class CreateImages < ActiveRecord::Migration[5.0]
       t.references :article, index: true, foreign_key: true
       t.references :service, index: true, foreign_key: true
       t.references :portfolio, index: true, foreign_key: true
-      t.text :url
-      t.text :path
+      t.text :url, null: false
+      t.text :path, null: false
       t.boolean :active, default: false
 
       t.timestamps

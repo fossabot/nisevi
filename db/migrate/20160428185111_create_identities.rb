@@ -1,8 +1,8 @@
 class CreateIdentities < ActiveRecord::Migration
   def change
     create_table :identities do |t|
-      t.string :provider
-      t.string :uid
+      t.string :provider, null: false
+      t.string :uid, null: false
       t.string :token
       t.string :secret
       t.boolean :expires

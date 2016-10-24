@@ -6,7 +6,7 @@
 #  user_id     :integer
 #  skill_id    :integer
 #  description :text
-#  url         :string
+#  url         :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

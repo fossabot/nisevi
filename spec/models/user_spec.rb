@@ -6,8 +6,6 @@
 #  first_name             :string
 #  last_name              :string
 #  location               :string
-#  image_path             :string
-#  image_url              :string
 #  email                  :string           not null
 #  encrypted_password     :string           not null
 #  username               :string

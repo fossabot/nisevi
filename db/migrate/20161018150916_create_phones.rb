@@ -5,7 +5,7 @@ class CreatePhones < ActiveRecord::Migration[5.0]
       t.string :country_code
       t.string :area_code
       t.string :extension
-      t.string :number
+      t.string :number, null: false
       t.text :notes
 
       t.timestamps

@@ -17,12 +17,12 @@ ActiveRecord::Schema.define(version: 20161022125257) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "city"
-    t.string   "street_name"
-    t.string   "street_number"
+    t.string   "city",              null: false
+    t.string   "street_name",       null: false
+    t.string   "street_number",     null: false
     t.string   "secondary_address"
     t.string   "building_number"
-    t.string   "zip_code"
+    t.string   "zip_code",          null: false
     t.string   "time_zone"
     t.string   "state"
     t.string   "state_abbr"
@@ -44,26 +44,28 @@ ActiveRecord::Schema.define(version: 20161022125257) do
   end
 
   create_table "articles", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.text     "content"
+    t.string   "title",                            null: false
+    t.string   "slug",                             null: false
+    t.text     "description",                      null: false
+    t.text     "content",                          null: false
     t.boolean  "published",        default: false
     t.date     "publication_date"
     t.integer  "user_id"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+    t.index ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
     t.index ["user_id"], name: "index_articles_on_user_id", using: :btree
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name"
+    t.string   "topic",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_categories_on_name", unique: true, using: :btree
+    t.index ["topic"], name: "index_categories_on_topic", unique: true, using: :btree
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text     "content"
+    t.text     "content",    null: false
     t.integer  "article_id"
     t.integer  "user_id"
     t.datetime "created_at", null: false
@@ -73,16 +75,16 @@ ActiveRecord::Schema.define(version: 20161022125257) do
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "message"
+    t.string   "name",       null: false
+    t.string   "email",      null: false
+    t.string   "message",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "identities", force: :cascade do |t|
-    t.string   "provider"
-    t.string   "uid"
+    t.string   "provider",                  null: false
+    t.string   "uid",                       null: false
     t.string   "token"
     t.string   "secret"
     t.boolean  "expires"
@@ -100,8 +102,8 @@ ActiveRecord::Schema.define(version: 20161022125257) do
     t.integer  "article_id"
     t.integer  "service_id"
     t.integer  "portfolio_id"
-    t.text     "url"
-    t.text     "path"
+    t.text     "url",                          null: false
+    t.text     "path",                         null: false
     t.boolean  "active",       default: false
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
@@ -114,7 +116,7 @@ ActiveRecord::Schema.define(version: 20161022125257) do
 
   create_table "languages", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "name",         limit: 200
+    t.string   "name",         limit: 200, null: false
     t.text     "description"
     t.string   "url_language", limit: 200
     t.date     "obtained"
@@ -124,7 +126,7 @@ ActiveRecord::Schema.define(version: 20161022125257) do
   end
 
   create_table "links", force: :cascade do |t|
-    t.string   "social_media"
+    t.string   "social_media", null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["social_media"], name: "index_links_on_social_media", unique: true, using: :btree
@@ -135,7 +137,7 @@ ActiveRecord::Schema.define(version: 20161022125257) do
     t.string   "country_code"
     t.string   "area_code"
     t.string   "extension"
-    t.string   "number"
+    t.string   "number",       null: false
     t.text     "notes"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
@@ -153,9 +155,9 @@ ActiveRecord::Schema.define(version: 20161022125257) do
 
   create_table "portfolios", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "client"
-    t.string   "description"
-    t.string   "title"
+    t.string   "client",       null: false
+    t.string   "description",  null: false
+    t.string   "title",        null: false
     t.string   "url_project"
     t.date     "date_project"
     t.boolean  "hidden"
@@ -166,8 +168,8 @@ ActiveRecord::Schema.define(version: 20161022125257) do
 
   create_table "services", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "title"
-    t.string   "description"
+    t.string   "title",                       null: false
+    t.string   "description",                 null: false
     t.boolean  "active",      default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
@@ -175,16 +177,16 @@ ActiveRecord::Schema.define(version: 20161022125257) do
   end
 
   create_table "skills", force: :cascade do |t|
-    t.string   "name"
+    t.string   "superpower", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_skills_on_name", unique: true, using: :btree
+    t.index ["superpower"], name: "index_skills_on_superpower", unique: true, using: :btree
   end
 
   create_table "user_links", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "link_id"
-    t.string   "url"
+    t.string   "url",        null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["link_id"], name: "index_user_links_on_link_id", using: :btree
@@ -195,7 +197,7 @@ ActiveRecord::Schema.define(version: 20161022125257) do
     t.integer  "user_id"
     t.integer  "skill_id"
     t.text     "description"
-    t.string   "url"
+    t.string   "url",         null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["skill_id"], name: "index_user_skills_on_skill_id", using: :btree

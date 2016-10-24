@@ -4,9 +4,9 @@
 #
 #  id           :integer          not null, primary key
 #  user_id      :integer
-#  client       :string
-#  description  :string
-#  title        :string
+#  client       :string           not null
+#  description  :string           not null
+#  title        :string           not null
 #  url_project  :string
 #  date_project :date
 #  hidden       :boolean

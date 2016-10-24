@@ -3,8 +3,8 @@
 # Table name: identities
 #
 #  id         :integer          not null, primary key
-#  provider   :string
-#  uid        :string
+#  provider   :string           not null
+#  uid        :string           not null
 #  token      :string
 #  secret     :string
 #  expires    :boolean

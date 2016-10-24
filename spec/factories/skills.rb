@@ -3,13 +3,13 @@
 # Table name: skills
 #
 #  id         :integer          not null, primary key
-#  name       :string
+#  superpower :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 FactoryGirl.define do
   factory :skill do
-    name Faker::Hacker.verb
+	  superpower Faker::Hacker.verb
   end
 end

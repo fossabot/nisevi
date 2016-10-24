@@ -3,9 +3,10 @@
 # Table name: articles
 #
 #  id               :integer          not null, primary key
-#  title            :string
-#  description      :text
-#  content          :text
+#  title            :string           not null
+#  slug             :string           not null
+#  description      :text             not null
+#  content          :text             not null
 #  published        :boolean          default(FALSE)
 #  publication_date :date
 #  user_id          :integer
