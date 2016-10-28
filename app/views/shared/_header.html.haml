@@ -2,26 +2,32 @@
 %nav#main-nav.navbar.navbar-default.navbar-fixed-top
   .container
     .navbar-header
-      %button.navbar-toggle.collapsed{ "type": "button", "data-toggle": "collapse", "data-target": "#site-nav", "aria-expanded": "false", "aria-controls": "navbar" }
+      %button.navbar-toggle.collapsed{ 'type': 'button', 'data-toggle': 'collapse', 'data-target': '#site-nav', 'aria-expanded': 'false', 'aria-controls': 'navbar' }
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
       <!-- ======= LOGO (for small screens)========-->
-      %a.navbar-brand.visible-xs{href: "#home"} NSV
+      %a.navbar-brand.visible-xs{href: '#home'} NSV
 
     #site-nav.navbar-collapse.collapse
       %ul.nav.navbar-nav.nav-tabs
-        %li
-          %a{role:"presentation", href: "#{root_path}#home"} HOME
-        %li
-          %a{role:"presentation", href: "#{root_path}#services"} WHAT I DO
-        %li
-          %a{role:"presentation", href: "#{root_path}#about"} ABOUT ME
-        %li
-          %a{role:"presentation", href: "#{root_path}#work"} MY WORKS
-        %li
-          %a{role:"presentation", href: "#{root_path}#blog"} BLOG
-        %li
-          %a{role:"presentation", href: "#{root_path}#contact_me"} CONTACT ME
-
-
+        - {'#home'=> 'HOME',
+          '#services'=> 'WHAT I DO',
+          '#about'=> 'ABOUT ME',
+          '#work'=> 'MY WORKS',
+          '#blog'=> 'BLOG',
+          '#contact_me'=> 'CONTACT ME'}.each do |link, value|
+          %li
+            - if current_page?(root_path)
+              = link_to value, "#{link}"
+            - elsif link == '#work'
+              = link_to value, portfolios_path
+            - elsif link == '#blog'
+              = link_to value, articles_path
+            - else
+              = link_to value, "#{root_path}#{link}"
+      %ul.nav.navbar-nav.nav-tabs.navbar-right
+        - if user_signed_in? && controller_name == 'articles'
+          %li#profile-image.pull-right
+            - profile_image = current_user.images.active.first.url
+            = image_tag profile_image.nil? ? 'profile_default.png' : profile_image, size: '50x50'

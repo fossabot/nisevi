@@ -1,0 +1,38 @@
+%button.btn.btn-outline-primary{'type': 'button', 'data-toggle': 'modal', 'data-target': '#login-modal-lg'} Log in
+#login-modal-lg.modal.fade{'tabindex': '-1', 'role': 'dialog', 'aria-labelledby': 'title-label'}
+  .modal-dialog{role: 'document'}
+    .modal-content
+      .modal-header
+        %button.close{'type': 'button', 'data-dismiss': 'modal', 'aria-label': 'Close'}
+          %span{'aria-hidden': 'true'}
+            &times;
+        #title-label.modal-title.text-center Log in
+      .modal-body
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .form-group
+            = f.label :email, class: 'col-xs-12 col-sm-3 control-label'
+            = f.email_field :email, autofocus: true, autocomplete: 'off', required: true,  class: 'form-control input-lg', placeholder: 'Email'
+          .form-group
+            = f.label :password, class: 'control-label'
+            = f.password_field :password, autocomplete: 'off', class: 'form-control input-lg', required: true
+          .form-group
+            - if devise_mapping.rememberable?
+              = f.check_box :remember_me
+              = f.label :remember_me
+            = f.submit 'Log in', class: 'btn btn-lg btn-primary btn-block'
+      .modal-footer
+        %ul.text-left.custom-bullet
+          - if devise_mapping.registerable? && !%w(registrations).include?(controller_name)
+            %li
+              = link_to 'Sign up', new_registration_path(resource_name)
+          - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+            %li
+              = link_to 'Forgot your password?', new_password_path(resource_name)
+          - if devise_mapping.confirmable? && controller_name != 'confirmations'
+            %li
+              = link_to "Didn't receive confirmation email?", new_confirmation_path(resource_name)
+          - if devise_mapping.omniauthable?
+            %li
+              %a Log into with:
+              - resource.class.omniauth_providers.each do |provider|
+                = link_to content_tag(:span, '', class: "fa fa-#{provider} fa-fw"), omniauth_authorize_path(resource_name, provider)

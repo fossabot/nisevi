@@ -8,23 +8,23 @@
           .col-xs-12.col-sm-12.col-md-12.col-lg-12
             = f.label :email
           .col-xs-12.col-sm-12.col-md-12.col-lg-12.row-btm20
-            = f.email_field :email, autofocus: true, autocomplete: "off", required: true,  class: "form-control input-lg", placeholder: "Email"
+            = f.email_field :email, autofocus: true, autocomplete: 'off', required: true,  class: 'form-control input-lg', placeholder: 'Email'
         .form-group
           .col-xs-12.col-sm-12.col-md-12.col-lg-12
-            = f.label :password, class: "control-label"
+            = f.label :password, class: 'control-label'
             - if @minimum_password_length
               %em
                 (#{@minimum_password_length} characters minimum)
           .col-xs-12.col-sm-12.col-md-12.col-lg-12.row-btm20
-            = f.password_field :password, autocomplete: "off", class: "form-control input-lg", required: true
+            = f.password_field :password, autocomplete: 'off', class: 'form-control input-lg', required: true
         .form-group
           .col-xs-12.col-sm-12.col-md-12.col-lg-12
-            = f.label :password_confirmation, class: "control-label"
+            = f.label :password_confirmation, class: 'control-label'
           .col-xs-12.col-sm-12.col-md-12.col-lg-12.row-btm20
-            = f.password_field :password_confirmation, autocomplete: "off", class: "form-control input-lg", required: true
+            = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control input-lg', required: true
         .form-group
           .col-xs-12.col-sm-12.col-md-12.col-lg-12.row-btm20
-            = f.submit "Sign up", class: "btn btn-lg btn-primary btn-block"
+            = f.submit 'Sign up', class: 'btn btn-lg btn-primary btn-block'
   .row
     .col-md-8.col-md-offset-2
-      = render "devise/shared/links"
+      = render 'shared/links'

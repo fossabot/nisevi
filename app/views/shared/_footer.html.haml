@@ -7,8 +7,8 @@
           - social_links.each do |link|
             - cache link do
               %li
-                %a{href: "#{link.url}",  target: "_blank"}>
+                %a{href: "#{link.url}",  target: '_blank'}>
                   %i{class: "fa fa-#{link.social_media} fa-fw"}
       .col-sm-2.text-right
         %span#cdSiteSeal2
-          %script{ type:"text/javascript", src:"#{ENV["GODADDY_CERTIFICATE"]}"}
+          %script{ type:'text/javascript', src:"#{ENV['GODADDY_CERTIFICATE']}"}

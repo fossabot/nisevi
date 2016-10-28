@@ -1,5 +1,3 @@
-= render "shared/header"
-
 <!--============= ARTICLE =============-->
 %section#article
   .container
@@ -18,7 +16,7 @@
         - if @comments.empty?
           %h3 Be the first one leaving a comment for this post.
         - else
-          %h3= @comments.count == 1 ? "1 Comment" : "#{@article.comments.count} Comments"
+          %h3= @comments.count == 1 ? '1 Comment' : "#{@article.comments.count} Comments"
           #render-comments
             = render @comments
 
@@ -34,7 +32,7 @@
         - if user_signed_in?
           = render 'comments/form'
         - else
-          %h4
-            Please
-            =link_to "sign in", new_user_session_path
-            if you want to leave a comment.
+          If you want to leave a comment, please
+          = render partial: 'shared/new_session'
+          or
+          = render partial: 'shared/new_registration'
