@@ -12,15 +12,15 @@
       %td Creation Date
       %td Image
     - users.each do |user|
-      %tr{class: "#{user.admin ? "info" : "success"}"}
+      %tr{class: "#{user.admin ? 'info' : 'success'}"}
         %td= user.first_name
         %td= user.last_name
         %td= user.username
         %td= user.email
         %td= user.location
-        %td= user.date_of_birth ? user.date_of_birth.strftime("%F") : "-"
+        %td= user.date_of_birth ? user.date_of_birth.strftime("%F") : '-'
         %td= user.last_sign_in_ip
-        %td= user.last_sign_in_at ? user.last_sign_in_at.strftime("%F") : "-"
+        %td= user.last_sign_in_at ? user.last_sign_in_at.strftime("%F") : '-'
         %td= user.created_at.strftime("%F")
         %td
-          %img.image-responsive{ src: "#{user.images.active.first.url}", alt: "" }
+          = image_tag profile_image({user: user}), class: 'image-responsive', alt: ''

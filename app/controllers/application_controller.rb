@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  helper_method :social_links, :resource_name, :resource, :devise_mapping
+  helper_method :social_links, :resource_name, :resource, :devise_mapping, :profile_image
 
   # Footer social links.
   def social_links
@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     # rescue the error and return an empty array
     begin
       @social_links = User.select('users.id, user_links.url, user_links.updated_at, user_links.created_at, links.social_media')
-		                      .joins(:links)
+                          .joins(:links)
     rescue NoMethodError
       @social_links = []
     end
@@ -34,6 +34,16 @@ class ApplicationController < ActionController::Base
 
   def resource_name
     :user
+  end
+
+  def profile_image(opts={})
+    if opts[:comment]
+      opts[:comment].user.images.active.first ? opts[:comment].user.images.active.first.url : 'profile_default.png'
+    elsif opts[:user]
+      opts[:user].images.active.first ? opts[:user].images.active.first.url : 'profile_default.png'
+    else
+      current_user.images.active.first ? current_user.images.active.first.url : 'profile_default.png'
+    end
   end
 
   def resource

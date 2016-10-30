@@ -61,7 +61,7 @@
       %h1 About Me
     .row
       .col-sm-4.col-sm-offset-4
-        %img.img-responsive.img-center.img-circle{ src: "#{@admin_user ? @admin_user.images.active.first.url : ''}", alt:'' }
+        %img.img-responsive.img-center.img-circle{ src: profile_image({user: @admin_user}), alt:'' }
       .col-sm-10.col-sm-offset-1
         %p.text-center= @admin_user ? @admin_user.presentation : ''
     .row

@@ -1,7 +1,7 @@
 #comment.row.gray-bg
   .col-md-12.col-xs-12
     .col-md-1.col-xs-1
-      %img.img-circle.img.img-responsive{ src: "#{comment.user.images.active.first.url}", alt: '' }
+      = image_tag profile_image({comment: comment}), class: 'img img-circle img img-responsive', alt: ''
     .col-md-10.col-xs-10
       %h3= "#{comment.user.first_name} #{comment.created_at.strftime("%F")}"
       %p= comment.content
