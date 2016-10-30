@@ -27,7 +27,10 @@
             - else
               = link_to value, "#{root_path}#{link}"
       %ul.nav.navbar-nav.nav-tabs.navbar-right
-        - if user_signed_in? && controller_name == 'articles'
-          %li#profile-image.pull-right
-            - profile_image = current_user.images.active.first.url
-            = image_tag profile_image.nil? ? 'profile_default.png' : profile_image, size: '50x50'
+        - if user_signed_in?
+          %li#profile-menu.dropdown
+            = link_to '', class: 'dropdown-toggle ', data: {toggle: 'dropdown'}, role: 'button', aria: {expanded: 'false'} do
+              = image_tag current_user.images.active.first.nil? ? 'profile_default.png' : current_user.images.active.first.url
+            %ul#profile-options.dropdown-menu
+              %li= link_to 'Profile', edit_user_registration_path
+              %li= link_to 'Sign out', destroy_user_session_path, method: :delete

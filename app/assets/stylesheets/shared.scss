@@ -60,10 +60,15 @@
   text-align: center;
 }
 
+.nav-tabs{
+  border-bottom: 0;
+}
+
 /*-----Main Styles------*/
 html,
 body {
   height: 100%;
+  padding-top: 2em;
 }
 
 body{
@@ -169,6 +174,14 @@ a:focus,
 
 .nopadding-right {
   padding-right:0;
+}
+
+.nopadding-top {
+  padding-top:0;
+}
+
+.nopadding-bottom {
+  padding-bottom:0;
 }
 
 .img-center{
@@ -317,7 +330,6 @@ a:focus,
 }
 
 /*Links to all*/
-
 #all-works, #all-articles {
   padding-top: 1.250em;
 }
@@ -328,7 +340,23 @@ a:focus,
   font-size: 4em;
 }
 
-/*image profile on navbar*/
-#profile-image{
+/* profile image */
+#profile-menu
+{
+  a{
+    height: 2.2em;
+    width: 2em;
+    padding: 0;
+   img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
 
+#profile-options{
+  a{
+    width: 100%;
+    padding: 0.188em 1.250em;
+  }
 }

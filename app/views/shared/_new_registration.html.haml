@@ -27,11 +27,9 @@
       .modal-footer
         %ul.text-left.custom-bullet
           - if !%w(sessions).include?(controller_name)
-            %li
-              = link_to 'Log in', new_session_path(resource_name)
+            %li= link_to 'Log in', new_session_path(resource_name)
           - if devise_mapping.confirmable? && controller_name != 'confirmations'
-            %li
-              = link_to "Didn't receive confirmation email?", new_confirmation_path(resource_name)
+            %li= link_to "Didn't receive confirmation email?", new_confirmation_path(resource_name)
           - if devise_mapping.omniauthable?
             %li
               %a Log into with:
