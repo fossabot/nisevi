@@ -18,22 +18,43 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  helper_method :social_links
+  helper_method :social_links, :resource_name, :resource, :devise_mapping
 
   # Footer social links.
   def social_links
     # If no data was added to the database,
     # rescue the error and return an empty array
     begin
-      @social_links = User.select('users.id, user_links.url, links.social_media').joins(:links)
-    rescue NoMethodError => e
+      @social_links = User.select('users.id, user_links.url, user_links.updated_at, user_links.created_at, links.social_media')
+		                      .joins(:links)
+    rescue NoMethodError
       @social_links = []
     end
   end
 
+  def resource_name
+    :user
+  end
+
+  def resource
+    @resource ||= User.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
+
+  def after_sign_in_path_for(resource)
+    request.referer ? URI.parse(request.referer).path : root_path
+  end
+
+  def after_sign_out_path_for(resource)
+    request.referer ? URI.parse(request.referer).path : root_path
+  end
+
   private
     def user_not_authorized
-      flash[:alert] = "You are not authorized to perform this action."
+      flash[:alert] = 'You are not authorized to perform this action.'
       redirect_to(request.referrer || root_path)
     end
 
