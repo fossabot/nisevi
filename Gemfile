@@ -1,63 +1,29 @@
 source 'https://rubygems.org'
+ruby '2.3.1'
 
-
-## Rails ##
 gem 'rails', '~> 5.0'
-
-## PostgreSQL ##
 gem 'pg', '~> 0.18.4'
-
-## AWS ##
-gem 'aws-sdk', '~> 2'
-
-## CoffeeScript ##
+gem 'aws-sdk-rails'
 gem 'coffee-rails'
-
-## SCSS ##
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
-
-## JavaScript ##
 gem 'uglifier', '>= 1.3.0'
 gem 'therubyracer', '~> 0.12.2'
 gem 'jquery-rails'
-
-## Font-Awesome ##
 gem 'font-awesome-sass'
-
-## Humanize ##
 gem 'humanize'
-
-## HAML ##
 gem 'haml', '~> 4.0', '>= 4.0.7'
-
-## Image processing ##
 gem 'rmagick'
-
-## Pagination ##
-# Using the master branch on github in order to have
-# params on the first page: https://github.com/amatsuda/kaminari/issues/44
-gem 'kaminari', git: 'https://github.com/amatsuda/kaminari', branch: 'master'
-
-## Sideqik ##
+gem 'kaminari', git: 'https://github.com/amatsuda/kaminari', branch: 'master' #https://github.com/amatsuda/kaminari/issues/44
 gem 'sidekiq', '~> 4.1'
-
-## WYSIWYG ##
+gem 'paperclip', '~> 5.0.0'
 gem 'ckeditor'
-
-## reCAPTCHA ##
 gem 'recaptcha', require: 'recaptcha/rails'
-
-## GOOGLE ANALYTICS ##
 gem 'google-analytics-rails', '1.1.0'
-
-## Elasticsearch ##
 gem 'elasticsearch'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'elasticsearch-persistence'
-
-## Authentication ##
 gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'devise'
 gem 'omniauth-github'
