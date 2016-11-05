@@ -158,21 +158,25 @@ ActiveRecord::Schema.define(version: 20161022125257) do
     t.string   "client",       null: false
     t.string   "description",  null: false
     t.string   "title",        null: false
+    t.string   "slug",         null: false
     t.string   "url_project"
     t.date     "date_project"
     t.boolean  "hidden"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["slug"], name: "index_portfolios_on_slug", unique: true, using: :btree
     t.index ["user_id"], name: "index_portfolios_on_user_id", using: :btree
   end
 
   create_table "services", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title",                       null: false
+    t.string   "slug",                        null: false
     t.string   "description",                 null: false
     t.boolean  "active",      default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.index ["slug"], name: "index_services_on_slug", unique: true, using: :btree
     t.index ["user_id"], name: "index_services_on_user_id", using: :btree
   end
 

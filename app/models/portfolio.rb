@@ -7,6 +7,7 @@
 #  client       :string           not null
 #  description  :string           not null
 #  title        :string           not null
+#  slug         :string           not null
 #  url_project  :string
 #  date_project :date
 #  hidden       :boolean
@@ -21,6 +22,8 @@ class Portfolio < ApplicationRecord
   has_many :skills, through: :portfolio_skills
 
   has_many :images, dependent: :destroy, inverse_of: :portfolio
+
+  include Slug
 
   validates :client, :description, :title, presence: true
 

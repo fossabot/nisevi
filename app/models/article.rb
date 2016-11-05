@@ -23,25 +23,18 @@ class Article < ApplicationRecord
   has_many :comments, dependent: :destroy, inverse_of: :article
   has_many :images, dependent: :destroy, inverse_of: :article
 
-  after_create :update_slug
-  before_update :assign_slug
+  include Slug
 
   validates :title, presence: true, length: { maximum: 100 }
-  validates :content, :slug, :description, :content, presence: true
+  validates :content, :description, :content, presence: true
+  validate :publication_date_cannot_be_in_the_past
 
   scope :published, -> { where(published: true) }
   scope :unpublished, -> { where(published: false) }
 
-	def to_param
-		slug
-	end
-
-  private
-		def assign_slug
-		  self.slug = "#{id}-#{title.parameterize}"
-		end
-
-		def update_slug
-			update_attributes slug: assign_slug
-		end
+  def publication_date_cannot_be_in_the_past
+    if publication_date.present? && publication_date < Date.today
+      errors.add(:publication_date, "can't be in the past")
+    end
+  end
 end

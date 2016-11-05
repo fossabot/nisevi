@@ -201,7 +201,6 @@ puts "\n Creating articles:"
     user: admin,
     published: n%2==0 ? true : false,
     title: title,
-    slug: title.parameterize,
     description: Faker::Hacker.say_something_smart,
     content: Faker::Lorem.paragraph,
     publication_date: Time.now
