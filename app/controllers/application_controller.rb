@@ -41,8 +41,10 @@ class ApplicationController < ActionController::Base
       opts[:comment].user.images.active.first ? opts[:comment].user.images.active.first.url : 'profile_default.png'
     elsif opts[:user]
       opts[:user].images.active.first ? opts[:user].images.active.first.url : 'profile_default.png'
-    else
+    elsif current_user
       current_user.images.active.first ? current_user.images.active.first.url : 'profile_default.png'
+    else
+      'default.jpg'
     end
   end
 
