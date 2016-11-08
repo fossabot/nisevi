@@ -8,6 +8,7 @@
 #  description      :text             not null
 #  content          :text             not null
 #  published        :boolean          default(FALSE)
+#  accept_comments  :boolean          default(TRUE)
 #  publication_date :date
 #  user_id          :integer
 #  created_at       :datetime         not null
@@ -17,10 +18,11 @@
 FactoryGirl.define do
   factory :article do
     user nil
-    published true
     title Faker::Name.title
     description Faker::Hacker.say_something_smart
     content Faker::Lorem.paragraph
+    published true
+    accept_comments true
     publication_date Time.now
   end
 end

@@ -6,7 +6,9 @@
 #  user_id      :integer
 #  client       :string           not null
 #  description  :string           not null
+#  content      :text             not null
 #  title        :string           not null
+#  slug         :string           not null
 #  url_project  :string
 #  date_project :date
 #  hidden       :boolean
@@ -16,13 +18,13 @@
 
 FactoryGirl.define do
   factory :portfolio do
-    hidden false
+    user nil
     client Faker::Company.name
-    date_project Time.now
     description Faker::Hacker.say_something_smart
+    content Faker::Lorem.paragraph
+    hidden false
+    date_project Time.now
     title Faker::Book.title
-    image_url Faker::Avatar.image
-    image_path Faker::File.file_name('path/to')
     url_project Faker::Internet.url
   end
 end
