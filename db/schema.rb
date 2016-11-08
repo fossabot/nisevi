@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20161022125257) do
     t.text     "description",                      null: false
     t.text     "content",                          null: false
     t.boolean  "published",        default: false
+    t.boolean  "accept_comments",  default: true
     t.date     "publication_date"
     t.integer  "user_id"
     t.datetime "created_at",                       null: false
@@ -157,6 +158,7 @@ ActiveRecord::Schema.define(version: 20161022125257) do
     t.integer  "user_id"
     t.string   "client",       null: false
     t.string   "description",  null: false
+    t.text     "content",      null: false
     t.string   "title",        null: false
     t.string   "slug",         null: false
     t.string   "url_project"
@@ -173,6 +175,7 @@ ActiveRecord::Schema.define(version: 20161022125257) do
     t.string   "title",                       null: false
     t.string   "slug",                        null: false
     t.string   "description",                 null: false
+    t.text     "content",                     null: false
     t.boolean  "active",      default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false

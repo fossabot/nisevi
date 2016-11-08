@@ -6,6 +6,7 @@ class CreateArticles < ActiveRecord::Migration
       t.text :description, null: false
       t.text :content, null: false
       t.boolean :published, default: false
+      t.boolean :accept_comments, default: true
       t.date :publication_date
       t.references :user, index: true, foreign_key: true
 

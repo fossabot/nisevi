@@ -5,6 +5,7 @@ class CreateServices < ActiveRecord::Migration[5.0]
       t.string :title, null: false
       t.string :slug, null: false
       t.string :description, null: false
+      t.text :content, null: false
       t.boolean :active, default: false
 
       t.timestamps

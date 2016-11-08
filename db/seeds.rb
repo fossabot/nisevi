@@ -63,6 +63,7 @@ puts "\n Creating portfolios:"
     client: Faker::Company.name,
     date_project: Time.now,
     description: Faker::Hacker.say_something_smart,
+    content: Faker::Lorem.paragraph,
     title: Faker::Book.title,
     url_project: Faker::Internet.url
   )
@@ -128,7 +129,8 @@ puts "\n Creating services:"
     user: admin,
     active: n<4 ? true : false,
     title: Faker::Name.title,
-    description: Faker::Hacker.say_something_smart
+    description: Faker::Hacker.say_something_smart,
+    content: Faker::Lorem.paragraph
   )
   service.images.create!(
     path: Faker::File.file_name('path/to'),

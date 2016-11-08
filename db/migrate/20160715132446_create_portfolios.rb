@@ -4,6 +4,7 @@ class CreatePortfolios < ActiveRecord::Migration[5.0]
       t.references :user, index: true, foreign_key: true
       t.string :client, null: false
       t.string :description, null: false
+      t.text :content, null: false
       t.string :title, null: false
       t.string :slug, null: false
       t.string :url_project
