@@ -1,0 +1,26 @@
+<!--============= SERVICE =============-->
+%section#portfolio
+  .container
+    .row.gray-bg.row-btm0.padding-top-bottom
+      .col-md-6.col-md-offset-3
+        = image_tag @portfolio.images.active.first.url, class: 'img img-responsive', alt: ''
+      - if user_signed_in? and @portfolio.user_id == current_user.try(:id)
+        #management-buttons-left.col-md-3
+          = link_to edit_portfolio_path(@portfolio), class: 'btn btn-success' do
+            %span.glyphicon.glyphicon-pencil
+          = link_to @portfolio, method: :delete, class: 'btn btn-danger' do
+            %span.glyphicon.glyphicon-trash
+      .col-md-10.col-md-offset-1
+        %h1= @portfolio.title
+        %p= @portfolio.description
+        %p= @portfolio.content
+        - if @portfolio.url_project
+          %p
+            If you want to visit the site, just
+            = link_to 'click here.', @portfolio.url_project, target: '_blank'
+        %p
+          %strong Client:
+          = @portfolio.client
+        %p
+          %strong Skills:
+          = @portfolio.skills.map{|skill| skill.superpower}.join("/ ")

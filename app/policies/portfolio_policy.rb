@@ -2,11 +2,7 @@ class PortfolioPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      if user and user.admin?
-        scope.all
-      else
-        scope.where(hidden: false)
-      end
+      user&.admin? ? scope.all : scope.where(hidden: false)
     end
   end
 
@@ -14,12 +10,20 @@ class PortfolioPolicy < ApplicationPolicy
     user.admin?
   end
 
+  def new?
+    create?
+  end
+
   def update?
-    user.admin
+    user.admin?
+  end
+
+  def edit?
+    update?
   end
 
   def destroy?
-    user.admin
+    user.admin?
   end
 
 end

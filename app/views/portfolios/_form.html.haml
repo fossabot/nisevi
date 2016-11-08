@@ -1,0 +1,32 @@
+= form_for(portfolio) do |f|
+  - if portfolio.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(portfolio.errors.count, 'error')
+        prohibited this portfolio from being saved:
+      %ul
+        - portfolio.errors.full_messages.each do |message|
+          %li= message
+  = render partial: 'shared/fields', locals: {f: f}
+  <!-- == CLIENT == -->
+  .form-group.col-xs-12.col-md-12
+    .col-md-2.col-xs-12
+      = f.label :client, class: 'control-label'
+    .col-md-8.col-xs-12
+      = f.text_field :client, class: 'form-control', placeholder: 'Client', required: true
+  <!-- == URL PROJECT == -->
+  .form-group.col-xs-12.col-md-12
+    .col-md-2.col-xs-12
+      = f.label :url_project, class: 'control-label'
+    .col-md-8.col-xs-12
+      = f.text_field :url_project, class: 'form-control', placeholder: 'Project url', required: true
+  <!-- == DATE PROJECT | HIDDEN == -->
+  .form-group.col-xs-12.col-md-12
+
+  <!-- == SUBMIT == -->
+  .form-group.col-xs-12.col-md-12
+    .col-sm-8.col-sm-offset-4.col-md-8.col-md-offset-2.text-right
+      - if portfolio.persisted?
+        = f.submit 'Edit Portfolio', class: 'black-button black-to-white'
+      - elsif portfolio.new_record?
+        = f.submit 'Create Portfolio', class: 'black-button black-to-white'
