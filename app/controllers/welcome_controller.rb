@@ -6,13 +6,13 @@ class WelcomeController < ApplicationController
     # This condition was created only to not break
     # the views when no data has been generated.
     if @admin_user
-      @articles = @admin_user.articles.published.last(3)
-      @works = @admin_user.portfolios.published.last(3)
-      @services = @admin_user.services.active
+      @articles   = @admin_user.articles.published.last(3)
+      @portfolios = @admin_user.portfolios.published.last(3)
+      @services   = @admin_user.services.active.last(4)
     else
-      @articles = []
-      @works = []
-      @services = []
+      @articles   = []
+      @portfolios = []
+      @services   = []
     end
   end
 
