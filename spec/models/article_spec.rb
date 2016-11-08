@@ -8,6 +8,7 @@
 #  description      :text             not null
 #  content          :text             not null
 #  published        :boolean          default(FALSE)
+#  accept_comments  :boolean          default(TRUE)
 #  publication_date :date
 #  user_id          :integer
 #  created_at       :datetime         not null

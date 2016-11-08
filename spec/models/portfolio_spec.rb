@@ -6,7 +6,9 @@
 #  user_id      :integer
 #  client       :string           not null
 #  description  :string           not null
+#  content      :text             not null
 #  title        :string           not null
+#  slug         :string           not null
 #  url_project  :string
 #  date_project :date
 #  hidden       :boolean
