@@ -1,0 +1,23 @@
+= form_for(service) do |f|
+  - if service.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(service.errors.count, 'error')
+        prohibited this service from being saved:
+      %ul
+        - service.errors.full_messages.each do |message|
+          %li= message
+  = render partial: 'shared/fields', locals: {f: f}
+  <!-- == ACTIVE == -->
+  .form-group.col-xs-12.col-md-12
+    .col-md-2.col-xs-6
+      = f.label :active, class: 'control-label'
+    .col-md-10.col-xs-6
+      = f.check_box :active
+  <!-- == SUBMIT == -->
+  .form-group.col-xs-12.col-md-12
+    .col-sm-8.col-sm-offset-4.col-md-8.col-md-offset-2.text-right
+      - if service.persisted?
+        = f.submit 'Edit Service', class: 'black-button black-to-white'
+      - elsif service.new_record?
+        = f.submit 'Create Service', class: 'black-button black-to-white'
