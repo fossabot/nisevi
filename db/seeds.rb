@@ -127,7 +127,7 @@ puts "\n Creating services:"
 (0...100).each do |n|
   service = Service.create!(
     user: admin,
-    active: n<4 ? true : false,
+    active: [true,false].shuffle.first,
     title: Faker::Name.title,
     description: Faker::Hacker.say_something_smart,
     content: Faker::Lorem.paragraph
