@@ -2,11 +2,7 @@ class ArticlePolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      if user and user.admin?
-        scope.all
-      else
-        scope.where(published: true)
-      end
+      user&.admin? ? scope.all : scope.where(published: true)
     end
   end
 
@@ -14,8 +10,16 @@ class ArticlePolicy < ApplicationPolicy
     user.admin?
   end
 
+  def new?
+    create?
+  end
+
   def update?
     user.admin?
+  end
+
+  def edit?
+    update?
   end
 
   def destroy?

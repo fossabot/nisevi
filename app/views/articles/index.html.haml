@@ -11,15 +11,24 @@
           %p.text-right Alexis Ohanian.
 
 <!--============= ALL MY ARTICLES =============-->
-%section#all_articles.intense-gray-bg.padding-top-bottom
+%section.intense-gray-bg.padding-top-bottom
   .container
     - @articles.each do |article|
       .row.gray-bg.row-btm20
-        .col-md-3.nopadding-left
-          %img.img.img-responsive{ src: "#{article.images.active.first.url}", alt: "" }
-        .col-md-9
-          %h2
-            %a{href: article_path(article)}= article.title
-          %p= article.description
+        .col-md-3.nopadding-left.nopadding-right
+          = image_tag article.images.active.first.url, class: 'img img-responsive', alt: ''
+        - if user_signed_in? and article.user_id == current_user.try(:id)
+          .col-md-8
+            %h2= link_to article.title, article_path(article)
+            %p= article.description
+          #management-buttons-right.col-md-1
+            = link_to edit_article_path(article), class: 'btn btn-success' do
+              %span.glyphicon.glyphicon-pencil
+            = link_to article, method: :delete, class: 'btn btn-danger' do
+              %span.glyphicon.glyphicon-trash
+        - else
+          .col-md-9
+            %h2= link_to article.title, article_path(article)
+            %p= article.description
     .col-md-6.col-md-offset-3.text-center
       = paginate @articles

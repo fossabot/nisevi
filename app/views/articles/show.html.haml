@@ -3,7 +3,13 @@
   .container
     .row.gray-bg.row-btm0.padding-top-bottom
       .col-md-6.col-md-offset-3
-        %img.img.img-responsive{ src: @article.images.active.first.url, alt: "" }
+        = image_tag @article.images.active.first.url, class: 'img img-responsive', alt: ''
+      - if user_signed_in? and @article.user_id == current_user.try(:id)
+        #management-buttons-left.col-md-3
+          = link_to edit_article_path(@article), class: 'btn btn-success' do
+            %span.glyphicon.glyphicon-pencil
+          = link_to @article, method: :delete, class: 'btn btn-danger' do
+            %span.glyphicon.glyphicon-trash
       .col-md-10.col-md-offset-1
         %h1= @article.title
         %p= @article.publication_date
