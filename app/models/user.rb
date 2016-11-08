@@ -51,6 +51,10 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
 
+  def admin?
+    self.admin
+  end
+
   def freelance_site
     freelance_media = User.select('users.id, user_links.url, links.social_media')
                           .joins(:links)

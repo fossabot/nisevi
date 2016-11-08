@@ -6,6 +6,7 @@
 #  user_id      :integer
 #  client       :string           not null
 #  description  :string           not null
+#  content      :text             not null
 #  title        :string           not null
 #  slug         :string           not null
 #  url_project  :string
@@ -18,14 +19,14 @@
 class Portfolio < ApplicationRecord
   belongs_to :user, inverse_of: :portfolios
 
-  has_many :portfolio_skills
+  has_many :portfolio_skills, dependent: :destroy
   has_many :skills, through: :portfolio_skills
 
   has_many :images, dependent: :destroy, inverse_of: :portfolio
 
   include Slug
 
-  validates :client, :description, :title, presence: true
+  validates :client, :description, :content, :title, presence: true
 
   scope :published, -> { where(hidden: false) }
   scope :unpublished, -> { where(hidden: true) }
