@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/amatsuda/kaminari
-  revision: 05a989f824c3cc738361106e376a19140baf6846
+  revision: 2ddb2563ed20683a5c39051310ca53c834eb7c1d
   branch: master
   specs:
     kaminari (1.0.0.alpha)
@@ -108,10 +108,10 @@ GEM
     dotenv-rails (2.1.1)
       dotenv (= 2.1.1)
       railties (>= 4.0, < 5.1)
-    elasticsearch (2.0.0)
-      elasticsearch-api (= 2.0.0)
-      elasticsearch-transport (= 2.0.0)
-    elasticsearch-api (2.0.0)
+    elasticsearch (5.0.0)
+      elasticsearch-api (= 5.0.0)
+      elasticsearch-transport (= 5.0.0)
+    elasticsearch-api (5.0.0)
       multi_json
     elasticsearch-model (0.1.9)
       activesupport (> 3)
@@ -125,7 +125,7 @@ GEM
       hashie
       virtus
     elasticsearch-rails (0.1.9)
-    elasticsearch-transport (2.0.0)
+    elasticsearch-transport (5.0.0)
       faraday
       multi_json
     equalizer (0.0.11)
@@ -148,7 +148,7 @@ GEM
     haml (4.0.7)
       tilt
     hashie (3.4.6)
-    humanize (1.2.1)
+    humanize (1.2.2)
     i18n (0.7.0)
     ice_nine (0.11.2)
     jmespath (1.3.1)
