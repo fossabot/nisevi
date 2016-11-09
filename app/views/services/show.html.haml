@@ -1,7 +1,7 @@
 <!--============= SERVICE =============-->
 %section#show-service
   .container
-    .row.gray-bg.row-btm0.padding-top-bottom
+    .row.gray-bg.row-btm0.padding-show
       .col-md-6.col-md-offset-3
         = image_tag @service.images.active.first.url, class: 'img img-responsive', alt: ''
       - if user_signed_in? and @service.user_id == current_user.try(:id)
@@ -10,7 +10,7 @@
             %span.glyphicon.glyphicon-pencil
           = link_to @service, method: :delete, class: 'btn btn-danger' do
             %span.glyphicon.glyphicon-trash
-      .col-md-10.col-md-offset-1
+      .col-md-10.col-md-offset-1.padding-top-10
         %h1= @service.title
         %h3= @service.description
         %p= @service.content

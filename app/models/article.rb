@@ -25,6 +25,7 @@ class Article < ApplicationRecord
   has_many :images, dependent: :destroy, inverse_of: :article
 
   include Slug
+  include Stringify
 
   validates :title, presence: true, length: { maximum: 100 }
   validates :content, :description, :content, presence: true

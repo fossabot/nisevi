@@ -25,6 +25,7 @@ class Portfolio < ApplicationRecord
   has_many :images, dependent: :destroy, inverse_of: :portfolio
 
   include Slug
+  include Stringify
 
   validates :client, :description, :content, :title, presence: true
 

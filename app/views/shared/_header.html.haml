@@ -27,7 +27,7 @@
             - else
               = link_to value, "#{root_path}#{link}"
       %ul.nav.navbar-nav.nav-tabs.navbar-right
-        - if user_signed_in?
+        - if user_signed_in? && controller_name != 'welcome'
           %li#profile-menu.dropdown
             = link_to '', class: 'dropdown-toggle ', data: {toggle: 'dropdown'}, role: 'button', aria: {expanded: 'false'} do
               = image_tag profile_image

@@ -1,4 +1,4 @@
-#header-portfolios{
+#header-services{
   .jumbotron {
     position: relative;
     width: 100%;
@@ -17,7 +17,8 @@
     color: #fff
   }
 
-  .jumbotron.portfolios-image {
+
+  .jumbotron.services-image {
     position: relative;
     background-image:url(../assets/articles.jpg);
     background-position:50% 50%;
@@ -26,7 +27,7 @@
     height: 25.000em;
   }
 
-  .jumbotron.portfolios-image:before {
+  .jumbotron.services-image:before {
     position: absolute;
     display: block;
     content: "";
@@ -37,25 +38,4 @@
     background: #000;
     opacity: .4;
   }
-}
-
-#all-portfolios {
-  p {
-      font-size:1.5em;
-  }
-}
-
-#link-right-corner{
-  font-size:1.5em;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  a{
-    margin-right: 0;
-    margin-bottom: 0;
-  }
-}
-
-#portfolio-info {
-  height:30em;
 }

@@ -19,6 +19,7 @@ class Service < ApplicationRecord
   has_many :images, dependent: :destroy, inverse_of: :service
 
   include Slug
+  include Stringify
 
   validates :title, :description, :content, presence: true
 
