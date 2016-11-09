@@ -11,33 +11,36 @@
           %p.text-right Alexis Ohanian.
 
 <!--============= ALL MY JOBS =============-->
-%section#all_portfolios.intense-gray-bg.padding-top-bottom
+%section#all_portfolios.white-bg.padding-top-bottom
   .container
     - @portfolios.each_slice(2) do |batch|
-      .row
+      .row.row-btm20
         - batch.each do |portfolio|
           .col-md-6
-            = image_tag portfolio.images.active.first.url, class: 'img img-responsive', alt: ''
-            - if user_signed_in? and portfolio.user_id == current_user.try(:id)
-              #management-buttons-right.col-md-12
-                = link_to edit_portfolio_path(portfolio), class: 'btn btn-success' do
-                  %span.glyphicon.glyphicon-pencil
-                = link_to portfolio, method: :delete, class: 'btn btn-danger' do
-                  %span.glyphicon.glyphicon-trash
-            %h1= portfolio.title
-            %p= portfolio.description
-            - if portfolio.url_project
+            .col-md-12.intense-gray-bg.nopadding-left.nopadding-right
+              = image_tag portfolio.images.active.first.url, class: 'img img-responsive', alt: ''
+              - if user_signed_in? and portfolio.user_id == current_user.try(:id)
+                #management-buttons-right.col-md-12
+                  = link_to edit_portfolio_path(portfolio), class: 'btn btn-success' do
+                    %span.glyphicon.glyphicon-pencil
+                  = link_to portfolio, method: :delete, class: 'btn btn-danger' do
+                    %span.glyphicon.glyphicon-trash
+            #portfolio-info.col-md-12.intense-gray-bg
+              %h1= portfolio.title
+              %p= portfolio.description
+              - if portfolio.url_project
+                %p
+                  If you want to visit the site, just
+                  = link_to 'click here.', portfolio.url_project
               %p
-                If you want to visit the site, just
-                = link_to 'click here.', portfolio.url_project
-            %p
-              %strong Client:
-              = portfolio.client
-            %p
-              %strong Skills:
-              = portfolio.skills.map{|skill| skill.superpower}.join("/ ")
-            %p.text-right
-              = link_to 'Visit Project', portfolio_path(portfolio), class: 'no_decoration black-button black-to-white'
+                %strong Client:
+                = portfolio.client
+              %p
+                %strong Skills:
+                = portfolio.skills.map{|skill| skill.superpower}.join("/ ")
+            .col-md-12.intense-gray-bg
+              #link-right-corner.text-right
+                = link_to 'Visit Project', portfolio_path(portfolio), class: 'no_decoration black-button black-to-white'
     .row.row-btm20
       .col-md-6.col-md-offset-3.text-center
         = paginate @portfolios

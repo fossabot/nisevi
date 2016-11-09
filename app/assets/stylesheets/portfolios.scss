@@ -39,3 +39,18 @@
       font-size:1.5em;
   }
 }
+
+#link-right-corner{
+  font-size:1.5em;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  a{
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+}
+
+#portfolio-info {
+  height:30em;
+}
