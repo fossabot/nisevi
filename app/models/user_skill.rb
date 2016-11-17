@@ -15,5 +15,5 @@ class UserSkill < ApplicationRecord
   belongs_to :user
   belongs_to :skill
 
-	validates :url, presence: true
+  validates :url, presence: true
 end

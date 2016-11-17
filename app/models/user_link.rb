@@ -14,5 +14,5 @@ class UserLink < ApplicationRecord
   belongs_to :user
   belongs_to :link
 
-	validates :url, presence: true
+  validates :url, presence: true
 end
