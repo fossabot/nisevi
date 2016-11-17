@@ -37,3 +37,6 @@ bower.json
 # swap vim files
 *.swp
 *.swo
+
+# ctags
+tags
