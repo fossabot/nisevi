@@ -1,13 +1,22 @@
 class ArticlePolicy < ApplicationPolicy
+  attr_reader :user, :record
 
-  class Scope < Scope
-    def resolve
-      user&.admin? ? scope.all : scope.where(published: true)
-    end
+  def initialize(user, record)
+    raise Pundit::NotAuthorizedError, 'must be logged in' unless user
+    @user = user
+    @article = record
+  end
+
+  def index?
+    true
+  end
+
+  def show?
+    true
   end
 
   def create?
-    user.admin?
+    @user.admin?
   end
 
   def new?
@@ -15,7 +24,7 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin?
+    @user.admin?
   end
 
   def edit?
@@ -23,7 +32,12 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.admin?
+    @user.admin?
   end
 
+  class Scope < Scope
+    def resolve
+      @user&.admin? ? scope.all : scope.where(published: true)
+    end
+  end
 end

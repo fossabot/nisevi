@@ -1,13 +1,22 @@
 class PortfolioPolicy < ApplicationPolicy
+  attr_reader :user, :record
 
-  class Scope < Scope
-    def resolve
-      user&.admin? ? scope.all : scope.where(hidden: false)
-    end
+  def initialize(user, record)
+    raise Pundit::NotAuthorizedError, 'must be logged in' unless user
+    @user = user
+    @portfolio = record
+  end
+
+  def index?
+    true
+  end
+
+  def show?
+    true
   end
 
   def create?
-    user.admin?
+    @user.admin?
   end
 
   def new?
@@ -15,7 +24,7 @@ class PortfolioPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin?
+    @user.admin?
   end
 
   def edit?
@@ -23,7 +32,12 @@ class PortfolioPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.admin?
+    @user.admin?
   end
 
+  class Scope < Scope
+    def resolve
+      @user&.admin? ? scope.all : scope.where(hidden: false)
+    end
+  end
 end

@@ -1,13 +1,26 @@
 class ServicePolicy < ApplicationPolicy
+  attr_reader :user, :record
 
-  class Scope < Scope
-    def resolve
-      user&.admin? ? scope.all : scope.where(active: true)
+  def initialize(user, record)
+    raise Pundit::NotAuthorizedError, 'must be logged in' unless user
+    @user = user
+    @service = record
+  end
+
+  def index?
+    @user.admin?
+  end
+
+  def show?
+    if @user.admin?
+      true
+    else
+      @service.active
     end
   end
 
   def create?
-    user.admin?
+    @user.admin?
   end
 
   def new?
@@ -15,7 +28,7 @@ class ServicePolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin?
+    @user.admin?
   end
 
   def edit?
@@ -23,7 +36,6 @@ class ServicePolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.admin?
+    @user.admin?
   end
-
 end
