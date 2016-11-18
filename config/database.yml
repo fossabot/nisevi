@@ -13,3 +13,10 @@ development:
 test:
   <<: *default
   database: <%= ENV['DATABASE_TEST_NAME'] %>
+
+production:
+  <<: *default
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASS'] %>
+  database: <%= ENV['DATABASE_PRODUCTION_NAME'] %>
+
