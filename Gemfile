@@ -29,6 +29,7 @@ gem 'devise'
 gem 'omniauth-github'
 gem 'omniauth-linkedin-oauth2'
 gem 'pundit'
+gem 'rack-cors'
 
 group :development, :test do
   gem 'byebug'
