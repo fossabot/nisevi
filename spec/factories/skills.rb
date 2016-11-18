@@ -10,6 +10,6 @@
 
 FactoryGirl.define do
   factory :skill do
-	  superpower Faker::Hacker.verb
+  superpower Faker::Hacker.verb
   end
 end

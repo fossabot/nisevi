@@ -10,6 +10,6 @@
 
 FactoryGirl.define do
   factory :link do
-	  social_media Faker::Team.creature
+  social_media Faker::Team.creature
   end
 end

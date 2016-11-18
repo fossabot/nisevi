@@ -16,6 +16,6 @@ FactoryGirl.define do
     user nil
     skill nil
     description Faker::Hacker.say_something_smart
-    url_skill Faker::Internet.url
+    url Faker::Internet.url
   end
 end

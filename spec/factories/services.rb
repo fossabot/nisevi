@@ -16,9 +16,9 @@
 FactoryGirl.define do
   factory :service do
     user nil
-    active false
     title Faker::Name.title
     description Faker::Hacker.say_something_smart
     content Faker::Lorem.paragraph
+    active false
   end
 end

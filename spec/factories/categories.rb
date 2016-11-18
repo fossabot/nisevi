@@ -10,6 +10,6 @@
 
 FactoryGirl.define do
   factory :category do
-	  topic Faker::Color.color_name
+  topic Faker::Color.color_name
   end
 end
