@@ -124,7 +124,7 @@ end
 
 ### SERVICES ###
 puts "\n Creating services:"
-(0...100).each do |n|
+(0...20).each do |n|
   service = Service.create!(
     user: admin,
     active: [true,false].shuffle.first,
