@@ -102,15 +102,15 @@
         - cache article do
           - image_article = article.images.active.first.url
           .col-lg-4.col-md-12.col-sm-12.col-xs-12.item
-            .item-img-wrap
-              = image_tag image_article, class: 'img-responsive', alt: ''
-              .item-img-overlay
-                = link_to image_article, class: 'show-image' do
-                  %span
-            .blog-desc
+            .col-md-12.nopadding-left.nopadding-right
+              = link_to article_path(article) do
+                .item-img-wrap.nopadding-left.nopadding-right
+                  = image_tag image_article, class: 'img-responsive', alt: ''
+            #blog-desc.col-md-12.nopadding-left.nopadding-right
               %h3= link_to article.title, article_path(article)
               %span= article.publication_date.strftime("%F")
-              %p= article.description
+              %p= article.shorten_description(144)
+            #blog-desc-link.col-md-12
               %p.text-right= link_to 'Read More', article_path(article), class: 'no_decoration black-button black-to-white'
 
 %section#all-articles.dark-bg
