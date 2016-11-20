@@ -14,9 +14,9 @@
 %section#all_portfolios.white-bg.padding-top-bottom
   .container
     - @portfolios.each_slice(2) do |batch|
-      .row.row-btm20
+      .row
         - batch.each do |portfolio|
-          .col-md-6
+          .col-md-6.row-btm20
             .col-md-12.intense-gray-bg.nopadding-left.nopadding-right
               = image_tag portfolio.images.active.first.url, class: 'img img-responsive', alt: ''
               - if user_signed_in? and portfolio.user_id == current_user.try(:id)
@@ -27,7 +27,7 @@
                     %span.glyphicon.glyphicon-trash
             #portfolio-info.col-md-12.intense-gray-bg
               %h1= portfolio.title
-              %p= portfolio.description
+              %p= portfolio.shorten_description
               - if portfolio.url_project
                 %p
                   If you want to visit the site, just
