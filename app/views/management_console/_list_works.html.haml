@@ -15,4 +15,4 @@
         %td= work.description
         %td= "#{work.hidden ? 'YES' : 'NO'}"
         %td
-          %img.image-responsive{ src: "#{work.images.active.first.url}", alt: "" }
+          = image_tag work.images.active.first.url, alt: ''

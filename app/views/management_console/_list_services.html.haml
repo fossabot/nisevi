@@ -11,4 +11,4 @@
         %td= service.description
         %td= "#{service.active ? 'YES' : 'NO'}"
         %td
-          %img.image-responsive{ src: "#{service.images.active.first.url}", alt: "" }
+          = image_tag service.images.active.first.url, class: 'image-responsive', alt: ''
