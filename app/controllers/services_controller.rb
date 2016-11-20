@@ -1,15 +1,16 @@
 class ServicesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:show]
   before_action :set_service, only: [:show, :edit, :update, :destroy]
 
   # GET /services
   def index
-    @services = Kaminari.paginate_array(policy_scope(Service))
-                        .page(params[:page]).per(4)
+    @services = Service.all
+    authorize @services
   end
 
   # GET /services/1
   def show
+    authorize @service
   end
 
   # GET /services/new
