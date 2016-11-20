@@ -37,5 +37,6 @@
               - if current_user.admin
                 %li.divider{role: 'separator'}
                 %li= link_to 'Create new article', new_article_path
-                %li= link_to 'Create new service', new_service_path
                 %li= link_to 'Create new portfolio', new_portfolio_path
+                %li= link_to 'View all services', services_path
+                %li= link_to 'Create new service', new_service_path
