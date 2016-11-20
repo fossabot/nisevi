@@ -176,3 +176,17 @@
     margin-bottom:.5em;
   }
 }
+
+#blog-desc{
+  height:25em;
+}
+
+#blog-desc-link{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  a{
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+}
