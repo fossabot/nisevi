@@ -20,6 +20,7 @@ admin = User.new(
 # Deactivated confirmation email
 admin.skip_confirmation!
 admin.save!
+print '.'
 admin.images.create(
   path: Faker::File.file_name('path/to'),
   url: IMAGE,
