@@ -48,9 +48,9 @@ ActiveRecord::Schema.define(version: 20161022125257) do
     t.string   "slug",                             null: false
     t.text     "description",                      null: false
     t.text     "content",                          null: false
-    t.boolean  "published",        default: false
-    t.boolean  "accept_comments",  default: true
-    t.date     "publication_date"
+    t.boolean  "published",        default: false, null: false
+    t.boolean  "accept_comments",  default: true,  null: false
+    t.date     "publication_date",                 null: false
     t.integer  "user_id"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
@@ -176,7 +176,7 @@ ActiveRecord::Schema.define(version: 20161022125257) do
     t.string   "slug",                        null: false
     t.string   "description",                 null: false
     t.text     "content",                     null: false
-    t.boolean  "active",      default: false
+    t.boolean  "active",      default: false, null: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.index ["slug"], name: "index_services_on_slug", unique: true, using: :btree

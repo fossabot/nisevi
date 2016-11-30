@@ -5,9 +5,9 @@ class CreateArticles < ActiveRecord::Migration
       t.string :slug, null: false
       t.text :description, null: false
       t.text :content, null: false
-      t.boolean :published, default: false
-      t.boolean :accept_comments, default: true
-      t.date :publication_date
+      t.boolean :published, default: false, null: false
+      t.boolean :accept_comments, default: true, null: false
+      t.date :publication_date, null: false
       t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false
