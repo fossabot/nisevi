@@ -20,7 +20,6 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
-    authorize @article
   end
 
   # POST /articles
@@ -36,7 +35,6 @@ class ArticlesController < ApplicationController
 
   # PATCH/PUT /articles/1
   def update
-    authorize @article
     if @article.update(article_params)
       redirect_to @article
     else
@@ -46,7 +44,6 @@ class ArticlesController < ApplicationController
 
   # DELETE /articles/1
   def destroy
-    authorize @article
     @article.destroy
     redirect_to articles_path
   end
@@ -55,6 +52,7 @@ class ArticlesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find_by_slug!(params[:id])
+      authorize @article
     end
 
     # Only allow a trusted parameter "white list" through.

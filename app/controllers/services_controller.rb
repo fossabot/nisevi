@@ -4,13 +4,12 @@ class ServicesController < ApplicationController
 
   # GET /services
   def index
-    @services = Service.all
+    @services = Service.page(params[:page]).per(6)
     authorize @services
   end
 
   # GET /services/1
   def show
-    authorize @service
   end
 
   # GET /services/new
@@ -21,7 +20,6 @@ class ServicesController < ApplicationController
 
   # GET /services/1/edit
   def edit
-    authorize @service
   end
 
   # POST /services
@@ -37,7 +35,6 @@ class ServicesController < ApplicationController
 
   # PATCH/PUT /services/1
   def update
-    authorize @service
     if @service.update(service_params)
       redirect_to @service, notice: 'Service was successfully updated.'
     else
@@ -47,7 +44,6 @@ class ServicesController < ApplicationController
 
   # DELETE /services/1
   def destroy
-    authorize @service
     @service.destroy
     redirect_to services_url, notice: 'Service was successfully destroyed.'
   end
@@ -56,6 +52,7 @@ class ServicesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_service
       @service = Service.find_by_slug!(params[:id])
+      authorize @service
     end
 
     # Only allow a trusted parameter "white list" through.

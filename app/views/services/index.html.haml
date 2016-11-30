@@ -30,3 +30,5 @@
           .col-md-9
             %h2= link_to service.title, service_path(service)
             %p= service.description
+    .col-md-6.col-md-offset-3.text-center
+      = paginate @services

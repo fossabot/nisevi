@@ -20,7 +20,6 @@ class PortfoliosController < ApplicationController
 
   # GET /portfolios/1/edit
   def edit
-    authorize @portfolio
   end
 
   # POST /portfolios
@@ -36,7 +35,6 @@ class PortfoliosController < ApplicationController
 
   # PATCH/PUT /portfolios/1
   def update
-    authorize @portfolio
     if @portfolio.update(portfolio_params)
       redirect_to @portfolio, notice: 'Portfolio was successfully updated.'
     else
@@ -46,7 +44,6 @@ class PortfoliosController < ApplicationController
 
   # DELETE /portfolios/1
   def destroy
-    authorize @portfolio
     @portfolio.destroy
     redirect_to portfolios_url, notice: 'Portfolio was successfully destroyed.'
   end
@@ -55,6 +52,7 @@ class PortfoliosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_portfolio
       @portfolio = Portfolio.find_by_slug!(params[:id])
+      authorize @portfolio
     end
 
     # Only allow a trusted parameter "white list" through.
