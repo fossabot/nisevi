@@ -1,0 +1,39 @@
+<!-- ========= EDIT USER ========= -->
+#devise_edit_session.container
+  .row
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12
+      %h1.text-center Edit Account
+    .col-md-8.col-md-offset-2
+      = form_for(resource, as: resource_name, url: update_password_users_path(resource_name), html: { method: :patch }) do |f|
+        = devise_error_messages!
+        .form-group
+          .col-xs-12.col-sm-12.col-md-12.col-lg-12
+            = f.label :email
+          .col-xs-12.col-sm-12.col-md-12.col-lg-12.row-btm20
+            = f.email_field :email, autofocus: true,  class: 'form-control input-lg'
+            - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+              %div
+                Currently waiting confirmation for: #{resource.unconfirmed_email}
+        .form-group
+          .col-xs-12.col-sm-12.col-md-12.col-lg-12
+            = f.label :password
+            %i (leave blank if you don't want to change it)
+          .col-xs-12.col-sm-12.col-md-12.col-lg-12.row-btm20
+            = f.password_field :password, autocomplete: 'off',  class: 'form-control input-lg'
+        .form-group
+          .col-xs-12.col-sm-12.col-md-12.col-lg-12
+            = f.label :password_confirmation
+          .col-xs-12.col-sm-12.col-md-12.col-lg-12.row-btm20
+            = f.password_field :password_confirmation, autocomplete: 'off',  class: 'form-control input-lg'
+        .form-group
+          .col-xs-12.col-sm-12.col-md-12.col-lg-12
+            = f.label :current_password
+            %i (we need your current password to confirm your changes)
+          .col-xs-12.col-sm-12.col-md-12.col-lg-12.row-btm20
+            = f.password_field :current_password, autocomplete: 'off',  class: 'form-control input-lg'
+        .form-group
+          .col-xs-12.col-sm-12.col-md-12.col-lg-12.row-btm20
+            = f.submit 'Update', class: 'btn btn-lg btn-primary btn-block'
+        .form-group
+          .col-xs-12.col-sm-12.col-md-12.col-lg-12
+            = button_to 'Cancel my account', registration_path(resource_name), data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger'

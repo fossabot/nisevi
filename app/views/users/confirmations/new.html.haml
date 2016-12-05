@@ -1,0 +1,19 @@
+<!-- ========= CONFIRMATION MAILER ========= -->
+#devise_new_password.container
+  .row
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12
+      %h1.text-center Resend confirmation instructions
+    .col-md-8.col-md-offset-2
+      = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+        = devise_error_messages!
+        .form-group
+          .col-xs-12.col-sm-12.col-md-12.col-lg-12
+            = f.label :email, class: 'col-xs-12 col-sm-3 control-label'
+          .col-xs-12.col-sm-12.col-md-12.col-lg-12.row-btm20
+            = f.email_field :email, autofocus: true, autocomplete: 'off', required: true,  class: 'form-control input-lg', placeholder: 'Email', value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
+        .form-group
+          .col-xs-12.col-sm-12.col-md-12.col-lg-12
+            = f.submit 'Resend confirmation instructions', class: 'btn btn-lg btn-primary btn-block'
+  .row
+    .col-md-8.col-md-offset-2
+      = render 'shared/links'
