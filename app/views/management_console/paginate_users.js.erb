@@ -1,4 +1,0 @@
-/* Replace html on management_console-index view. */
-// render users for pagination
-$("#render-list-users").html("<%= escape_javascript(render partial: "list_users", locals: {users: @users}) %>");
-$("#paginate-management-users").html("<%= escape_javascript(paginate(@users, remote: true, param_name: :page_users).to_s) %>");

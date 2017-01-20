@@ -1,4 +1,0 @@
-/* Replace html on management_console-index view. */
-// render articles for pagination
-$("#render-list-articles").html("<%= escape_javascript(render partial: "list_articles", locals: {articles: @articles}) %>");
-$("#paginate-management-articles").html("<%= escape_javascript(paginate(@articles, remote: true, param_name: :page_articles).to_s) %>");

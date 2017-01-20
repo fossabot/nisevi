@@ -19,7 +19,5 @@ Rails.application.routes.draw do
 
   resources :welcome, path: :contact, only: [:index, :create]
 
-  resources :management_console, only: [:index]
-
   root "welcome#index"
 end
