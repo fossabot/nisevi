@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'pundit/rspec'
 
 RSpec.describe PortfolioPolicy do
 
