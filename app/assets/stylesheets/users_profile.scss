@@ -1,4 +1,4 @@
-#header-services{
+#header-users-profile{
   .jumbotron {
     position: relative;
     width: 100%;
@@ -18,16 +18,16 @@
   }
 
 
-  .jumbotron.services-image {
+  .jumbotron.users-profile-image {
     position: relative;
-    background-image:url(../assets/services.jpg);
+    background-image:url(../assets/user_profiles.jpg);
     background-position:50% 50%;
     background-size: cover;
     margin-bottom:0;
     height: 25.000em;
   }
 
-  .jumbotron.services-image:before {
+  .jumbotron.users-profile-image:before {
     position: absolute;
     display: block;
     content: "";

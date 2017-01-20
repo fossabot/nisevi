@@ -29,19 +29,17 @@
     margin-bottom:1em;
   }
 
-	.custom-bullet li {
-			display: block;
-	}
+  .custom-bullet li {
+    display: block;
+  }
 
-	.custom-bullet li:before
-	{
-			/*Using a Bootstrap glyphicon as the bullet point*/
-			content: "\002a";
-			font-family: 'Glyphicon Halflings';
-			font-size:2em;
-			float: left;
-			margin-top: 4px;
-			margin-left: -17px;
-	}
-
+  .custom-bullet li:before {
+    /*Using a Bootstrap glyphicon as the bullet point*/
+    content: "\002a";
+    font-family: 'Glyphicon Halflings';
+    font-size:2em;
+    float: left;
+    margin-top: 4px;
+    margin-left: -17px;
+  }
 }
