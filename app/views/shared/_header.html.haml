@@ -32,7 +32,7 @@
             = link_to '', class: 'dropdown-toggle ', data: {toggle: 'dropdown'}, role: 'button', aria: {expanded: 'false'} do
               = image_tag profile_image
             %ul#profile-options.dropdown-menu
-              %li= link_to 'Profile', edit_user_path(current_user)
+              %li= link_to 'Profile', edit_user_registration_path
               %li= link_to 'Sign out', destroy_user_session_path, method: :delete
               - if current_user.admin
                 %li.divider{role: 'separator'}
