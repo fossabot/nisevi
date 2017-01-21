@@ -35,6 +35,7 @@ group :development, :test do
   gem 'byebug'
   gem 'dotenv-rails'
   gem 'rspec-rails', '~> 3.0'
+  gem 'rspec_junit_formatter'
   gem 'factory_girl_rails'
   gem 'faker', '~> 1.6', '>= 1.6.3'
   gem 'annotate', '~> 2.7', '>= 2.7.1'
