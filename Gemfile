@@ -17,7 +17,6 @@ gem 'rmagick'
 gem 'kaminari', git: 'https://github.com/amatsuda/kaminari', branch: 'master' #https://github.com/amatsuda/kaminari/issues/44
 gem 'sidekiq', '~> 4.1'
 gem 'paperclip', '~> 5.0.0'
-gem 'ckeditor'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'google-analytics-rails', '1.1.0'
 gem 'elasticsearch'
