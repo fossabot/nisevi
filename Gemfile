@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.4.1'
 
-gem 'rails', '~> 5.1.1'
+gem 'rails', '~> 5.1.2'
 gem 'pg', '~> 0.18.4'
 gem 'aws-sdk-rails'
 gem 'coffee-rails'
@@ -12,7 +12,7 @@ gem 'therubyracer', '~> 0.12.2'
 gem 'jquery-rails'
 gem 'font-awesome-sass'
 gem 'humanize'
-gem 'haml', '~> 4.0', '>= 4.0.7'
+gem 'haml', '~> 5.0.1'
 gem 'rmagick'
 gem 'kaminari', git: 'https://github.com/amatsuda/kaminari', branch: 'master' #https://github.com/amatsuda/kaminari/issues/44
 gem 'sidekiq', '~> 4.1'
