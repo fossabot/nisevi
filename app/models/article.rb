@@ -29,14 +29,14 @@ class Article < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 100 }
   validates :content, :description, :content, presence: true
-  validate :publication_date_cannot_be_in_the_past
+  # validate :publication_date_cannot_be_in_the_past
 
   scope :published, -> { where(published: true) }
   scope :unpublished, -> { where(published: false) }
 
-  def publication_date_cannot_be_in_the_past
-    if publication_date.present? && publication_date < created_at
-      errors.add(:publication_date, "can't be a date before to the creation of the article.")
-    end
-  end
+  # def publication_date_cannot_be_in_the_past
+  #   if publication_date.present? && publication_date < created_at
+  #     errors.add(:publication_date, "can't be a date before to the creation of the article.")
+  #   end
+  # end
 end

@@ -34,7 +34,7 @@ puts "\n Creating normal users:"
   u = User.new(
     first_name: Faker::Name.name,
     last_name: Faker::Name.last_name,
-    date_of_birth: Time.new,
+    date_of_birth: Time.now,
     location: Faker::Pokemon.location,
     presentation: Faker::Hacker.say_something_smart,
     email: Faker::Internet.email,
@@ -206,7 +206,7 @@ puts "\n Creating articles:"
     title: title,
     description: Faker::Hacker.say_something_smart,
     content: Faker::Lorem.paragraph,
-    publication_date: Time.now
+    publication_date: 10.days.from_now
   )
   article.images.create!(
     path: Faker::File.file_name('path/to'),
