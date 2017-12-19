@@ -29,6 +29,9 @@ bower.json
 .env
 .env.test
 
+# Ignore ruby-version file
+.ruby-version
+
 # Ignore IDE folder
 .idea
 
