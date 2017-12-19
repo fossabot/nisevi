@@ -12,7 +12,7 @@
 #  updated_at   :datetime         not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :language do
     user nil
     name Faker::App.name

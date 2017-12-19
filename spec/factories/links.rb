@@ -8,7 +8,7 @@
 #  updated_at   :datetime         not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :link do
   social_media Faker::Team.creature
   end

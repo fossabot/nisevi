@@ -16,7 +16,7 @@
 #  updated_at   :datetime         not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :portfolio do
     user nil
     client Faker::Company.name

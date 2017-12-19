@@ -9,7 +9,7 @@
 #  updated_at  :datetime         not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :article_category do
     article nil
     category nil

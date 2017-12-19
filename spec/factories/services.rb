@@ -13,7 +13,7 @@
 #  updated_at  :datetime         not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :service do
     user nil
     title Faker::Name.title

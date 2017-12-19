@@ -15,7 +15,7 @@
 #  updated_at   :datetime         not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :image do
     user nil
     identity nil

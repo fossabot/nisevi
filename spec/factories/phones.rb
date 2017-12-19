@@ -13,7 +13,7 @@
 #  updated_at   :datetime         not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :phone do
     country_code Faker::Address.country_code
     area_code Faker::PhoneNumber.area_code

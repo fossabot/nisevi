@@ -8,7 +8,7 @@
 #  updated_at :datetime         not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :category do
   topic Faker::Color.color_name
   end

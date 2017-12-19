@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.4.1'
 
-gem 'rails', '~> 5.1.2'
+gem 'rails', '~> 5.1', '>= 5.1.4'
 gem 'pg', '~> 0.18.4'
 gem 'aws-sdk-rails'
 gem 'coffee-rails'
@@ -27,7 +27,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'rspec-rails', '~> 3.0'
   gem 'rspec_junit_formatter'
-  gem 'factory_girl_rails'
+  gem 'factory_bot'
   gem 'faker', '~> 1.6', '>= 1.6.3'
   gem 'annotate', '~> 2.7', '>= 2.7.1'
 end

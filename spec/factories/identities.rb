@@ -15,7 +15,7 @@
 #  updated_at :datetime         not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :identity do
     user nil
     provider Faker::Color.color_name
