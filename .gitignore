@@ -27,6 +27,7 @@ bower.json
 # Ignore pow environment settings
 .powenv
 .env
+.env.test
 
 # Ignore IDE folder
 .idea
