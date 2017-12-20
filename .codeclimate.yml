@@ -1,0 +1,14 @@
+engines:
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - ruby:
+        mass_threshold: 20
+plugins:
+  bundler-audit:
+    enabled: true
+  rubocop:
+    enabled: true
+  brakeman:
+    enabled: true

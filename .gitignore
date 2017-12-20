@@ -35,6 +35,9 @@ bower.json
 # Ignore IDE folder
 .idea
 
+# Ignore test coverage files
+coverage
+
 # Ignore byebug history
 .byebug_history
 
