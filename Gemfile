@@ -30,9 +30,6 @@ group :development, :test do
   gem 'factory_bot'
   gem 'faker'
   gem 'annotate'
+  gem 'simplecov'
+  gem 'spring'
 end
-
-
-gem 'codeclimate-test-reporter', group: :test, require: nil
-
-gem 'spring', group: :development
