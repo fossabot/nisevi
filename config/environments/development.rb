@@ -13,12 +13,18 @@ Rails.application.configure do
   config.consider_all_requests_local = true
 
   # Enable/disable caching. By default caching is disabled.
-  config.action_controller.perform_caching = true
+  if Rails.root.join('tmp/caching-dev.txt').exist?
+    config.action_controller.perform_caching = true
 
-  config.cache_store = :memory_store
-  config.public_file_server.headers = {
-    'Cache-Control' => 'public, max-age=172800'
-  }
+    config.cache_store = :memory_store
+    config.public_file_server.headers = {
+      'Cache-Control' => "public, max-age=#{2.days.seconds.to_i}"
+    }
+  else
+    config.action_controller.perform_caching = false
+
+    config.cache_store = :null_store
+  end
 
   # Care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
@@ -28,16 +34,15 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-	config.action_mailer.delivery_method = :smtp
-	config.action_mailer.smtp_settings = {
-		address: ENV["ADDRESS_MAILER"],
-		port: 587,
-		domain: ENV["DOMAIN_MAILER"],
-		user_name: ENV["USERNAME_MAILER"],
-		password: ENV["PASSWORD_MAILER"],
-		authentication: 'plain'
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address: ENV["ADDRESS_MAILER"],
+      port: 587,
+      domain: ENV["DOMAIN_MAILER"],
+      user_name: ENV["USERNAME_MAILER"],
+      password: ENV["PASSWORD_MAILER"],
+      authentication: 'plain'
   }
-
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -58,10 +63,4 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-
-  # per-form CSRF tokens to mitigate against code-injection attacks with forms created by JavaScript.
-  config.action_controller.per_form_csrf_tokens = true
-
-  # Check if the HTTP Origin header should be checked against the site's origin as an additional CSRF defense.
-  config.action_controller.forgery_protection_origin_check = true
 end
