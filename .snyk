@@ -6,4 +6,8 @@ ignore:
     - '* > kaminari@1.1.1':
         reason: None given
         expires: '2018-01-19T00:12:58.711Z'
+  SNYK-RUBY-ACTIONCABLE-20338:
+    - '* > rails@5.1.4':
+        reason: None given
+        expires: '2018-01-19T00:17:32.519Z'
 patch: {}
