@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/amatsuda/kaminari
-  revision: 4ada38c91128e4a5b9533f00516883d181881d46
+  revision: a781f644ac2ac34c48a5363bdf01b5d42ecafbc8
   branch: master
   specs:
     kaminari (1.1.1)
