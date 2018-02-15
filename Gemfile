@@ -11,12 +11,11 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'font-awesome-sass', '~> 4.7'
 gem 'humanize', '~> 1.7'
 gem 'haml', '~> 5.0', '>= 5.0.4'
-gem 'kaminari', git: 'https://github.com/amatsuda/kaminari', branch: 'master' #https://github.com/amatsuda/kaminari/issues/44
+gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'omniauth-oauth2', '~> 1.5'
 gem 'devise', '~> 4.4', '>= 4.4.1'
 gem 'omniauth-github', '~> 1.3'
-gem 'omniauth-linkedin-oauth2', '~> 0.2.5'
 gem 'pundit', '~> 1.1'
 gem 'rack-cors', '~> 1.0', '>= 1.0.2'
 
