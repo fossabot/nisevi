@@ -14,5 +14,5 @@
 .form-group.col-xs-12.col-md-12
   .col-md-2.col-xs-12
     = f.label :content, class: 'control-label'
-  .col-md-8.col-xs-12
-    = f.cktext_area :content, class: 'contact-textarea', required: true
+  #max-width-textarea.col-md-8.col-xs-12
+    = f.text_area :content, class: 'contact-textarea', required: true
