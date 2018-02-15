@@ -1,6 +1,4 @@
 require 'rails_helper'
-require 'pundit/rspec'
-
 RSpec.describe ArticlePolicy do
 
   let(:user) { User.new }

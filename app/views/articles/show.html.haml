@@ -30,7 +30,7 @@
     .row.gray-bg
       .col-md-10.col-md-offset-1.text-center
         #paginate-comments
-          = paginate @comments, remote: true
+          = paginate @comments, use_page_one_param: true, remote: true
 
     -# = if user signed in then allow it to make a comment
     .row.padding-top-bottom.gray-bg

@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pundit/rspec'
 
 RSpec.describe ServicePolicy do
 

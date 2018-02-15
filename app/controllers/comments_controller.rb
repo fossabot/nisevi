@@ -27,8 +27,6 @@ class CommentsController < ApplicationController
         format.json { head :no_content }
         format.js   { }
       end
-    else
-      raise Pundit::NotAuthorizedError
     end
   end
 

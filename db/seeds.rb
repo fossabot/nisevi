@@ -13,8 +13,8 @@ admin = User.new(
   presentation: Faker::Hacker.say_something_smart,
   email: 'admin@example.com',
   username: 'username_admin',
-  password: 'admin1234',
-  password_confirmation: 'admin1234',
+  password: 'admin12345',
+  password_confirmation: 'admin12345',
   admin: true
 )
 # Deactivated confirmation email
@@ -30,7 +30,7 @@ admin.images.create(
 puts "\n Creating normal users:"
 (0...100).each do
   # Generation of normal users (no admin users)
-  password = Faker::Internet.password
+  password = Faker::Internet.password(10, 16)
   u = User.new(
     first_name: Faker::Name.name,
     last_name: Faker::Name.last_name,

@@ -5,7 +5,6 @@ class ServicesController < ApplicationController
   # GET /services
   def index
     @services = Service.page(params[:page]).per(6)
-    authorize @services
   end
 
   # GET /services/1
@@ -15,7 +14,6 @@ class ServicesController < ApplicationController
   # GET /services/new
   def new
     @service = Service.new
-    authorize @service
   end
 
   # GET /services/1/edit
@@ -25,7 +23,6 @@ class ServicesController < ApplicationController
   # POST /services
   def create
     @service = Service.new(service_params.merge(user: current_user))
-    authorize @service
     if @service.save
       redirect_to @service, notice: 'Service was successfully created.'
     else
@@ -52,7 +49,6 @@ class ServicesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_service
       @service = Service.find_by_slug!(params[:id])
-      authorize @service
     end
 
     # Only allow a trusted parameter "white list" through.

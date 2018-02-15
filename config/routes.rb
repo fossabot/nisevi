@@ -1,15 +1,7 @@
-Rails.application.routes.draw do
-  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
-    controllers: {
-      omniauth_callbacks: "users/omniauth_callbacks",
-      registrations: "users/registrations"
-    }
+# frozen_string_literal: true
 
-  resource :user, only: [:edit] do
-    collection do
-      patch 'update_password'
-    end
-  end
+Rails.application.routes.draw do
+  devise_for :users
 
   resources :portfolios, :services
 
@@ -17,7 +9,7 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :welcome, path: :contact, only: [:index, :create]
+  resources :welcome, path: :contact, only: %i[index create]
 
-  root "welcome#index"
+  root 'welcome#index'
 end

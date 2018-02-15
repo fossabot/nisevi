@@ -4,8 +4,7 @@ class PortfoliosController < ApplicationController
 
   # GET /portfolios
   def index
-    @portfolios = Kaminari.paginate_array(policy_scope(Portfolio))
-                          .page(params[:page]).per(6)
+    @portfolios = Portfolio.page(params[:page]).per(6)
   end
 
   # GET /portfolios/1
@@ -15,7 +14,6 @@ class PortfoliosController < ApplicationController
   # GET /portfolios/new
   def new
     @portfolio = Portfolio.new
-    authorize @portfolio
   end
 
   # GET /portfolios/1/edit
@@ -25,7 +23,6 @@ class PortfoliosController < ApplicationController
   # POST /portfolios
   def create
     @portfolio = Portfolio.new(portfolio_params.merge(user: current_user))
-    authorize @portfolio
     if @portfolio.save
       redirect_to @portfolio, notice: 'Portfolio was successfully created.'
     else
@@ -52,7 +49,6 @@ class PortfoliosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_portfolio
       @portfolio = Portfolio.find_by_slug!(params[:id])
-      authorize @portfolio
     end
 
     # Only allow a trusted parameter "white list" through.
