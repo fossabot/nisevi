@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :authenticate_user!
 
@@ -8,7 +10,7 @@ class CommentsController < ApplicationController
       if verify_recaptcha(model: @comment) && @comment.save
         @comments = @article.comments.order('id DESC').page(params[:page]).per(5)
         format.html { redirect_to @article, notice: 'Comment was successfully created.' }
-        format.js   { }
+        format.js   {}
       else
         flash[:error] = 'The comment was not created.'
         redirect_to request.referer || root_path
@@ -19,19 +21,20 @@ class CommentsController < ApplicationController
   def destroy
     @article = Article.find_by_slug!(params[:article_id])
     @comment = @article.comments.find(params[:id])
-    if (current_user and @comment.user_id == current_user.id) || current_user.admin
+    if (current_user && (@comment.user_id == current_user.id)) || current_user.admin
       @comment.destroy
       @comments = @article.comments.order('id DESC').page(params[:page]).per(5)
       respond_to do |format|
         format.html { redirect_to article_path(@article) }
         format.json { head :no_content }
-        format.js   { }
+        format.js   {}
       end
     end
   end
 
   private
-    def comment_params
-      params.require(:comment).permit(:content)
-    end
+
+  def comment_params
+    params.require(:comment).permit(:content)
+  end
 end

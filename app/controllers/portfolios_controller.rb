@@ -1,26 +1,21 @@
-class PortfoliosController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_portfolio, only: [:show, :edit, :update, :destroy]
+# frozen_string_literal: true
 
-  # GET /portfolios
+class PortfoliosController < ApplicationController
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :set_portfolio, only: %i[show edit update destroy]
+
   def index
     @portfolios = Portfolio.page(params[:page]).per(6)
   end
 
-  # GET /portfolios/1
-  def show
-  end
+  def show; end
 
-  # GET /portfolios/new
   def new
     @portfolio = Portfolio.new
   end
 
-  # GET /portfolios/1/edit
-  def edit
-  end
+  def edit; end
 
-  # POST /portfolios
   def create
     @portfolio = Portfolio.new(portfolio_params.merge(user: current_user))
     if @portfolio.save
@@ -30,7 +25,6 @@ class PortfoliosController < ApplicationController
     end
   end
 
-  # PATCH/PUT /portfolios/1
   def update
     if @portfolio.update(portfolio_params)
       redirect_to @portfolio, notice: 'Portfolio was successfully updated.'
@@ -39,28 +33,26 @@ class PortfoliosController < ApplicationController
     end
   end
 
-  # DELETE /portfolios/1
   def destroy
     @portfolio.destroy
     redirect_to portfolios_url, notice: 'Portfolio was successfully destroyed.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_portfolio
-      @portfolio = Portfolio.find_by_slug!(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def portfolio_params
-      params.require(:portfolio).permit(
-        :title,
-        :description,
-        :content,
-        :client,
-        :url_project,
-        :date_project,
-        :hidden
-      )
-    end
+  def set_portfolio
+    @portfolio = Portfolio.find_by_slug!(params[:id])
+  end
+
+  def portfolio_params
+    params.require(:portfolio).permit(
+      :title,
+      :description,
+      :content,
+      :client,
+      :url_project,
+      :date_project,
+      :hidden
+    )
+  end
 end

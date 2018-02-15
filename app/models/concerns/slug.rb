@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Slug
   extend ActiveSupport::Concern
 
@@ -11,7 +13,8 @@ module Slug
   end
 
   private
-    def assign_slug
-      self.slug = "#{Digest::SHA1.hexdigest([Time.now, rand].join)}-#{title.parameterize}"
-    end
+
+  def assign_slug
+    self.slug = "#{Digest::SHA1.hexdigest([Time.now, rand].join)}-#{title.parameterize}"
+  end
 end

@@ -23,5 +23,5 @@
 class Address < ApplicationRecord
   belongs_to :user, inverse_of: :addresses
 
-	validates :city, :street_name, :street_number, :zip_code, presence: true
+  validates :city, :street_name, :street_number, :zip_code, presence: true
 end

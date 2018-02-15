@@ -15,5 +15,5 @@ class Skill < ApplicationRecord
   has_many :portfolio_skills, dependent: :destroy
   has_many :portfolios, through: :portfolio_skills
 
-	validates :superpower, presence: true
+  validates :superpower, presence: true
 end

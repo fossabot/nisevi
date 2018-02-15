@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # == Schema Information
 #
 # Table name: users
@@ -51,17 +52,17 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 
   def admin?
-    self.admin
+    admin
   end
 
   def freelance_site
     freelance_media = User.select('users.id, user_links.url, links.social_media')
                           .joins(:links)
                           .where('users.admin=? AND links.social_media=?', true, 'freelancer')
-    unless freelance_media.empty?
-      freelance_media.first.url
-    else
+    if freelance_media.empty?
       '#'
+    else
+      freelance_media.first.url
     end
   end
 
@@ -95,13 +96,13 @@ class User < ApplicationRecord
     end
 
     def create_from_omniauth(auth)
-        User.new(
-          username: auth.info.nickname || '',
-          email: auth.info.email,
-          password: Devise.friendly_token,
-          first_name: auth.info.first_name,
-          last_name: auth.info.last_name
-        )
+      User.new(
+        username: auth.info.nickname || '',
+        email: auth.info.email,
+        password: Devise.friendly_token,
+        first_name: auth.info.first_name,
+        last_name: auth.info.last_name
+      )
     end
   end
 end

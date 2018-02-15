@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class WelcomeController < ApplicationController
   def index
     @contact = Contact.new
@@ -36,7 +38,8 @@ class WelcomeController < ApplicationController
   end
 
   private
-    def contact_params
-      params.require(:contact).permit(:name, :email, :message)
-    end
+
+  def contact_params
+    params.require(:contact).permit(:name, :email, :message)
+  end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ContactMailer < ApplicationMailer
   def contact_email(contact)
     @contact = contact
@@ -6,6 +8,6 @@ class ContactMailer < ApplicationMailer
 
   def client_message(contact)
     @contact = contact
-    mail(from: @contact.email, to: ENV["USERNAME_MAILER"], subject: 'Client message.')
+    mail(from: @contact.email, to: ENV['USERNAME_MAILER'], subject: 'Client message.')
   end
 end

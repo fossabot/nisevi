@@ -1,11 +1,10 @@
-class ApplicationController < ActionController::Base
+# frozen_string_literal: true
 
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+class ApplicationController < ActionController::Base
   protect_from_forgery prepend: true, with: :exception
 
   unless Rails.application.config.consider_all_requests_local
-    rescue_from ActionView::MissingTemplate, ActionController::RoutingError, ActiveRecord::RecordNotFound, with: -> { render_404  }
+    rescue_from ActionView::MissingTemplate, ActionController::RoutingError, ActiveRecord::RecordNotFound, with: -> { render_404 }
   end
 
   def render_404
@@ -17,10 +16,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :social_links, :resource_name, :resource, :devise_mapping, :profile_image
 
-  # Footer social links.
   def social_links
-    # If no data was added to the database,
-    # rescue the error and return an empty array
     begin
       @social_links = User.select('users.id, user_links.url, user_links.updated_at, user_links.created_at, links.social_media')
                           .joins(:links)
@@ -33,7 +29,7 @@ class ApplicationController < ActionController::Base
     :user
   end
 
-  def profile_image(opts={})
+  def profile_image(opts = {})
     if opts[:comment]
       opts[:comment].user.images.active.first ? opts[:comment].user.images.active.first.url : 'profile_default.png'
     elsif opts[:user]
@@ -62,12 +58,13 @@ class ApplicationController < ActionController::Base
   end
 
   private
-    def user_not_authorized
-      flash[:alert] = 'You are not authorized to perform this action.'
-      redirect_to(request.referrer || root_path)
-    end
 
-    def verify_user_is_admin
-      redirect_to new_user_session_path unless current_user&.try(:admin)
-    end
+  def user_not_authorized
+    flash[:alert] = 'You are not authorized to perform this action.'
+    redirect_to(request.referrer || root_path)
+  end
+
+  def verify_user_is_admin
+    redirect_to new_user_session_path unless current_user&.try(:admin)
+  end
 end
