@@ -27,6 +27,7 @@ group :development, :test do
   gem 'annotate', '~> 2.7', '>= 2.7.2'
   gem 'spring', '~> 2.0', '>= 2.0.2'
   gem 'coderay', '~> 1.1', '>= 1.1.2'
+  gem 'rubocop', '~> 0.52.1'
 end
 
 group :test do
