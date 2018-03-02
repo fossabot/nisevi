@@ -18,10 +18,10 @@
 class Identity < ApplicationRecord
   belongs_to :user, inverse_of: :identities
 
-  has_many :images, dependent: :destroy, inverse_of: :identity
+  has_many :images, as: :imageable, dependent: :destroy
 
   validates :uid, :provider, :raw_info, presence: true
-  validates :uid, uniqueness: {scope: :provider}
+  validates :uid, uniqueness: { scope: :provider }
 
   def self.find_with_omniauth(auth)
     find_by(uid: auth.uid, provider: auth.provider)

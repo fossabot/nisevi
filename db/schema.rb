@@ -98,21 +98,14 @@ ActiveRecord::Schema.define(version: 20161022125257) do
   end
 
   create_table "images", id: :serial, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "identity_id"
-    t.integer "article_id"
-    t.integer "service_id"
-    t.integer "portfolio_id"
+    t.string "imageable_type"
+    t.integer "imageable_id"
     t.text "url", null: false
     t.text "path", null: false
     t.boolean "active", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["article_id"], name: "index_images_on_article_id"
-    t.index ["identity_id"], name: "index_images_on_identity_id"
-    t.index ["portfolio_id"], name: "index_images_on_portfolio_id"
-    t.index ["service_id"], name: "index_images_on_service_id"
-    t.index ["user_id"], name: "index_images_on_user_id"
+    t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
   end
 
   create_table "languages", id: :serial, force: :cascade do |t|
@@ -247,11 +240,6 @@ ActiveRecord::Schema.define(version: 20161022125257) do
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"
   add_foreign_key "identities", "users"
-  add_foreign_key "images", "articles"
-  add_foreign_key "images", "identities"
-  add_foreign_key "images", "portfolios"
-  add_foreign_key "images", "services"
-  add_foreign_key "images", "users"
   add_foreign_key "languages", "users"
   add_foreign_key "phones", "users"
   add_foreign_key "portfolio_skills", "portfolios"

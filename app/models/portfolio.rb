@@ -22,7 +22,7 @@ class Portfolio < ApplicationRecord
   has_many :portfolio_skills, dependent: :destroy
   has_many :skills, through: :portfolio_skills
 
-  has_many :images, dependent: :destroy, inverse_of: :portfolio
+  has_many :images, as: :imageable, dependent: :destroy
 
   include Slug
   include Stringify

@@ -7,9 +7,9 @@
 #  slug             :string           not null
 #  description      :text             not null
 #  content          :text             not null
-#  published        :boolean          default(FALSE)
-#  accept_comments  :boolean          default(TRUE)
-#  publication_date :date
+#  published        :boolean          default(FALSE), not null
+#  accept_comments  :boolean          default(TRUE), not null
+#  publication_date :date             not null
 #  user_id          :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null

@@ -38,7 +38,7 @@ class User < ApplicationRecord
   has_many :services, dependent: :destroy, inverse_of: :user
   has_many :comments, dependent: :destroy, inverse_of: :user
   has_many :articles, dependent: :destroy, inverse_of: :user
-  has_many :images, dependent: :destroy, inverse_of: :user
+  has_many :images, as: :imageable, dependent: :destroy
 
   has_many :user_skills, dependent: :destroy
   has_many :skills, through: :user_skills
