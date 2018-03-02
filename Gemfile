@@ -29,6 +29,10 @@ group :development, :test do
   gem 'rubocop', '~> 0.52.1'
 end
 
+group :development do
+  gem 'bullet', '~> 5.7', '>= 5.7.3'
+end
+
 group :test do
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
   gem 'rspec_junit_formatter', '~> 0.3.0'
