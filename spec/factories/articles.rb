@@ -2,7 +2,7 @@
 #
 # Table name: articles
 #
-#  id               :integer          not null, primary key
+#  id               :bigint(8)        not null, primary key
 #  title            :string           not null
 #  slug             :string           not null
 #  description      :text             not null
@@ -10,7 +10,7 @@
 #  published        :boolean          default(FALSE), not null
 #  accept_comments  :boolean          default(TRUE), not null
 #  publication_date :date             not null
-#  user_id          :integer
+#  user_id          :bigint(8)
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #

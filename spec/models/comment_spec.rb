@@ -2,10 +2,10 @@
 #
 # Table name: comments
 #
-#  id         :integer          not null, primary key
+#  id         :bigint(8)        not null, primary key
 #  content    :text             not null
-#  article_id :integer
-#  user_id    :integer
+#  article_id :bigint(8)
+#  user_id    :bigint(8)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

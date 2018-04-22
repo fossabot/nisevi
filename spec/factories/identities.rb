@@ -2,7 +2,7 @@
 #
 # Table name: identities
 #
-#  id         :integer          not null, primary key
+#  id         :bigint(8)        not null, primary key
 #  provider   :string           not null
 #  uid        :string           not null
 #  token      :string
@@ -10,7 +10,7 @@
 #  expires    :boolean
 #  expires_at :date
 #  raw_info   :jsonb            not null
-#  user_id    :integer
+#  user_id    :bigint(8)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
