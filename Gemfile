@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.5.0'
+ruby '2.5.1'
 
 gem 'rails', '~> 5.1', '>= 5.1.5'
 gem 'pg', '~> 1.0'
@@ -18,6 +18,10 @@ gem 'devise', '~> 4.4', '>= 4.4.1'
 gem 'omniauth-github', '~> 1.3'
 gem 'pundit', '~> 1.1'
 gem 'rack-cors', '~> 1.0', '>= 1.0.2'
+gem 'sidekiq', '~> 5.1', '>= 5.1.3'
+gem 'puma', '~> 3.11', '>= 3.11.4'
+gem 'redis-rails', '~> 5.0', '>= 5.0.2'
+gem 'rack-timeout', '~> 0.4.2'
 
 group :development, :test do
   gem 'byebug', '~> 10.0'
