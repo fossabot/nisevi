@@ -1,20 +1,22 @@
 default: &default
   adapter: postgresql
-  encoding: unicode
+  encoding: utf8
   pool: 5
-  username: <%= ENV['DATABASE_USERNAME'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  host: localhost
+  timeout: 5000
 
 development:
   <<: *default
-  database: <%= ENV['DATABASE_DEVELOPMENT_NAME'] %>
+  url: <%= "#{ENV['DATABASE_URL']}_development" %>
 
 test:
   <<: *default
-  database: <%= ENV['DATABASE_TEST_NAME'] %>
+  url: <%= "#{ENV['DATABASE_URL']}_test" %>
+
+stagign:
+  <<: *default
+  url: <%= "#{ENV['DATABASE_URL']}_staging" %>
 
 production:
   <<: *default
-  database: <%= ENV['DATABASE_PRODUCTION_NAME'] %>
+  url: <%= "#{ENV['DATABASE_URL']}_production" %>
 
