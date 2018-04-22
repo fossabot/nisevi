@@ -29,6 +29,6 @@ class Portfolio < ApplicationRecord
 
   validates :client, :description, :content, :title, presence: true
 
-  scope :published, -> { where(hidden: false) }
-  scope :unpublished, -> { where(hidden: true) }
+  scope :published, -> { includes(:portfolio_skills, :skills).where(hidden: false) }
+  scope :unpublished, -> { includes(:portfolio_skills, :skills).where(hidden: true) }
 end
