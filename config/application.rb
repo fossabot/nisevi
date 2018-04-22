@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'rails/all'
@@ -13,7 +15,7 @@ module Nisevi
     logger = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.log_level = :debug
-    config.log_tags = [:subdomain, :uuid]
+    config.log_tags = %i[subdomain uuid]
     config.logger = ActiveSupport::TaggedLogging.new(logger)
 
     config.cache_store = :redis_store, ENV['CACHE_URL'], { namespace: 'nisevi::cache'}
