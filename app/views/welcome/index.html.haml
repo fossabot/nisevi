@@ -20,7 +20,7 @@
         function, interaction and form to design for fitting user
         experiences that make people happy.
     .row.services
-      - @services.each do |service|
+      - @publications[:services].each do |service|
         - cache service do
           .col-lg-3.col-md-6.col-sm-12.col-xs-12.item
             .icon
@@ -60,9 +60,9 @@
     .row
       #work-carousel.carousel.slide{ 'data-ride': 'carousel' }
         .carousel-inner{ role: 'listbox' }
-          - @portfolios.each do |portfolio|
+          - @publications[:portfolios].each_with_index do |portfolio, index|
             - cache portfolio do
-              %div{class: "#{@portfolios[0] == portfolio ? 'item active' : 'item'}"}
+              %div{class: "#{index.zero? ? 'item active' : 'item'}"}
                 .col-md-6.margin-btm-30
                   %h1= portfolio.title
                   %p= portfolio.description
@@ -76,7 +76,7 @@
                 .col-md-6
                   = image_tag portfolio.images.active.first.url, class: 'img img-responsive', alt: ''
         %ol.carousel-indicators
-          - @portfolios.each_index do |i|
+          - @publications[:portfolios].each_index do |i|
             %li{class: "#{i == 0 and 'active' or ''}", 'data-target': '#work-carousel', 'data-slide-to': "#{i}" }
 
 %section#all-works.dark-bg
@@ -98,7 +98,7 @@
           %br/
           See a collection of works I am proud of!
     .row
-      - @articles.each do |article|
+      - @publications[:articles].each do |article|
         - cache article do
           - image_article = article.images.active.first.url
           .col-lg-4.col-md-12.col-sm-12.col-xs-12.item

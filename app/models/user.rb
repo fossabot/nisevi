@@ -59,11 +59,16 @@ class User < ApplicationRecord
     freelance_media = User.select('users.id, user_links.url, links.social_media')
                           .joins(:links)
                           .where('users.admin=? AND links.social_media=?', true, 'freelancer')
-    if freelance_media.empty?
-      '#'
-    else
-      freelance_media.first.url
-    end
+    return '#' if freelance_media.empty?
+    freelance_media.first.url
+  end
+
+  def publications
+    {
+      articles: articles.published.last(3),
+      portfolios: portfolios.published.last(3),
+      services: services.active.last(4)
+    }
   end
 
   class << self
