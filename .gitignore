@@ -24,13 +24,10 @@ pickle-email-*.html
 *.bowerrc
 bower.json
 
-# Ignore pow environment settings
+# Ignore environment settings
 .powenv
 .env
 .env.test
-
-# Ignore ruby-version file
-.ruby-version
 
 # Ignore IDE folder
 .idea
