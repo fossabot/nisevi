@@ -1,22 +1,12 @@
-default: &default
-  adapter: postgresql
-  encoding: utf8
-  pool: 5
-  timeout: 5000
-
 development:
-  <<: *default
-  url: <%= "#{ENV['DATABASE_URL']}_development" %>
+  url: <%= ENV['DB_URL'].gsub('?', '_development?') %>
 
 test:
-  <<: *default
-  url: <%= "#{ENV['DATABASE_URL']}_test" %>
+  url: <%= ENV['DB_URL'].gsub('?', '_test?') %>
 
 stagign:
-  <<: *default
-  url: <%= "#{ENV['DATABASE_URL']}_staging" %>
+  url: <%= ENV['DB_URL'].gsub('?', '_staging?') %>
 
 production:
-  <<: *default
-  url: <%= "#{ENV['DATABASE_URL']}_production" %>
+  url: <%= ENV['DB_URL'].gsub('?', '_production?') %>
 
