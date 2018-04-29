@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby '2.5.1'
+ruby '2.5.0'
 
 gem 'bootsnap', '~> 1.3'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
@@ -18,7 +18,7 @@ gem 'puma', '~> 3.11', '>= 3.11.4'
 gem 'pundit', '~> 1.1'
 gem 'rack-cors', '~> 1.0', '>= 1.0.2'
 gem 'rack-timeout', '~> 0.4.2'
-gem 'rails', '~> 5.1', '>= 5.1.5'
+gem 'rails', '~> 5.2'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'redis-rails', '~> 5.0', '>= 5.0.2'
 gem 'sass-rails', '~> 5.0', '>= 5.0.7'
