@@ -4,8 +4,8 @@
     .row
       .col-sm-8.col-sm-offset-2.text-center
         %ul.social-links
-          - social_links.each do |link|
-            - cache link do
+          - social_links.each do |admin_link|
+            - cache admin_link do
               %li
-                = link_to link.url, target: '_blank' do
-                  %i{class: "fab fa-#{link.social_media} fa-fw"}
+                = link_to admin_link.url, target: '_blank' do
+                  %i{class: "fab fa-#{admin_link.link.social_media} fa-fw"}

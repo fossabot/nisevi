@@ -17,12 +17,7 @@ class ApplicationController < ActionController::Base
   helper_method :social_links, :resource_name, :resource, :devise_mapping, :profile_image
 
   def social_links
-    begin
-      @social_links = User.select('users.id, user_links.url, user_links.updated_at, user_links.created_at, links.social_media')
-                          .joins(:links)
-    rescue NoMethodError
-      @social_links = []
-    end
+    User.find_by_admin(:true).user_links.includes(:link)
   end
 
   def resource_name
