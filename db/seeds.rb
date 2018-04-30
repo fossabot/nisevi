@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Faker::Config.locale = 'en-US'
 IMAGE = 'https://assets.imgix.net/examples/bluehat.jpg'
 
@@ -12,7 +14,7 @@ admin = User.new(
   location: Faker::Address.country,
   presentation: Faker::Hacker.say_something_smart,
   email: 'admin@example.com',
-  username: 'username_admin',
+  username: 'nisevi',
   password: 'admin12345',
   password_confirmation: 'admin12345',
   admin: true
@@ -28,7 +30,7 @@ admin.images.create(
 )
 
 puts "\n Creating normal users:"
-(0...100).each do
+100.times do
   # Generation of normal users (no admin users)
   password = Faker::Internet.password(10, 16)
   u = User.new(
@@ -40,7 +42,7 @@ puts "\n Creating normal users:"
     email: Faker::Internet.email,
     username: Faker::Internet.user_name,
     password: password,
-    password_confirmation: password,
+    password_confirmation: password
   )
   # Deactivated confirmation email
   # in order to avoid email limit
@@ -60,7 +62,7 @@ puts "\n Creating portfolios:"
   portfolio = Portfolio.create!(
     user: admin,
     # Alternate hidden attribute between hidden=true and hidden=false
-    hidden: n%2==0 ? true : false,
+    hidden: n.even? ? true : false,
     client: Faker::Company.name,
     date_project: Time.now,
     description: Faker::Hacker.say_something_smart,
@@ -78,7 +80,7 @@ end
 
 ### LINKS ###
 puts "\n Creating links:"
-%w(github stack-overflow google-plus twitter linkedin freelancer).each do |media|
+%w[github stack-overflow google-plus twitter linkedin freelancer].each do |media|
   Link.create!(social_media: media)
   print '.'
 end
@@ -96,7 +98,7 @@ end
 
 ### SKILLS ###
 puts "\n Creating skills:"
-%w(mysql python php ruby rails mongodb).each do |skill|
+%w[mysql python php ruby rails mongodb].each do |skill|
   Skill.create!(superpower: skill)
   print '.'
 end
@@ -143,7 +145,7 @@ end
 
 ### PHONES ###
 puts "\n Creating phones:"
-(0...10).each do
+10.times do
   Phone.create!(
     user: admin,
     country_code: Faker::Address.country_code,
@@ -157,7 +159,7 @@ end
 
 ### ADDRESSES ###
 puts "\n Creating addresses:"
-(0...10).each do
+10.times do
   Address.create!(
     user: admin,
     city: Faker::Address.city,
@@ -178,7 +180,7 @@ end
 
 ### LANGUAGES ###
 puts "\n Creating languages:"
-(0...10).each do
+10.times do
   Language.create!(
     user: admin,
     name: Faker::App.name,
@@ -191,7 +193,7 @@ end
 
 ### CATEGORIES ###
 puts "\n Creating categories:"
-%w(programming database front-end back-end algorithms mongodb).each do |cat|
+%w[programming database front-end back-end algorithms mongodb].each do |cat|
   Category.create!(topic: cat)
   print '.'
 end
@@ -202,7 +204,7 @@ puts "\n Creating articles:"
 	title = Faker::Name.title
   article = Article.create!(
     user: admin,
-    published: n%2==0 ? true : false,
+    published: n.even? ? true : false,
     title: title,
     description: Faker::Hacker.say_something_smart,
     content: Faker::Lorem.paragraph,
@@ -235,8 +237,8 @@ Article.all.each do |article|
   (0...10).each do |n|
     Comment.create!(
       article: article,
-      user: n%2==0 ? admin : User.all.shuffle[0],
-      content: Faker::Lorem.paragraph,
+      user: n.even? ? admin : User.all.shuffle[0],
+      content: Faker::Lorem.paragraph
     )
     print '.'
   end
@@ -244,7 +246,7 @@ end
 
 ### CONTACTS ###
 puts "\n Creating contacts:"
-(0...100).each do
+100.times do
   Contact.create!(
     name: Faker::Name.name,
     email: Faker::Internet.email,
