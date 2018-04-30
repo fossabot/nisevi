@@ -3,3 +3,15 @@
 # NISEVI
 
 This APP is a Ruby on Rails blog and portfolio.
+
+## Useful commands:
+
+If you want to:
+
+- build the project: `$ docker-compose up --build`
+
+- use the console: `$ docker exec -it nisevi_nisevi_1 rails c`
+
+- stop and remove containers: `$ docker-compose down -v`
+
+- remove unused data: `$ docker system prune`
