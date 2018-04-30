@@ -30,7 +30,7 @@
         - if user_signed_in? && controller_name != 'welcome'
           %li#profile-menu.dropdown
             = link_to '', class: 'dropdown-toggle ', data: {toggle: 'dropdown'}, role: 'button', aria: {expanded: 'false'} do
-              = image_tag profile_image
+              = image_tag user_image(current_user)
             %ul#profile-options.dropdown-menu
               %li= link_to 'Profile', edit_user_registration_path
               %li= link_to 'Sign out', destroy_user_session_path, method: :delete

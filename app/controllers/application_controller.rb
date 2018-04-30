@@ -14,18 +14,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  helper_method :social_links, :resource_name, :resource, :devise_mapping, :profile_image
-
-  def social_links
-    User.find_by_admin(:true).user_links.includes(:link)
-  end
+  helper_method :resource_name, :resource, :devise_mapping
 
   def resource_name
     :user
-  end
-
-  def profile_image(opts = {})
-    'default.jpg'
   end
 
   def resource
