@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @comments = @article.comments.order('id DESC').page(params[:page]).per(5)
+    @comments = @article.comments.includes(:user).order('id DESC').page(params[:page]).per(5)
   end
 
   def new
