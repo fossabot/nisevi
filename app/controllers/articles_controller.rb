@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
   def edit; end
 
   def create
-    @article = Article.new(article_params.merge(user: current_user))
+    @article = Article.new(article_params.merge(user: admin))
     if @article.save
       redirect_to @article, notice: 'Article was successfully created.'
     else

@@ -4,41 +4,8 @@
     .row.gray-bg.row-btm0.padding-show
       .col-md-6.col-md-offset-3
         = image_tag @article.images.active.first.url, class: 'img img-responsive', alt: ''
-      - if user_signed_in? and @article.user_id == current_user.try(:id)
-        #management-buttons-left.col-md-3
-          = link_to edit_article_path(@article), class: 'btn btn-success' do
-            %span.glyphicon.glyphicon-pencil
-          = link_to @article, method: :delete, class: 'btn btn-danger' do
-            %span.glyphicon.glyphicon-trash
       .col-md-10.col-md-offset-1.padding-top-10
         %h1= @article.title
         %p= @article.publication_date
         %h3= @article.description
         %p= @article.content
-
-    -# = list comments if any
-    .row.gray-bg
-      .col-md-12
-        - if @comments.empty?
-          %h3 Be the first one leaving a comment for this post.
-        - else
-          %h3= @comments.count == 1 ? '1 Comment' : "#{@article.comments.count} Comments"
-          #render-comments
-            = render @comments
-
-    -# = display pagination
-    .row.gray-bg
-      .col-md-10.col-md-offset-1.text-center
-        #paginate-comments
-          = paginate @comments, use_page_one_param: true, remote: true
-
-    -# = if user signed in then allow it to make a comment
-    .row.padding-top-bottom.gray-bg
-      .col-md-10.col-md-offset-1
-        - if user_signed_in?
-          = render 'comments/form'
-        - else
-          If you want to leave a comment, please
-          = render partial: 'shared/new_session'
-          or
-          = render partial: 'shared/new_registration'

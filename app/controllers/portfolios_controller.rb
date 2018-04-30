@@ -17,7 +17,7 @@ class PortfoliosController < ApplicationController
   def edit; end
 
   def create
-    @portfolio = Portfolio.new(portfolio_params.merge(user: current_user))
+    @portfolio = Portfolio.new(portfolio_params.merge(user: admin))
     if @portfolio.save
       redirect_to @portfolio, notice: 'Portfolio was successfully created.'
     else

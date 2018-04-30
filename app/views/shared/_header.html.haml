@@ -11,12 +11,7 @@
 
     #site-nav.navbar-collapse.collapse
       %ul.nav.navbar-nav.nav-tabs
-        - {'#home'=> 'HOME',
-          '#services'=> 'WHAT I DO',
-          '#about'=> 'ABOUT ME',
-          '#work'=> 'MY WORKS',
-          '#blog'=> 'BLOG',
-          '#contact_me'=> 'CONTACT ME'}.each do |link, value|
+        - header_sections.each do |link, value|
           %li
             - if current_page?(root_path)
               = link_to value, "#{link}"
@@ -26,17 +21,3 @@
               = link_to value, articles_path
             - else
               = link_to value, "#{root_path}#{link}"
-      %ul.nav.navbar-nav.nav-tabs.navbar-right
-        - if user_signed_in? && controller_name != 'welcome'
-          %li#profile-menu.dropdown
-            = link_to '', class: 'dropdown-toggle ', data: {toggle: 'dropdown'}, role: 'button', aria: {expanded: 'false'} do
-              = image_tag user_image(current_user)
-            %ul#profile-options.dropdown-menu
-              %li= link_to 'Profile', edit_user_registration_path
-              %li= link_to 'Sign out', destroy_user_session_path, method: :delete
-              - if current_user.admin
-                %li.divider{role: 'separator'}
-                %li= link_to 'Create new article', new_article_path
-                %li= link_to 'Create new portfolio', new_portfolio_path
-                %li= link_to 'View all services', services_path
-                %li= link_to 'Create new service', new_service_path

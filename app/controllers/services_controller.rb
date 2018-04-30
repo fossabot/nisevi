@@ -17,7 +17,7 @@ class ServicesController < ApplicationController
   def edit; end
 
   def create
-    @service = Service.new(service_params.merge(user: current_user))
+    @service = Service.new(service_params.merge(user: admin))
     if @service.save
       redirect_to @service, notice: 'Service was successfully created.'
     else
