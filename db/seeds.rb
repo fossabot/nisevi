@@ -19,15 +19,12 @@ admin = User.new(
   password_confirmation: 'admin12345',
   admin: true
 )
+
 # Deactivated confirmation email
 admin.skip_confirmation!
 admin.save!
 print '.'
-admin.images.create(
-  path: Faker::File.file_name('path/to'),
-  url: IMAGE,
-  active: true
-)
+admin.images.create(path: Faker::File.file_name('path/to'), url: IMAGE, active: true)
 
 puts "\n Creating normal users:"
 100.times do
@@ -80,21 +77,21 @@ end
 
 ### LINKS ###
 puts "\n Creating links:"
-%w[github stack-overflow google-plus twitter linkedin freelancer].each do |media|
-  Link.create!(social_media: media)
-  print '.'
-end
+github = Link.create!(social_media: 'github')
+stack = Link.create!(social_media: 'stack-overflow')
+google = Link.create!(social_media: 'google-plus')
+twitter = Link.create!(social_media: 'twitter')
+linkedin = Link.create!(social_media: 'linkedin')
+upwork = Link.create!(social_media: 'upwork')
 
 ### USER LINKS ###
 puts "\n Creating user links:"
-Link.all.each do |link|
-  UserLink.create!(
-    user: admin,
-    link: link,
-    url: Faker::Internet.url
-  )
-  print '.'
-end
+admin.user_links.create!(link: github, url: 'https://github.com/nisevi')
+admin.user_links.create!(link: stack, url: 'https://stackoverflow.com/users/2055252/nisevi')
+admin.user_links.create!(link: google, url: 'https://plus.google.com/+NicolasSebastianVidal')
+admin.user_links.create!(link: twitter, url: 'https://twitter.com/NicoSVidal')
+admin.user_links.create!(link: linkedin, url: 'https://www.linkedin.com/in/nicolassebastianvidal')
+admin.user_links.create!(link: upwork, url: 'https://www.upwork.com/fl/nisevi')
 
 ### SKILLS ###
 puts "\n Creating skills:"
@@ -107,7 +104,7 @@ end
 puts "\n Creating user skills:"
 User.all.each do |user|
   UserSkill.create!(
-    skill: Skill.all.shuffle[0],
+    skill: Skill.all.sample,
     user: user,
     description: Faker::Hacker.say_something_smart,
     url: Faker::Internet.url
@@ -119,7 +116,7 @@ end
 puts "\n Creating portfolio skills:"
 Portfolio.all.each do |portfolio|
   PortfolioSkill.create!(
-    skill: Skill.all.shuffle[0],
+    skill: Skill.all.sample,
     portfolio: portfolio
   )
   print '.'
@@ -127,10 +124,10 @@ end
 
 ### SERVICES ###
 puts "\n Creating services:"
-(0...20).each do |n|
+20.times do
   service = Service.create!(
     user: admin,
-    active: [true,false].shuffle.first,
+    active: [true, false].sample,
     title: Faker::Name.title,
     description: Faker::Hacker.say_something_smart,
     content: Faker::Lorem.paragraph
@@ -200,8 +197,8 @@ end
 
 ### ARTICLES ###
 puts "\n Creating articles:"
-(0...100).each do |n|
-	title = Faker::Name.title
+100.times do |n|
+  title = Faker::Name.title
   article = Article.create!(
     user: admin,
     published: n.even? ? true : false,
@@ -234,10 +231,10 @@ end
 puts "\n Creating comments:"
 Article.all.each do |article|
   # create 10 comments per article
-  (0...10).each do |n|
+  10.times do |n|
     Comment.create!(
       article: article,
-      user: n.even? ? admin : User.all.shuffle[0],
+      user: n.even? ? admin : User.all.sample,
       content: Faker::Lorem.paragraph
     )
     print '.'
