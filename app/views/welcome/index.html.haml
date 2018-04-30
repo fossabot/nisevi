@@ -3,12 +3,8 @@
   .container
     .row
       .col-sm-12.text-col.text-center
-        - if @admin_user
-          %h1= "Hi, I am #{@admin_user.first_name} #{@admin_user.last_name}"
-          %p software engineer
-        - else
-          %h1 Hi, I am John Doe
-          %p software engineer
+        %h1= "Hi, I am #{@admin.first_name} #{@admin.last_name}"
+        %p software engineer
 
 <!-- ========= SERVICES ========= -->
 %section#services.white-bg.padding-top-bottom
@@ -16,8 +12,8 @@
     %header.section-header.text-center
       %h1.scrollimation.scale-in What I Do
       %h3
-        I am passionate about providing simple solutions combining
-        function, interaction and form to design for fitting user
+        I am passionate about providing solutions that combine
+        functionality, interaction and form to design for fitting user
         experiences that make people happy.
     .row.services
       - @publications[:services].each do |service|
@@ -35,17 +31,9 @@
       %h1 About Me
     .row
       .col-sm-4.col-sm-offset-4
-        = image_tag profile_image({user: @admin_user}), class: 'img-responsive img-center img-circle', alt: ''
+        = image_tag profile_image({user: @admin}), class: 'img-responsive img-center img-circle', alt: ''
       .col-sm-10.col-sm-offset-1
-        %p.text-center= @admin_user ? @admin_user.presentation : ''
-    .row
-      %p.text-center
-        - if @admin_user.nil? || @admin_user.user_links.empty?
-          %a.black-button.white-to-black{ href: '#', target: '_blank' }
-            %i.fa.fa-desktop &nbsp;&nbsp; Hire Me
-        - else
-          = link_to @admin_user.freelance_site, class: 'black-button white-to-black', target: '_blank' do
-            %i.fa.fa-desktop &nbsp;&nbsp; Hire Me
+        %p.text-center= @admin.presentation
 
 <!-- ========= PORTFOLIO ========= -->
 %section#work.gray-bg.padding-top-bottom
@@ -54,7 +42,7 @@
       %header.section-header.text-center
         %h1 My Works
         %h3
-          I've been working on several projects .
+          I've been working on several projects.
           %br/
           See a collection of works I am proud of!
     .row
@@ -127,10 +115,6 @@
     .row.row-btm140
       %header.section-header.text-center
         %h1 Drop Me a Line
-        %p
-          I am available for freelance.
-          %br/
-          Can not wait for the next exciting project! Could be yours?
       = form_for @contact, url: welcome_index_path(@contact), as: :contact, remote: true, html: {class: 'contact-submit'} do |f|
         .form-group.col-xs-12.col-md-12
           = f.label :name, class: 'col-xs-12 col-sm-2 control-label'

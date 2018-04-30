@@ -3,8 +3,8 @@
 class WelcomeController < ApplicationController
   def index
     @contact = Contact.new
-    @admin_user = User.find_by_admin(:true)
-    @publications = @admin_user.publications
+    @admin = User.find_by_admin(:true)
+    @publications = @admin.publications
   end
 
   def create
