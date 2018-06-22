@@ -24,7 +24,7 @@ gem 'therubyracer', '~> 0.12.3'
 gem 'uglifier', '~> 4.1', '>= 4.1.5'
 
 group :development, :test do
-  gem 'annotate', '~> 2.7', '>= 2.7.2'
+  gem 'annotate', '~> 2.7'
   gem 'byebug', '~> 10.0'
   gem 'coderay', '~> 1.1', '>= 1.1.2'
   gem 'dotenv-rails', '~> 2.5'
