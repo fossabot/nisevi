@@ -39,7 +39,7 @@ group :development do
 end
 
 group :test do
-  gem 'factory_bot', '~> 4.8', '>= 4.8.2'
+  gem 'factory_bot', '~> 4.10'
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
   gem 'rspec_junit_formatter', '~> 0.3.0'
   gem 'simplecov', '~> 0.15.1'
