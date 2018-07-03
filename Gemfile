@@ -21,7 +21,7 @@ gem 'redis-rails', '~> 5.0', '>= 5.0.2'
 gem 'sass-rails', '~> 5.0', '>= 5.0.7'
 gem 'sidekiq', '~> 5.1', '>= 5.1.3'
 gem 'therubyracer', '~> 0.12.3'
-gem 'uglifier', '~> 4.1', '>= 4.1.5'
+gem 'uglifier', '~> 4.1'
 
 group :development, :test do
   gem 'annotate', '~> 2.7', '>= 2.7.2'
