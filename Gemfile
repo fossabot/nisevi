@@ -29,7 +29,7 @@ group :development, :test do
   gem 'coderay', '~> 1.1', '>= 1.1.2'
   gem 'dotenv-rails', '~> 2.5'
   gem 'faker', '~> 1.8', '>= 1.8.7'
-  gem 'rubocop', '~> 0.52.1'
+  gem 'rubocop', '~> 0.58.1'
   gem 'spring', '~> 2.0', '>= 2.0.2'
 end
 
