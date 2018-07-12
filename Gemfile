@@ -28,7 +28,7 @@ group :development, :test do
   gem 'byebug', '~> 10.0'
   gem 'coderay', '~> 1.1', '>= 1.1.2'
   gem 'dotenv-rails', '~> 2.5'
-  gem 'faker', '~> 1.8', '>= 1.8.7'
+  gem 'faker', '~> 1.9'
   gem 'rubocop', '~> 0.52.1'
   gem 'spring', '~> 2.0', '>= 2.0.2'
 end
